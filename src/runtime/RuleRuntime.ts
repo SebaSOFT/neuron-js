@@ -24,6 +24,18 @@ export class RuleRuntime {
         continue;
       }
 
+      const RuleCtor = this._neuron.getRule(ruleItem.type);
+      if (!RuleCtor) {
+        messageList.push(`ERROR: Rule type not found: ${ruleItem.type}`);
+        this._hookEmitter?.(HookEvents.ON_RULE_ERROR, currentContext);
+        return new ExecutionResult(
+          false,
+          currentContext,
+          rulesExecuted,
+          messageList,
+        );
+      }
+
       this._hookEmitter?.(HookEvents.ON_RULE_START, currentContext);
 
       // 1. Evaluate Conditions
