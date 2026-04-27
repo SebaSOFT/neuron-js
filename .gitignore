@@ -1,3 +1,7 @@
+# OS files
+.DS_Store
+**/.DS_Store
+
 # Logs
 logs
 *.log
@@ -104,6 +108,10 @@ dist
 # vitepress cache directory
 **/.vitepress/cache
 
+# Build artifacts
+dist/
+.tshy/
+
 # Docusaurus cache and generated files
 .docusaurus
 
@@ -141,3 +149,8 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Superpowers
+docs/superpowers/
+
+docs/legacy/
