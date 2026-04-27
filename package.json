@@ -13,6 +13,7 @@
     "test": "vitest run",
     "lint": "biome check .",
     "format": "biome format --write .",
+    "prepare": "yarn build",
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
@@ -29,6 +30,13 @@
     },
     "selfReferencing": false
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "main": "./dist/commonjs/index.js",
+  "types": "./dist/commonjs/index.d.ts",
+  "module": "./dist/esm/index.js",
   "exports": {
     ".": {
       "import": {
@@ -40,8 +48,5 @@
         "default": "./dist/commonjs/index.js"
       }
     }
-  },
-  "main": "./dist/commonjs/index.js",
-  "types": "./dist/commonjs/index.d.ts",
-  "module": "./dist/esm/index.js"
+  }
 }
