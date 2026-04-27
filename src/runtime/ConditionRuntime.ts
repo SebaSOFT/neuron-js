@@ -1,12 +1,15 @@
 import type { Neuron } from "../index.js";
 import type { ConditionInterface } from "../interfaces/Condition.js";
+import { HookEvents } from "../interfaces/HookEvents.js";
 import type { ExecutionContext } from "../types/ExecutionContext.js";
 import { ExecutionResult } from "../types/ExecutionResult.js";
+import type { HookEmitter } from "../types/HookEmitter.js";
 
 export class ConditionRuntime {
   constructor(
     private readonly _conditions: ConditionInterface[],
     private readonly _neuron: Neuron,
+    private readonly _hookEmitter?: HookEmitter,
   ) {}
 
   execute(context: ExecutionContext): ExecutionResult<boolean> {
@@ -23,6 +26,8 @@ export class ConditionRuntime {
         continue;
       }
 
+      this._hookEmitter?.(HookEvents.ON_CONDITION_START, context);
+
       if (
         conditionItem.options.orCondition &&
         orGroups[groupIndex].length > 0
@@ -36,6 +41,7 @@ export class ConditionRuntime {
         messageList.push(
           `ERROR: Condition type not found: ${conditionItem.type}`,
         );
+        this._hookEmitter?.(HookEvents.ON_CONDITION_ERROR, context);
         return new ExecutionResult(false, context, false, messageList);
       }
 
@@ -51,6 +57,7 @@ export class ConditionRuntime {
       messageList.push(...conditionResult.messages);
 
       if (!conditionResult.isSuccessful()) {
+        this._hookEmitter?.(HookEvents.ON_CONDITION_ERROR, context);
         return new ExecutionResult(false, context, false, messageList);
       }
 
@@ -59,6 +66,7 @@ export class ConditionRuntime {
         : !!conditionResult.value;
 
       orGroups[groupIndex].push(verdict);
+      this._hookEmitter?.(HookEvents.ON_CONDITION_END, context);
     }
 
     const finalResult = orGroups.some(
