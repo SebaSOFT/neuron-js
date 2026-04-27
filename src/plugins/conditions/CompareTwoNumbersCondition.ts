@@ -1,7 +1,4 @@
-import type {
-  ConditionInterface,
-  ConditionOptions,
-} from "../../interfaces/Condition.js";
+import type { ConditionOptions } from "../../interfaces/Condition.js";
 import type { ParameterInterface } from "../../interfaces/Parameter.js";
 import type { ExecutionContext } from "../../types/ExecutionContext.js";
 import { ExecutionResult } from "../../types/ExecutionResult.js";
@@ -78,18 +75,5 @@ export class CompareTwoNumbersCondition {
     }
 
     return new ExecutionResult(true, context, result);
-  }
-
-  isSuccessful() {
-    return true;
-  }
-
-  static fromJSON(jsonObject: ConditionInterface): CompareTwoNumbersCondition {
-    return new CompareTwoNumbersCondition(
-      jsonObject.id,
-      jsonObject.type,
-      jsonObject.params,
-      jsonObject.options,
-    );
   }
 }

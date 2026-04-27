@@ -1,7 +1,4 @@
-import type {
-  ActionInterface,
-  ActionOptions,
-} from "../../interfaces/Action.js";
+import type { ActionOptions } from "../../interfaces/Action.js";
 import type { ParameterInterface } from "../../interfaces/Parameter.js";
 import type { ExecutionContext } from "../../types/ExecutionContext.js";
 import { ExecutionResult } from "../../types/ExecutionResult.js";
@@ -58,18 +55,5 @@ export class AddTwoNumbersAction {
     };
 
     return new ExecutionResult(true, updatedContext, sum);
-  }
-
-  isSuccessful() {
-    return true;
-  }
-
-  static fromJSON(jsonObject: ActionInterface): AddTwoNumbersAction {
-    return new AddTwoNumbersAction(
-      jsonObject.id,
-      jsonObject.type,
-      jsonObject.params,
-      jsonObject.options,
-    );
   }
 }
