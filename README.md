@@ -1,12 +1,14 @@
 # 🧠 neuron-js
 
-> **Pluggable, serializable execution runtime for functional logic.**
+> **A pluggable, serializable rules engine for functional programming rulesets.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D24.0.0-blue.svg)](https://nodejs.org)
 [![Build Status](https://github.com/SebaSOFT/neuron-js/actions/workflows/ci.yml/badge.svg)](https://github.com/SebaSOFT/neuron-js/actions)
 
-`neuron-js` is a lightweight, extensible runtime designed to handle functional programming logic in a strictly serializable format. By modeling execution after biological systems—using **Neurons** as registries and **Synapses** as executors—it provides a robust framework for building dynamic rule engines, automation workflows, and complex decision-making systems.
+`neuron-js` is a lightweight, extensible rules engine designed to execute functional programming logic for other applications in a strictly serializable format. By modeling execution after biological systems—using **Neurons** as registries and **Synapses** as executors—it allows you to build, store, and run complex functional rulesets that remain pure JSON.
+
+Perfect for dynamic business rules, automation workflows, and cross-application decision logic.
 
 ---
 
