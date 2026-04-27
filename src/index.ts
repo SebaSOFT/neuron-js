@@ -1,11 +1,9 @@
+import type { ParameterInterface } from "./interfaces/Parameter.js";
 import { AddTwoNumbersAction } from "./plugins/actions/AddTwoNumbersAction.js";
 import { CompareTwoNumbersCondition } from "./plugins/conditions/CompareTwoNumbersCondition.js";
 import { ComparatorParameter } from "./plugins/parameters/ComparatorParameter.js";
 import { SimpleNumberParameter } from "./plugins/parameters/SimpleNumberParameter.js";
 import { SimpleStringParameter } from "./plugins/parameters/SimpleStringParameter.js";
-import type { ActionInterface } from "./interfaces/Action.js";
-import type { ConditionInterface } from "./interfaces/Condition.js";
-import type { ParameterInterface } from "./interfaces/Parameter.js";
 import type { ExecutionContext } from "./types/ExecutionContext.js";
 import type { ExecutionResult } from "./types/ExecutionResult.js";
 

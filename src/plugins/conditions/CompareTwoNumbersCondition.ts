@@ -1,11 +1,8 @@
-import type {
-  ConditionInterface,
-  ConditionOptions,
-} from "../../interfaces/Condition.js";
+import type { Neuron } from "../../index.js";
+import type { ConditionOptions } from "../../interfaces/Condition.js";
 import type { ParameterInterface } from "../../interfaces/Parameter.js";
 import type { ExecutionContext } from "../../types/ExecutionContext.js";
 import { ExecutionResult } from "../../types/ExecutionResult.js";
-import type { Neuron } from "../../index.js";
 
 export class CompareTwoNumbersCondition {
   static readonly TYPE = "compare_two_numbers";

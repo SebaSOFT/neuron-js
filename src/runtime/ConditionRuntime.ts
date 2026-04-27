@@ -23,14 +23,19 @@ export class ConditionRuntime {
         continue;
       }
 
-      if (conditionItem.options.orCondition && orGroups[groupIndex].length > 0) {
+      if (
+        conditionItem.options.orCondition &&
+        orGroups[groupIndex].length > 0
+      ) {
         groupIndex++;
         orGroups[groupIndex] = [];
       }
 
       const ConditionCtor = this._neuron.getCondition(conditionItem.type);
       if (!ConditionCtor) {
-        messageList.push(`ERROR: Condition type not found: ${conditionItem.type}`);
+        messageList.push(
+          `ERROR: Condition type not found: ${conditionItem.type}`,
+        );
         return new ExecutionResult(false, context, false, messageList);
       }
 
