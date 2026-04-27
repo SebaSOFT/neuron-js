@@ -1,3 +1,1 @@
-export class Neuron {
-  constructor() {}
-}
+export class Neuron {}
