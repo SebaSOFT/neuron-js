@@ -27,6 +27,7 @@ export type ActionConstructor = new (
   type: string,
   params: ParameterInterface[],
   options: any,
+  neuron: Neuron,
 ) => IElementInstance;
 
 export type ConditionConstructor = new (
@@ -34,12 +35,14 @@ export type ConditionConstructor = new (
   type: string,
   params: ParameterInterface[],
   options: any,
+  neuron: Neuron,
 ) => IElementInstance;
 
 export type RuleConstructor = new (
   id: string,
   type: string,
   options: any,
+  neuron: Neuron,
 ) => IElementInstance;
 
 export class Neuron {

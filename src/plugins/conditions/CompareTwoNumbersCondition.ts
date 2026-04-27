@@ -1,9 +1,11 @@
-import type { ConditionOptions } from "../../interfaces/Condition.js";
+import type {
+  ConditionInterface,
+  ConditionOptions,
+} from "../../interfaces/Condition.js";
 import type { ParameterInterface } from "../../interfaces/Parameter.js";
 import type { ExecutionContext } from "../../types/ExecutionContext.js";
 import { ExecutionResult } from "../../types/ExecutionResult.js";
-import { ComparatorParameter } from "../parameters/ComparatorParameter.js";
-import { SimpleNumberParameter } from "../parameters/SimpleNumberParameter.js";
+import type { Neuron } from "../../index.js";
 
 export class CompareTwoNumbersCondition {
   static readonly TYPE = "compare_two_numbers";
@@ -13,6 +15,7 @@ export class CompareTwoNumbersCondition {
     public readonly type: string,
     private readonly _params: ParameterInterface[],
     public readonly options: ConditionOptions,
+    private readonly _neuron: Neuron,
   ) {}
 
   execute(context: ExecutionContext): ExecutionResult<boolean> {
@@ -24,27 +27,17 @@ export class CompareTwoNumbersCondition {
       return new ExecutionResult(false, context, false, ["Missing parameters"]);
     }
 
-    const op1 = new SimpleNumberParameter(
-      op1Param.id,
-      op1Param.type,
-      op1Param.name,
-      op1Param.value,
-      op1Param.options,
-    ).getValue(context);
-    const comp = new ComparatorParameter(
-      compParam.id,
-      compParam.type,
-      compParam.name,
-      compParam.value,
-      compParam.options,
-    ).getValue(context);
-    const op2 = new SimpleNumberParameter(
-      op2Param.id,
-      op2Param.type,
-      op2Param.name,
-      op2Param.value,
-      op2Param.options,
-    ).getValue(context);
+    const resolveParam = (p: ParameterInterface) => {
+      const ParamCtor = this._neuron.getParameter(p.type);
+      if (!ParamCtor) return null;
+      return new ParamCtor(p.id, p.type, p.name, p.value, p.options).getValue(
+        context,
+      );
+    };
+
+    const op1 = resolveParam(op1Param);
+    const comp = resolveParam(compParam);
+    const op2 = resolveParam(op2Param);
 
     if (op1 === null || comp === null || op2 === null) {
       return new ExecutionResult(false, context, false, [
@@ -75,5 +68,9 @@ export class CompareTwoNumbersCondition {
     }
 
     return new ExecutionResult(true, context, result);
+  }
+
+  isSuccessful() {
+    return true;
   }
 }

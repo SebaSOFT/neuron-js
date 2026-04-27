@@ -5,6 +5,7 @@ import { ConditionRuntime } from "./ConditionRuntime.js";
 test("ConditionRuntime evaluates AND logic", () => {
   const neuron = new Neuron();
   class TrueCondition {
+    constructor(_id: any, _type: any, _params: any, _options: any, _neuron: any) {}
     execute() {
       return {
         success: true,
@@ -31,6 +32,7 @@ test("ConditionRuntime evaluates AND logic", () => {
 test("ConditionRuntime evaluates OR logic", () => {
   const neuron = new Neuron();
   class TrueCondition {
+    constructor(_id: any, _type: any, _params: any, _options: any, _neuron: any) {}
     execute() {
       return {
         success: true,
@@ -43,6 +45,7 @@ test("ConditionRuntime evaluates OR logic", () => {
     }
   }
   class FalseCondition {
+    constructor(_id: any, _type: any, _params: any, _options: any, _neuron: any) {}
     execute() {
       return {
         success: true,

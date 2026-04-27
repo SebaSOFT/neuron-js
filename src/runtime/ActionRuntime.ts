@@ -35,6 +35,7 @@ export class ActionRuntime {
         actionItem.type,
         actionItem.params,
         actionItem.options,
+        this._neuron,
       );
 
       const actionResult = actionInstance.execute(currentContext);

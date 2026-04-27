@@ -2,7 +2,7 @@ import type { ActionOptions } from "../../interfaces/Action.js";
 import type { ParameterInterface } from "../../interfaces/Parameter.js";
 import type { ExecutionContext } from "../../types/ExecutionContext.js";
 import { ExecutionResult } from "../../types/ExecutionResult.js";
-import { SimpleNumberParameter } from "../parameters/SimpleNumberParameter.js";
+import type { Neuron } from "../../index.js";
 
 export class AddTwoNumbersAction {
   static readonly TYPE = "add_two_numbers";
@@ -12,6 +12,7 @@ export class AddTwoNumbersAction {
     public readonly type: string,
     private readonly _params: ParameterInterface[],
     public readonly options: ActionOptions,
+    private readonly _neuron: Neuron,
   ) {}
 
   execute(context: ExecutionContext): ExecutionResult<number | null> {
@@ -24,20 +25,16 @@ export class AddTwoNumbersAction {
       ]);
     }
 
-    const op1 = new SimpleNumberParameter(
-      op1Param.id,
-      op1Param.type,
-      op1Param.name,
-      op1Param.value,
-      op1Param.options,
-    ).getValue(context);
-    const op2 = new SimpleNumberParameter(
-      op2Param.id,
-      op2Param.type,
-      op2Param.name,
-      op2Param.value,
-      op2Param.options,
-    ).getValue(context);
+    const resolveParam = (p: ParameterInterface) => {
+      const ParamCtor = this._neuron.getParameter(p.type);
+      if (!ParamCtor) return null;
+      return new ParamCtor(p.id, p.type, p.name, p.value, p.options).getValue(
+        context,
+      );
+    };
+
+    const op1 = resolveParam(op1Param);
+    const op2 = resolveParam(op2Param);
 
     if (op1 === null || op2 === null) {
       return new ExecutionResult<number | null>(false, context, null, [
@@ -45,7 +42,7 @@ export class AddTwoNumbersAction {
       ]);
     }
 
-    const sum = op1 + op2;
+    const sum = (op1 as number) + (op2 as number);
     const updatedContext = {
       ...context,
       messages: [
@@ -55,5 +52,9 @@ export class AddTwoNumbersAction {
     };
 
     return new ExecutionResult(true, updatedContext, sum);
+  }
+
+  isSuccessful() {
+    return true;
   }
 }

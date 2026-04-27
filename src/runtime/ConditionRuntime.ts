@@ -23,31 +23,25 @@ export class ConditionRuntime {
         continue;
       }
 
-      if (
-        conditionItem.options.orCondition &&
-        orGroups[groupIndex].length > 0
-      ) {
+      if (conditionItem.options.orCondition && orGroups[groupIndex].length > 0) {
         groupIndex++;
         orGroups[groupIndex] = [];
       }
 
       const ConditionCtor = this._neuron.getCondition(conditionItem.type);
       if (!ConditionCtor) {
-        messageList.push(
-          `ERROR: Condition type not found: ${conditionItem.type}`,
-        );
+        messageList.push(`ERROR: Condition type not found: ${conditionItem.type}`);
         return new ExecutionResult(false, context, false, messageList);
       }
 
-      // In the clean-room rewrite, we expect a consistent interface for element instantiation
       const conditionInstance = new ConditionCtor(
         conditionItem.id,
         conditionItem.type,
         conditionItem.params,
         conditionItem.options,
+        this._neuron,
       );
 
-      // Condition objects should have an execute method
       const conditionResult = conditionInstance.execute(context);
       messageList.push(...conditionResult.messages);
 
@@ -62,7 +56,6 @@ export class ConditionRuntime {
       orGroups[groupIndex].push(verdict);
     }
 
-    // Evaluate: (Group0_AND) OR (Group1_AND) OR ...
     const finalResult = orGroups.some(
       (group) => group.length > 0 && group.every((v) => v),
     );
