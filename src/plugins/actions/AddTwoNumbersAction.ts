@@ -1,6 +1,6 @@
 import type { ActionOptions } from "../../interfaces/Action.js";
 import type { ParameterInterface } from "../../interfaces/Parameter.js";
-import type { ExecutionContext } from "../../types/ExecutionContext.js";
+import { type ExecutionContext, MessageType } from "../../types/ExecutionContext.js";
 import { ExecutionResult } from "../../types/ExecutionResult.js";
 import type { Neuron } from "../../index.js";
 
@@ -47,7 +47,7 @@ export class AddTwoNumbersAction {
       ...context,
       messages: [
         ...context.messages,
-        { type: "info" as any, text: `Sum result: ${sum}` },
+        { type: MessageType.INFO, text: `Sum result: ${sum}` },
       ],
     };
 
