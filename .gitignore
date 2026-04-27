@@ -152,3 +152,5 @@ vite.config.ts.timestamp-*
 
 # Superpowers
 docs/superpowers/
+
+docs/legacy/
