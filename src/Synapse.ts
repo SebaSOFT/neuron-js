@@ -1,5 +1,6 @@
 import type { Neuron } from "./index.js";
 import type { ScriptInterface } from "./interfaces/Script.js";
+import { RuleRuntime } from "./runtime/RuleRuntime.js";
 import type { ExecutionContext } from "./types/ExecutionContext.js";
 import { ExecutionResult } from "./types/ExecutionResult.js";
 
@@ -7,10 +8,14 @@ export class Synapse {
   constructor(private readonly _neuron: Neuron) {}
 
   execute(
-    _script: ScriptInterface,
+    script: ScriptInterface,
     context: ExecutionContext,
   ): ExecutionResult<number> {
-    // Initial minimal implementation
-    return new ExecutionResult(true, context, 0);
+    if (!script?.rules || script.rules.length === 0) {
+      return new ExecutionResult(true, context, 0, ["Empty script"]);
+    }
+
+    const ruleRuntime = new RuleRuntime(script.rules, this._neuron);
+    return ruleRuntime.execute(context);
   }
 }
