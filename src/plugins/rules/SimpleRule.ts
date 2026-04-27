@@ -10,6 +10,16 @@ export class SimpleRule extends AbstractRule {
     return new ExecutionResult(true, context);
   }
 
+  toJSON(): object {
+    return {
+      id: this.id,
+      type: this.type,
+      conditions: this.conditions,
+      actions: this.actions,
+      options: this.options,
+    };
+  }
+
   static fromJSON(jsonObject: RuleInterface): SimpleRule {
     return new SimpleRule(
       jsonObject.id,

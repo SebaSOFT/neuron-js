@@ -1,9 +1,13 @@
+import type { ActionInterface } from "./interfaces/Action.js";
+import type { ConditionInterface } from "./interfaces/Condition.js";
 import type { ParameterInterface } from "./interfaces/Parameter.js";
 import { AddTwoNumbersAction } from "./plugins/actions/AddTwoNumbersAction.js";
 import { CompareTwoNumbersCondition } from "./plugins/conditions/CompareTwoNumbersCondition.js";
 import { ComparatorParameter } from "./plugins/parameters/ComparatorParameter.js";
 import { SimpleNumberParameter } from "./plugins/parameters/SimpleNumberParameter.js";
+import { SimpleSelectParameter } from "./plugins/parameters/SimpleSelectParameter.js";
 import { SimpleStringParameter } from "./plugins/parameters/SimpleStringParameter.js";
+import { SimpleRule } from "./plugins/rules/SimpleRule.js";
 import type { ExecutionContext } from "./types/ExecutionContext.js";
 import type { ExecutionResult } from "./types/ExecutionResult.js";
 
@@ -39,8 +43,9 @@ export type ConditionConstructor = new (
 export type RuleConstructor = new (
   id: string,
   type: string,
+  conditions: ConditionInterface[],
+  actions: ActionInterface[],
   options: any,
-  neuron: Neuron,
 ) => IElementInstance;
 
 export class Neuron {
@@ -64,6 +69,10 @@ export class Neuron {
       ComparatorParameter.TYPE,
       ComparatorParameter as any,
     );
+    this.registerParameter(
+      SimpleSelectParameter.TYPE,
+      SimpleSelectParameter as any,
+    );
 
     this.registerCondition(
       CompareTwoNumbersCondition.TYPE,
@@ -71,6 +80,8 @@ export class Neuron {
     );
 
     this.registerAction(AddTwoNumbersAction.TYPE, AddTwoNumbersAction as any);
+
+    this.registerRule(SimpleRule.TYPE, SimpleRule as any);
   }
 
   registerParameter(type: string, ctor: ParameterConstructor) {
