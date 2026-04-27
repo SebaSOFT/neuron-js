@@ -3,7 +3,7 @@ import type {
   ActionOptions,
 } from "../../interfaces/Action.js";
 import type { ParameterInterface } from "../../interfaces/Parameter.js";
-import type { ExecutionContext } from "../../types/ExecutionContext.js";
+import { type ExecutionContext, MessageType } from "../../types/ExecutionContext.js";
 import { ExecutionResult } from "../../types/ExecutionResult.js";
 import { SimpleNumberParameter } from "../parameters/SimpleNumberParameter.js";
 
