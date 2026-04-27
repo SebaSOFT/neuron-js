@@ -1,3 +1,7 @@
+# OS files
+.DS_Store
+**/.DS_Store
+
 # Logs
 logs
 *.log
@@ -141,3 +145,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Superpowers
+docs/superpowers/
