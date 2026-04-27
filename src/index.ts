@@ -3,59 +3,104 @@ import { CompareTwoNumbersCondition } from "./plugins/conditions/CompareTwoNumbe
 import { ComparatorParameter } from "./plugins/parameters/ComparatorParameter.js";
 import { SimpleNumberParameter } from "./plugins/parameters/SimpleNumberParameter.js";
 import { SimpleStringParameter } from "./plugins/parameters/SimpleStringParameter.js";
+import type { ActionInterface } from "./interfaces/Action.js";
+import type { ConditionInterface } from "./interfaces/Condition.js";
+import type { ParameterInterface } from "./interfaces/Parameter.js";
+import type { ExecutionContext } from "./types/ExecutionContext.js";
+import type { ExecutionResult } from "./types/ExecutionResult.js";
 
-export type Constructor<T> = new (...args: any[]) => T;
+export interface IElementInstance {
+  execute(context: ExecutionContext): ExecutionResult<any>;
+}
+
+export type ParameterConstructor<T = any> = new (
+  id: string,
+  type: string,
+  name: string,
+  value: any,
+  options: any,
+  defaultValue?: any,
+) => IElementInstance & { getValue(context: ExecutionContext): T | null };
+
+export type ActionConstructor = new (
+  id: string,
+  type: string,
+  params: ParameterInterface[],
+  options: any,
+) => IElementInstance;
+
+export type ConditionConstructor = new (
+  id: string,
+  type: string,
+  params: ParameterInterface[],
+  options: any,
+) => IElementInstance;
+
+export type RuleConstructor = new (
+  id: string,
+  type: string,
+  options: any,
+) => IElementInstance;
 
 export class Neuron {
   private registries = {
-    parameters: new Map<string, Constructor<any>>(),
-    conditions: new Map<string, Constructor<any>>(),
-    actions: new Map<string, Constructor<any>>(),
-    rules: new Map<string, Constructor<any>>(),
+    parameters: new Map<string, ParameterConstructor>(),
+    conditions: new Map<string, ConditionConstructor>(),
+    actions: new Map<string, ActionConstructor>(),
+    rules: new Map<string, RuleConstructor>(),
   };
 
   constructor() {
-    this.registerParameter(SimpleNumberParameter.TYPE, SimpleNumberParameter);
-    this.registerParameter(SimpleStringParameter.TYPE, SimpleStringParameter);
-    this.registerParameter(ComparatorParameter.TYPE, ComparatorParameter);
+    this.registerParameter(
+      SimpleNumberParameter.TYPE,
+      SimpleNumberParameter as any,
+    );
+    this.registerParameter(
+      SimpleStringParameter.TYPE,
+      SimpleStringParameter as any,
+    );
+    this.registerParameter(
+      ComparatorParameter.TYPE,
+      ComparatorParameter as any,
+    );
 
     this.registerCondition(
       CompareTwoNumbersCondition.TYPE,
-      CompareTwoNumbersCondition,
+      CompareTwoNumbersCondition as any,
     );
 
-    this.registerAction(AddTwoNumbersAction.TYPE, AddTwoNumbersAction);
+    this.registerAction(AddTwoNumbersAction.TYPE, AddTwoNumbersAction as any);
   }
 
-  registerParameter(type: string, ctor: Constructor<any>) {
+  registerParameter(type: string, ctor: ParameterConstructor) {
     this.registries.parameters.set(type, ctor);
   }
 
-  getParameter(type: string) {
+  getParameter(type: string): ParameterConstructor | undefined {
     return this.registries.parameters.get(type);
   }
 
-  registerCondition(type: string, ctor: Constructor<any>) {
+  registerCondition(type: string, ctor: ConditionConstructor) {
     this.registries.conditions.set(type, ctor);
   }
 
-  getCondition(type: string) {
+  getCondition(type: string): ConditionConstructor | undefined {
     return this.registries.conditions.get(type);
   }
 
-  registerAction(type: string, ctor: Constructor<any>) {
+  registerAction(type: string, ctor: ActionConstructor) {
     this.registries.actions.set(type, ctor);
   }
 
-  getAction(type: string) {
+  getAction(type: string): ActionConstructor | undefined {
     return this.registries.actions.get(type);
   }
 
-  registerRule(type: string, ctor: Constructor<any>) {
+  registerRule(type: string, ctor: RuleConstructor) {
     this.registries.rules.set(type, ctor);
   }
 
-  getRule(type: string) {
+  getRule(type: string): RuleConstructor | undefined {
     return this.registries.rules.get(type);
   }
 }
