@@ -1,3 +1,9 @@
+import { AddTwoNumbersAction } from "./plugins/actions/AddTwoNumbersAction.js";
+import { CompareTwoNumbersCondition } from "./plugins/conditions/CompareTwoNumbersCondition.js";
+import { ComparatorParameter } from "./plugins/parameters/ComparatorParameter.js";
+import { SimpleNumberParameter } from "./plugins/parameters/SimpleNumberParameter.js";
+import { SimpleStringParameter } from "./plugins/parameters/SimpleStringParameter.js";
+
 export type Constructor<T> = new (...args: any[]) => T;
 
 export class Neuron {
@@ -7,6 +13,19 @@ export class Neuron {
     actions: new Map<string, Constructor<any>>(),
     rules: new Map<string, Constructor<any>>(),
   };
+
+  constructor() {
+    this.registerParameter(SimpleNumberParameter.TYPE, SimpleNumberParameter);
+    this.registerParameter(SimpleStringParameter.TYPE, SimpleStringParameter);
+    this.registerParameter(ComparatorParameter.TYPE, ComparatorParameter);
+
+    this.registerCondition(
+      CompareTwoNumbersCondition.TYPE,
+      CompareTwoNumbersCondition,
+    );
+
+    this.registerAction(AddTwoNumbersAction.TYPE, AddTwoNumbersAction);
+  }
 
   registerParameter(type: string, ctor: Constructor<any>) {
     this.registries.parameters.set(type, ctor);
