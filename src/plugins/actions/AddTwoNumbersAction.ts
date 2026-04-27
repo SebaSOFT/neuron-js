@@ -53,7 +53,7 @@ export class AddTwoNumbersAction {
       ...context,
       messages: [
         ...context.messages,
-        { type: "info" as any, text: `Sum result: ${sum}` },
+        { type: MessageType.INFO, text: `Sum result: ${sum}` },
       ],
     };
 
