@@ -1,2 +1,124 @@
-# neuron
-neuron is a pluggable and extensible execution runtime designed to handle functional programming in JavaScript. It can be run as a Node.js module or within a browser environment. It uses a biological analogy ("neurons", "synapses") to model execution flow.
+# 🧠 neuron-js
+
+> **Pluggable, serializable execution runtime for functional logic.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D24.0.0-blue.svg)](https://nodejs.org)
+[![Build Status](https://github.com/SebaSOFT/neuron-js/actions/workflows/ci.yml/badge.svg)](https://github.com/SebaSOFT/neuron-js/actions)
+
+`neuron-js` is a lightweight, extensible runtime designed to handle functional programming logic in a strictly serializable format. By modeling execution after biological systems—using **Neurons** as registries and **Synapses** as executors—it provides a robust framework for building dynamic rule engines, automation workflows, and complex decision-making systems.
+
+---
+
+## ✨ Features
+
+- 🛠 **Pluggable Architecture**: Easily register custom Actions, Conditions, and Parameters.
+- 📦 **JSON Serializable**: Logic scripts are pure JSON, perfect for database storage or remote transmission.
+- 🧬 **Biological Analogy**: Intuitive execution model based on neurons, synapses, and rules.
+- ⚡ **Modern Toolchain**: Built with Node 24, TypeScript, Biome, and Vitest.
+- 🌓 **Dual-Module Support**: Native ESM and CommonJS support via `tshy`.
+- 🪝 **Lifecycle Hooks**: Comprehensive hook system for monitoring and side-effect management.
+
+---
+
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+yarn add @sebasoft/neuron-js
+# or
+npm install @sebasoft/neuron-js
+```
+
+### Basic Usage
+
+```typescript
+import { Neuron, Synapse } from '@sebasoft/neuron-js';
+
+// 1. Initialize the registry
+const neuron = new Neuron();
+
+// 2. Setup the executor
+const synapse = new Synapse(neuron);
+
+// 3. Define your logic script (JSON-serializable)
+const script = {
+  id: 'hello-script',
+  rules: [
+    {
+      id: 'rule-1',
+      type: 'simple_rule',
+      options: {},
+      conditions: [
+        {
+          id: 'is-positive',
+          type: 'compare_two_numbers',
+          params: [
+            { name: 'op1', type: 'simple_number', value: '10' },
+            { name: 'comp', type: 'comparator', value: '>' },
+            { name: 'op2', type: 'simple_number', value: '0' }
+          ]
+        }
+      ],
+      actions: [
+        {
+          id: 'add-log',
+          type: 'add_two_numbers',
+          params: [
+            { name: 'op1', type: 'simple_number', value: '5' },
+            { name: 'op2', type: 'simple_number', value: '5' }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// 4. Execute
+const context = { messages: [], state: {} };
+const result = synapse.execute(script, context);
+
+console.log(result.isSuccessful()); // true
+console.log(result.value); // 1 (number of rules executed)
+```
+
+---
+
+## 🧬 Core Concepts
+
+### Neuron (The Registry)
+The `Neuron` acts as the central hub where all element types (Actions, Conditions, Parameters, Rules) are registered. It ensures the runtime knows how to instantiate any element defined in your scripts.
+
+### Synapse (The Executor)
+The `Synapse` is the engine that connects a `Neuron` registry to an `ExecutionScript`. It traverses the logic and manages the flow of the `ExecutionContext`.
+
+### Elements
+- **Action**: An operation to perform (e.g., "SendEmail", "UpdateDatabase").
+- **Condition**: A logical predicate (e.g., "UserIsAdmin", "ValueIsGreaterThanX").
+- **Parameter**: Configurable inputs for elements, enabling reusable logic templates.
+
+---
+
+## 🛠 Development
+
+We use a modern toolchain for high performance and developer ergonomics:
+
+- **Linting & Formatting**: [Biome](https://biomejs.dev/)
+- **Testing**: [Vitest](https://vitest.dev/)
+- **Build**: [tshy](https://github.com/isaacs/tshy)
+- **Runtime**: [Node.js 24+](https://nodejs.org/)
+
+### Commands
+
+```bash
+yarn test    # Run test suite
+yarn lint    # Check for linting issues
+yarn build   # Generate ESM/CJS bundles
+```
+
+---
+
+## 📄 License
+
+MIT © [SebaSOFT](https://github.com/SebaSOFT)
