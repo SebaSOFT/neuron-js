@@ -99,6 +99,11 @@ The `Neuron` acts as the central hub where all element types (Actions, Condition
 ### Synapse (The Executor)
 The `Synapse` is the engine that connects a `Neuron` registry to an `ExecutionScript`. It traverses the logic and manages the flow of the `ExecutionContext`.
 
+### Rule
+A Rule is a logical unit containing conditions and actions.
+- **No Conditions**: If a rule has no conditions, it is an **"Always"** rule and will execute its actions on every run.
+- **No Actions**: If a rule has no actions, it will **"Do Nothing"**—it evaluates conditions but performs no operations.
+
 ### Elements
 - **Action**: An operation to perform (e.g., "SendEmail", "UpdateDatabase").
 - **Condition**: A logical predicate (e.g., "UserIsAdmin", "ValueIsGreaterThanX").

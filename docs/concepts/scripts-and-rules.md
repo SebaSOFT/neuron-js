@@ -7,8 +7,8 @@ A script is essentially a collection of **Rules**. When a script is executed, th
 
 ## The Anatomy of a Rule
 A `Rule` is a self-contained logical unit. It consists of two main parts:
-1.  **Conditions**: A list of checks that must pass for the rule to fire.
-2.  **Actions**: A list of operations to perform if the conditions pass.
+1.  **Conditions**: A list of checks that must pass for the rule to fire. If this list is empty, the rule is considered an **"Always"** rule and will always execute its actions.
+2.  **Actions**: A list of operations to perform if the conditions pass. If this list is empty, the rule will **"Do Nothing"**—it will evaluate conditions but trigger no side effects.
 
 ```json
 {
