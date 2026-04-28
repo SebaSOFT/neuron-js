@@ -1,5 +1,11 @@
 # @sebasoft/neuron-js
 
+## 0.3.0
+
+### Minor Changes
+
+- 75526ce: First version with docs
+
 ## 0.2.0
 
 ### Minor Changes
