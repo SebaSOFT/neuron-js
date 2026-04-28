@@ -154,3 +154,8 @@ vite.config.ts.timestamp-*
 docs/superpowers/
 
 docs/legacy/
+
+# Documentation
+docs/api
+docs/.vitepress/dist
+docs/.vitepress/cache
