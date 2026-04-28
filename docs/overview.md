@@ -6,9 +6,9 @@
 Hardcoding business logic often leads to rigid systems that are difficult to update without a full deployment. Workflow engines are often heavy, difficult to integrate, or use proprietary formats.
 
 ## The Solution
-`neuron-js` provides a "biological" approach to execution logic:
-- **Neurons** store the definitions of what is possible (Actions, Conditions).
-- **Synapses** execute specific scripts by connecting these neurons together in a logical flow.
+`neuron-js` provides a registry-based approach to execution logic:
+- **Neuron (Registry)**: Stores the definitions of what is possible (Actions, Conditions, Rules, Parameters).
+- **Synapse (Engine)**: Executes specific scripts by coordinating these definitions in a logical flow.
 
 By keeping the script format strictly serializable (JSON), `neuron-js` enables:
 - **Dynamic Logic**: Change business rules at runtime without redeploying code.

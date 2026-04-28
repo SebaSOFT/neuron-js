@@ -3,13 +3,13 @@
 This document summarizes the architecture, core logic, and product essence of `neuron-js` to guide AI agents in modernizing and maintaining the library.
 
 ## Project Vision
-`neuron-js` is a pluggable and extensible execution runtime designed to handle functional programming logic in a serializable (JSON-friendly) format. It uses a biological analogy ("neurons", "synapses") to model the registry and flow of execution. The end goal is a robust, well-documented library published as an npm package for both Node.js and browser environments.
+`neuron-js` is a pluggable and extensible execution runtime designed to handle functional programming logic in a serializable (JSON-friendly) format. It uses a registry-based architecture—using **Neuron** for component management and **Synapse** as the execution engine—allowing you to build, store, and run complex functional rulesets that remain pure JSON. The end goal is a robust, well-documented library published as an npm package for both Node.js and browser environments.
 
 ## Core Concepts & Architecture
 
 ### The Engine
 *   **Neuron (The Registry)**: Acts as the central hub for registered component types. It manages the availability of specific Actions, Conditions, Rules, and Parameters.
-*   **Synapse (The Executor)**: The runtime engine that takes a `Neuron` instance, an `ExecutionScript`, and an `ExecutionContext` to perform the logic.
+*   **Synapse (The Engine)**: The runtime engine that takes a `Neuron` instance, an `ExecutionScript`, and an `ExecutionContext` to perform the logic.
 
 ### Execution Flow
 1.  **ExecutionScript**: A serializable collection of `Rules`.
