@@ -23,7 +23,8 @@ export default defineConfig({
         text: 'Concepts',
         items: [
           { text: 'Core Engine', link: '/concepts/core-engine' },
-          { text: 'Context & State', link: '/concepts/context-and-state' }
+          { text: 'Context & State', link: '/concepts/context-and-state' },
+          { text: 'Implementation Examples', link: '/concepts/implementation-examples' }
         ]
       },
       {
