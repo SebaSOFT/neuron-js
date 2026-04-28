@@ -6,7 +6,7 @@ export default defineConfig({
   base: '/neuron-js/',
   ignoreDeadLinks: true,
   themeConfig: {
-    logo: '/assets/neuron-cover640.png',
+    logo: '/img/neuron-cover640.png',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Concepts', link: '/overview' },
