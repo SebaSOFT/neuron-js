@@ -5,7 +5,7 @@
   "description": "Pluggable and extensible execution runtime for functional logic.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SebaSOFT/neuron-js"
+    "url": "git+https://github.com/SebaSOFT/neuron-js.git"
   },
   "packageManager": "yarn@4.13.0",
   "license": "MIT",
