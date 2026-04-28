@@ -159,3 +159,4 @@ docs/legacy/
 docs/api
 docs/.vitepress/dist
 docs/.vitepress/cache
+/.idea/

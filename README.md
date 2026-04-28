@@ -1,4 +1,6 @@
-# 🧠 neuron-js
+![neuron-cover640.png](docs/assets/neuron-cover640.png)
+
+# neuron-js
 
 > **A pluggable, serializable rules engine for functional programming rulesets.**
 
