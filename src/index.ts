@@ -11,10 +11,17 @@ import { SimpleRule } from "./plugins/rules/SimpleRule.js";
 import type { ExecutionContext } from "./types/ExecutionContext.js";
 import type { ExecutionResult } from "./types/ExecutionResult.js";
 
+/**
+ * Interface for all executable element instances.
+ */
 export interface IElementInstance {
+  /**
+   * Executes the element logic within the given context.
+   */
   execute(context: ExecutionContext): ExecutionResult<any>;
 }
 
+/** Constructor type for Parameters. */
 export type ParameterConstructor<T = any> = new (
   id: string,
   type: string,
@@ -24,6 +31,7 @@ export type ParameterConstructor<T = any> = new (
   defaultValue?: any,
 ) => IElementInstance & { getValue(context: ExecutionContext): T | null };
 
+/** Constructor type for Actions. */
 export type ActionConstructor = new (
   id: string,
   type: string,
@@ -32,6 +40,7 @@ export type ActionConstructor = new (
   neuron: Neuron,
 ) => IElementInstance;
 
+/** Constructor type for Conditions. */
 export type ConditionConstructor = new (
   id: string,
   type: string,
@@ -40,6 +49,7 @@ export type ConditionConstructor = new (
   neuron: Neuron,
 ) => IElementInstance;
 
+/** Constructor type for Rules. */
 export type RuleConstructor = new (
   id: string,
   type: string,
@@ -48,6 +58,10 @@ export type RuleConstructor = new (
   options: any,
 ) => IElementInstance;
 
+/**
+ * The Neuron class serves as the central component registry for the rules engine.
+ * It manages the availability and instantiation of Parameters, Conditions, Actions, and Rules.
+ */
 export class Neuron {
   private registries = {
     parameters: new Map<string, ParameterConstructor>(),
@@ -56,6 +70,9 @@ export class Neuron {
     rules: new Map<string, RuleConstructor>(),
   };
 
+  /**
+   * Creates a new Neuron instance and registers the default built-in plugins.
+   */
   constructor() {
     this.registerParameter(
       SimpleNumberParameter.TYPE,
@@ -84,34 +101,42 @@ export class Neuron {
     this.registerRule(SimpleRule.TYPE, SimpleRule as any);
   }
 
+  /** Registers a custom parameter type. */
   registerParameter(type: string, ctor: ParameterConstructor) {
     this.registries.parameters.set(type, ctor);
   }
 
+  /** Retrieves a parameter constructor by type. */
   getParameter(type: string): ParameterConstructor | undefined {
     return this.registries.parameters.get(type);
   }
 
+  /** Registers a custom condition type. */
   registerCondition(type: string, ctor: ConditionConstructor) {
     this.registries.conditions.set(type, ctor);
   }
 
+  /** Retrieves a condition constructor by type. */
   getCondition(type: string): ConditionConstructor | undefined {
     return this.registries.conditions.get(type);
   }
 
+  /** Registers a custom action type. */
   registerAction(type: string, ctor: ActionConstructor) {
     this.registries.actions.set(type, ctor);
   }
 
+  /** Retrieves an action constructor by type. */
   getAction(type: string): ActionConstructor | undefined {
     return this.registries.actions.get(type);
   }
 
+  /** Registers a custom rule type. */
   registerRule(type: string, ctor: RuleConstructor) {
     this.registries.rules.set(type, ctor);
   }
 
+  /** Retrieves a rule constructor by type. */
   getRule(type: string): RuleConstructor | undefined {
     return this.registries.rules.get(type);
   }

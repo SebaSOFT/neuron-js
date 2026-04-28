@@ -9,7 +9,7 @@
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D24.0.0-blue.svg)](https://nodejs.org)
 [![Build Status](https://github.com/SebaSOFT/neuron-js/actions/workflows/ci.yml/badge.svg)](https://github.com/SebaSOFT/neuron-js/actions)
 
-`neuron-js` is a lightweight, extensible rules engine designed to execute functional programming logic for other applications in a strictly serializable format. By modeling execution after biological systems—using **Neurons** as registries and **Synapses** as executors—it allows you to build, store, and run complex functional rulesets that remain pure JSON.
+`neuron-js` is a lightweight, extensible rules engine designed to execute functional programming logic for other applications in a strictly serializable format. It uses a registry-based architecture—using **Neuron** for component management and **Synapse** as the execution engine—allowing you to build, store, and run complex functional rulesets that remain pure JSON.
 
 Perfect for dynamic business rules, automation workflows, and cross-application decision logic.
 
@@ -19,7 +19,6 @@ Perfect for dynamic business rules, automation workflows, and cross-application 
 
 - 🛠 **Pluggable Architecture**: Easily register custom Actions, Conditions, and Parameters.
 - 📦 **JSON Serializable**: Logic scripts are pure JSON, perfect for database storage or remote transmission.
-- 🧬 **Biological Analogy**: Intuitive execution model based on neurons, synapses, and rules.
 - ⚡ **Modern Toolchain**: Built with Node 24, TypeScript, Biome, and Vitest.
 - 🌓 **Dual-Module Support**: Native ESM and CommonJS support via `tshy`.
 - 🪝 **Lifecycle Hooks**: Comprehensive hook system for monitoring and side-effect management.
@@ -44,7 +43,7 @@ import { Neuron, Synapse } from '@sebasoft/neuron-js';
 // 1. Initialize the registry
 const neuron = new Neuron();
 
-// 2. Setup the executor
+// 2. Setup the engine
 const synapse = new Synapse(neuron);
 
 // 3. Define your logic script (JSON-serializable)
