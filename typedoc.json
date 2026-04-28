@@ -1,6 +1,11 @@
 {
   "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["src/interfaces/*.ts"],
+  "entryPoints": [
+    "src/index.ts",
+    "src/Synapse.ts",
+    "src/interfaces/*.ts",
+    "src/types/*.ts"
+  ],
   "out": "docs/api",
   "plugin": ["typedoc-plugin-markdown"],
   "hideBreadcrumbs": true,
