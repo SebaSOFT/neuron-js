@@ -3,6 +3,7 @@
 > **A pluggable, serializable rules engine for functional programming rulesets.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Socket Badge](https://badge.socket.dev/npm/package/@sebasoft/neuron-js)](https://socket.dev/npm/package/@sebasoft/neuron-js)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D24.0.0-blue.svg)](https://nodejs.org)
 [![Build Status](https://github.com/SebaSOFT/neuron-js/actions/workflows/ci.yml/badge.svg)](https://github.com/SebaSOFT/neuron-js/actions)
 

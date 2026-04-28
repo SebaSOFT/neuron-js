@@ -19,14 +19,20 @@
     "lint": "biome check .",
     "format": "biome format --write .",
     "prepare": "yarn build",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "typedoc && vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.13",
     "@changesets/cli": "^2.31.0",
     "@types/node": "^25.6.0",
     "tshy": "^4.1.1",
+    "typedoc": "^0.27.9",
+    "typedoc-plugin-markdown": "^4.4.2",
     "typescript": "^6.0.3",
+    "vitepress": "^1.6.3",
     "vitest": "^4.1.5"
   },
   "tshy": {
