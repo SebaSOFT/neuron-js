@@ -10,7 +10,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Concepts', link: '/overview' },
-      { text: 'API', link: '/api/' }
+      { text: 'API', link: '/api/README' }
     ],
     sidebar: [
       {
@@ -28,7 +28,7 @@ export default defineConfig({
       },
       {
         text: 'API Reference',
-        link: '/api/'
+        link: '/api/README'
       }
     ],
     socialLinks: [
