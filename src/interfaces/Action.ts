@@ -13,7 +13,7 @@ export interface ActionOptions {
 
 /**
  * Represents an operation to be performed when a Rule's conditions are met.
- * 
+ *
  * @template TOptions - The type of configuration options for this action.
  */
 export interface ActionInterface<TOptions extends ActionOptions = ActionOptions>

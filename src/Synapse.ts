@@ -13,7 +13,7 @@ import type { HookEmitter } from "./types/HookEmitter.js";
 export class Synapse {
   /**
    * Initializes a new execution engine.
-   * 
+   *
    * @param _neuron - The registry containing all element definitions.
    * @param _hookEmitter - Optional global lifecycle hook emitter.
    */
@@ -24,7 +24,7 @@ export class Synapse {
 
   /**
    * Executes a script logic against a provided context.
-   * 
+   *
    * @param script - The serializable script defining the logic rules.
    * @param context - The shared state object to pass through the execution.
    * @param runtimeHookEmitter - Optional one-time hook emitter for this specific execution.

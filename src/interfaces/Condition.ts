@@ -24,7 +24,7 @@ export interface ConditionOptions {
 
 /**
  * Represents a logical predicate used to determine if a Rule should execute its actions.
- * 
+ *
  * @template TOptions - The type of configuration options for this condition.
  */
 export interface ConditionInterface<

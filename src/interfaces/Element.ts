@@ -1,7 +1,7 @@
 /**
  * Represents the base interface for all elements within the rules engine.
  * Elements are the building blocks of scripts, pulses, actions, conditions, and parameters.
- * 
+ *
  * @template TOptions - The type of configuration options for this element.
  */
 export interface ElementInterface<TOptions = any> {

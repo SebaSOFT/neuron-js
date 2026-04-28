@@ -15,7 +15,7 @@ export interface RuleOptions {
 /**
  * Represents a logical unit containing conditions and actions.
  * A Rule executes its actions only if its conditions evaluate to true.
- * 
+ *
  * @template TOptions - The type of configuration options for this rule.
  */
 export interface RuleInterface<TOptions extends RuleOptions = RuleOptions>
