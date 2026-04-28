@@ -102,6 +102,30 @@ The `Synapse` is the engine that connects a `Neuron` registry to an `ExecutionSc
 
 ---
 
+## 💾 Execution Context & State
+
+The `ExecutionContext` is a shared state object that persists throughout the entire execution of a script. It allows Actions and Conditions to communicate and share data.
+
+```typescript
+interface ExecutionContext {
+  messages: { type: string; text: string }[];
+  state: Record<string, any>;
+}
+```
+
+### Using State in Actions
+Actions can read from the context and return an updated context to pass information to subsequent rules.
+
+```typescript
+// Example: An action that stores a value in the state
+execute(context: ExecutionContext): ExecutionResult {
+  const newState = { ...context.state, lastCalculation: 42 };
+  return new ExecutionResult(true, { ...context, state: newState });
+}
+```
+
+---
+
 ## 🛠 Development
 
 We use a modern toolchain for high performance and developer ergonomics:
