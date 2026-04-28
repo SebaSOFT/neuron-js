@@ -4,8 +4,9 @@ export default defineConfig({
   title: "neuron-js",
   description: "Pluggable rules engine",
   base: '/neuron-js/',
+  ignoreDeadLinks: true,
   themeConfig: {
-    logo: '🧠',
+    logo: '/assets/neuron-cover640.png',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Concepts', link: '/overview' },

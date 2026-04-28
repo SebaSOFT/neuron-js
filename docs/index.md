@@ -5,6 +5,9 @@ hero:
   name: neuron-js
   text: Pluggable, serializable rules engine
   tagline: Functional logic in pure JSON.
+  image:
+    src: /assets/neuron-cover640.png
+    alt: neuron-js logo
   actions:
     - theme: brand
       text: Get Started
