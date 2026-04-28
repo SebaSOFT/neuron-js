@@ -19,11 +19,21 @@ A `Rule` is a self-contained logical unit. It consists of two main parts:
 ```
 
 ## Condition Logic
-Conditions are evaluated sequentially. By default, they follow an **AND** logic (all must be true).
+Conditions are evaluated sequentially and follow a **Sum of Products** logic (ANDs grouped by ORs).
 
-### Advanced Condition Features:
-- **Inversion**: A condition can be "inverted" (NOT logic).
-- **OR Grouping**: A condition can be marked as an `orCondition`. If the next condition is an `orCondition`, they are treated as a group where only one needs to pass.
+### AND Logic
+By default, all conditions in the list are joined by **AND**. Every condition must evaluate to `true` for the actions to trigger.
+
+### OR Grouping
+You can create an **OR** relationship by setting `orCondition: true` in a condition's options. This starts a **new block** of conditions.
+- Each block is evaluated as an **AND** group.
+- All blocks are joined by **OR**.
+- If **any** block evaluates to `true`, the rule fires.
+
+**Example result**: `(Block 1 AND Block 1) OR (Block 2 AND Block 2)`
+
+### Advanced Features:
+- **Inversion**: Set `inverted: true` to negate a condition (NOT logic).
 - **Disabling**: Rules or individual conditions can be disabled via options without removing them from the script.
 
 ## Sequential Execution

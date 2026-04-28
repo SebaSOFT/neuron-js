@@ -143,3 +143,45 @@ const context: MyAppContext = {
 const result = engine.execute(script, context);
 console.log(result.context.messages); // [{ type: 'info', text: 'Alice: Good morning!' }]
 ```
+
+## 6. Logical Grouping (AND/OR)
+`neuron-js` uses a "Sum of Products" approach to logic. Conditions are grouped into blocks.
+- **AND**: All conditions within a block must be true.
+- **OR**: If any block is true, the entire rule evaluates to true.
+
+### How to trigger OR
+Setting `orCondition: true` on a condition starts a **new block**. This new block is joined to the previous block with an `OR` operator.
+
+### Example: (A AND B) OR (C AND D)
+```json
+{
+  "id": "complex-logic",
+  "conditions": [
+    { "id": "A", "type": "is_gold_member" },
+    { "id": "B", "type": "has_high_balance" },
+    { 
+      "id": "C", 
+      "type": "is_new_user", 
+      "options": { "orCondition": true } 
+    },
+    { "id": "D", "type": "has_promo_code" }
+  ]
+}
+```
+**Evaluation Logic**: `(A && B) || (C && D)`
+
+## 7. Condition Inversion (NOT)
+Any condition can be negated by setting `inverted: true` in its options. This is handled by the runtime, so your plugin implementation doesn't need to worry about it.
+
+```json
+{
+  "id": "not-blocked",
+  "conditions": [
+    { 
+      "type": "is_user_blocked", 
+      "options": { "inverted": true } 
+    }
+  ]
+}
+```
+**Evaluation Logic**: `!is_user_blocked`
