@@ -3,6 +3,11 @@
   "version": "0.2.0",
   "type": "module",
   "description": "Pluggable and extensible execution runtime for functional logic.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SebaSOFT/neuron-js"
+  },
+  "packageManager": "yarn@4.13.0",
   "license": "MIT",
   "engines": {
     "node": ">=24.0.0"
