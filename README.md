@@ -1,4 +1,6 @@
-![neuron-cover640.png](docs/assets/neuron-cover640.png)
+<p align="center">
+  <img src="docs/public/img/neuron-cover640.png" alt="neuron-js logo" width="640">
+</p>
 
 # neuron-js
 
