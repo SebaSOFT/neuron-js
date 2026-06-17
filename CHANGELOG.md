@@ -1,5 +1,19 @@
 # @sebasoft/neuron-js
 
+## 0.4.0
+
+### Minor Changes
+
+- c7b6504: Align the documented public API with the package root exports.
+
+  - Exported `Synapse`, `ExecutionResult`, lifecycle hook types, and built-in plugin classes from the package root.
+  - Added `AbstractAction` and `AbstractCondition` base classes for custom extension authors.
+  - Made runtime `options` handling safe when scripts omit optional `options` objects.
+  - Moved tests out of `src` and cleaned the build before packaging to prevent stale test artifacts from reaching `dist`.
+  - Updated implementation examples and release documentation for the expanded API surface.
+
+- 06d88f4: Updated GitHub Actions workflows to use Node 24-compatible official actions.
+
 ## 0.3.0
 
 ### Minor Changes

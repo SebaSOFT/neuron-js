@@ -33,5 +33,20 @@ jobs:
           cache: "yarn"
       - run: yarn install --immutable
       - run: yarn build
+      - name: Check package publication status
+        id: package-status
+        shell: bash
+        run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+
+          if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "${PACKAGE_NAME}@${PACKAGE_VERSION} is already published; skipping publish dry-run."
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            echo "${PACKAGE_NAME}@${PACKAGE_VERSION} is not published; running publish dry-run."
+          fi
       - name: Dry Run Publish
+        if: steps.package-status.outputs.published == 'false'
         run: npm publish --dry-run
