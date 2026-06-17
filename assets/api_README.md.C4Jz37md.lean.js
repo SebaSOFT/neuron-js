@@ -1,0 +1,1 @@
+import{_ as t,o as a,c as i,ae as r}from"./chunks/framework.DPZ3sAUK.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"api/README.md","filePath":"api/README.md"}'),l={name:"api/README.md"};function n(s,e,o,E,c,f){return a(),i("div",null,[...e[0]||(e[0]=[r("",4)])])}const p=t(l,[["render",n]]);export{m as __pageData,p as default};
