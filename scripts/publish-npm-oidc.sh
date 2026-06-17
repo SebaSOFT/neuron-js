@@ -12,6 +12,8 @@ fi
 echo "Publishing ${PACKAGE_NAME}@${PACKAGE_VERSION} with npm trusted publishing."
 npm publish --access public --provenance
 
-# changesets/action watches stdout for this marker on root packages, then creates
-# the corresponding git tag and GitHub Release.
+git tag "v${PACKAGE_VERSION}"
+
+# changesets/action watches stdout for this marker on root packages, then pushes
+# the corresponding git tag and creates the GitHub Release.
 echo "New tag: v${PACKAGE_VERSION}"
