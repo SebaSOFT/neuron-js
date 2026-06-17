@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
-import { Neuron } from "../index.js";
-import { ConditionRuntime } from "./ConditionRuntime.js";
+import { Neuron } from "../../src/index.js";
+import { ConditionRuntime } from "../../src/runtime/ConditionRuntime.js";
 
 test("ConditionRuntime evaluates AND logic", () => {
   const neuron = new Neuron();

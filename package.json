@@ -13,7 +13,7 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "build": "tshy",
+    "build": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\" && tshy",
     "dev": "vitest",
     "test": "vitest run",
     "lint": "biome check .",

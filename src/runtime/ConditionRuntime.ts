@@ -22,14 +22,14 @@ export class ConditionRuntime {
     let groupIndex = 0;
 
     for (const conditionItem of this._conditions) {
-      if (conditionItem.options.disabled) {
+      if (conditionItem.options?.disabled) {
         continue;
       }
 
       this._hookEmitter?.(HookEvents.ON_CONDITION_START, context);
 
       if (
-        conditionItem.options.orCondition &&
+        conditionItem.options?.orCondition &&
         orGroups[groupIndex].length > 0
       ) {
         groupIndex++;
@@ -61,7 +61,7 @@ export class ConditionRuntime {
         return new ExecutionResult(false, context, false, messageList);
       }
 
-      const verdict = conditionItem.options.inverted
+      const verdict = conditionItem.options?.inverted
         ? !conditionResult.value
         : !!conditionResult.value;
 

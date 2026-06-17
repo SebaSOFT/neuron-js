@@ -18,7 +18,7 @@ export class ActionRuntime {
     let actionsExecuted = 0;
 
     for (const actionItem of this._actions) {
-      if (actionItem.options.disabled) {
+      if (actionItem.options?.disabled) {
         continue;
       }
 

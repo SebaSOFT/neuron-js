@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
-import { Neuron } from "./index.js";
-import { Synapse } from "./Synapse.js";
+import { Neuron } from "../src/index.js";
+import { Synapse } from "../src/Synapse.js";
 
 test("Synapse can execute an empty script", () => {
   const neuron = new Neuron();

@@ -20,7 +20,7 @@ export class RuleRuntime {
     let rulesExecuted = 0;
 
     for (const ruleItem of this._rules) {
-      if (ruleItem.options.disabled) {
+      if (ruleItem.options?.disabled) {
         continue;
       }
 

@@ -111,6 +111,45 @@ export class Neuron {
     return this.registries.parameters.get(type);
   }
 
+  /**
+   * Converts serializable parameter definitions into a name-keyed Map of parameter instances.
+   *
+   * Plugin authors still receive JSON-friendly arrays at the script boundary, but base
+   * classes can expose a Map for ergonomic `this.params.get("name")` access.
+   */
+  createParameterMap(
+    params: ParameterInterface[],
+  ): Map<
+    string,
+    IElementInstance & { getValue(context: ExecutionContext): unknown | null }
+  > {
+    const parameterMap = new Map<
+      string,
+      IElementInstance & { getValue(context: ExecutionContext): unknown | null }
+    >();
+
+    for (const param of params) {
+      const ParamCtor = this.getParameter(param.type);
+      if (!ParamCtor) {
+        continue;
+      }
+
+      parameterMap.set(
+        param.name,
+        new ParamCtor(
+          param.id,
+          param.type,
+          param.name,
+          param.value,
+          param.options,
+          param.defaultValue,
+        ),
+      );
+    }
+
+    return parameterMap;
+  }
+
   /** Registers a custom condition type. */
   registerCondition(type: string, ctor: ConditionConstructor) {
     this.registries.conditions.set(type, ctor);
@@ -141,3 +180,39 @@ export class Neuron {
     return this.registries.rules.get(type);
   }
 }
+
+export { AbstractAction } from "./abstracts/AbstractAction.js";
+export { AbstractCondition } from "./abstracts/AbstractCondition.js";
+export { AbstractElement } from "./abstracts/AbstractElement.js";
+export { AbstractParameter } from "./abstracts/AbstractParameter.js";
+export { AbstractRule } from "./abstracts/AbstractRule.js";
+export type { ActionInterface, ActionOptions } from "./interfaces/Action.js";
+export type {
+  ConditionInterface,
+  ConditionOptions,
+} from "./interfaces/Condition.js";
+export type { ElementInterface } from "./interfaces/Element.js";
+export { HookEvents } from "./interfaces/HookEvents.js";
+export type { ParameterInterface } from "./interfaces/Parameter.js";
+export type { RuleInterface, RuleOptions } from "./interfaces/Rule.js";
+export type { ScriptInterface } from "./interfaces/Script.js";
+export { AddTwoNumbersAction } from "./plugins/actions/AddTwoNumbersAction.js";
+export { CompareTwoNumbersCondition } from "./plugins/conditions/CompareTwoNumbersCondition.js";
+export type { Comparator } from "./plugins/parameters/ComparatorParameter.js";
+export { ComparatorParameter } from "./plugins/parameters/ComparatorParameter.js";
+export { SimpleNumberParameter } from "./plugins/parameters/SimpleNumberParameter.js";
+export type {
+  SelectOption,
+  SelectOptions,
+} from "./plugins/parameters/SimpleSelectParameter.js";
+export { SimpleSelectParameter } from "./plugins/parameters/SimpleSelectParameter.js";
+export { SimpleStringParameter } from "./plugins/parameters/SimpleStringParameter.js";
+export { SimpleRule } from "./plugins/rules/SimpleRule.js";
+export { Synapse } from "./Synapse.js";
+export type {
+  ExecutionContext,
+  ExecutionMessage,
+} from "./types/ExecutionContext.js";
+export { MessageType } from "./types/ExecutionContext.js";
+export { ExecutionResult } from "./types/ExecutionResult.js";
+export type { HookEmitter } from "./types/HookEmitter.js";

@@ -1,7 +1,7 @@
 import { expect, test, vi } from "vitest";
-import { Neuron } from "./index.js";
-import { HookEvents } from "./interfaces/HookEvents.js";
-import { Synapse } from "./Synapse.js";
+import { Neuron } from "../src/index.js";
+import { HookEvents } from "../src/interfaces/HookEvents.js";
+import { Synapse } from "../src/Synapse.js";
 
 test("Neuron can be instantiated with default plugins", () => {
   const neuron = new Neuron();
