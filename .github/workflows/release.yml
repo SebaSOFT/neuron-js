@@ -25,6 +25,11 @@ jobs:
           node-version: 24
           cache: "yarn"
       - run: yarn install --immutable
+      - name: Verify npm trusted publishing prerequisites
+        run: |
+          node --version
+          npm --version
+          test "$(npm --version | cut -d. -f1)" -ge 11
       - name: Create Release PR or Publish
         id: changesets
         uses: changesets/action@v1
@@ -32,4 +37,3 @@ jobs:
           publish: yarn changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
