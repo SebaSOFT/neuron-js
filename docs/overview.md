@@ -15,6 +15,11 @@ By keeping the script format strictly serializable (JSON), `neuron-js` enables:
 - **Portability**: The same logic can run on a backend server or in a client's browser.
 - **Extensibility**: Easily add new capabilities by implementing simple Action or Condition interfaces.
 
+## Release Classification
+The `0.4.0` release is a **minor capability release**, not a major breaking change.
+
+It expands the documented public API, adds extension base classes, makes missing `options` objects safe at runtime, and cleans package output. Existing JSON script behavior remains compatible; the release gives consumers more stable imports and clearer plugin ergonomics.
+
 ## Key Features
 - **JSON Serializable**: Logic is data.
 - **Shared Context**: State is managed and passed through the execution chain.
