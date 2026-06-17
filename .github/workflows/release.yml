@@ -25,6 +25,8 @@ jobs:
           node-version: 24
           cache: "yarn"
       - run: yarn install --immutable
+      - name: Upgrade npm for trusted publishing
+        run: npm install -g npm@11.16.0
       - name: Verify npm trusted publishing prerequisites
         run: |
           node --version
