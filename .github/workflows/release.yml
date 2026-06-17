@@ -36,6 +36,6 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: yarn changeset publish
+          publish: bash scripts/publish-npm-oidc.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
