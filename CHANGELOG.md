@@ -1,5 +1,11 @@
 # @sebasoft/neuron-js
 
+## 0.5.0
+
+### Minor Changes
+
+- 2a6d695: Add JSON Schemas, validation helpers, normalized execution output, and explainability contracts for machine-checking generated or stored rules before runtime and auditing execution traces after a run.
+
 ## 0.4.0
 
 ### Minor Changes
