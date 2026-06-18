@@ -29,7 +29,7 @@ export function explainExecution({
       ruleId: rule.id,
       message: rule.options?.disabled
         ? `Rule ${rule.id} is disabled.`
-        : `Rule ${rule.id} has ${rule.conditions.length} condition(s) and ${rule.actions.length} action(s).`,
+        : `Rule ${rule.id} has ${rule.conditions?.length ?? 0} condition(s) and ${rule.actions?.length ?? 0} action(s).`,
     });
 
     if (index === script.rules.length - 1) {

@@ -91,7 +91,7 @@ describe("NJS-GROWTH-03 validation contracts", () => {
     });
   });
 
-  test("validates execution output summaries", () => {
+  test("validates execution output summaries with numeric or null rule counts", () => {
     const output = {
       ok: true,
       rulesExecuted: 1,
@@ -99,10 +99,38 @@ describe("NJS-GROWTH-03 validation contracts", () => {
     };
 
     expect(validateExecutionOutput(output)).toEqual({ ok: true, errors: [] });
+    expect(
+      validateExecutionOutput({
+        ok: true,
+        rulesExecuted: null,
+        messages: [],
+      }),
+    ).toEqual({ ok: true, errors: [] });
   });
 });
 
 describe("NJS-GROWTH-03 explainability contracts", () => {
+  test("creates stable explanation traces for sparse generated scripts", () => {
+    const sparseScript = {
+      id: "sparse-generated-script",
+      rules: [
+        {
+          id: "sparse-rule",
+          type: "simple_rule",
+          options: {},
+        },
+      ],
+    } as unknown as ScriptInterface;
+    const result = new ExecutionResult(true, { messages: [], state: {} }, null, []);
+
+    expect(explainExecution({ script: sparseScript, result }).trace[1]).toEqual({
+      step: 2,
+      type: "rule_available",
+      ruleId: "sparse-rule",
+      message: "Rule sparse-rule has 0 condition(s) and 0 action(s).",
+    });
+  });
+
   test("creates stable explanation traces for official examples", () => {
     const script = readJson("examples/pricing-rules/rules.json") as ScriptInterface;
     const input = readJson("examples/pricing-rules/input.json") as ExecutionContext;

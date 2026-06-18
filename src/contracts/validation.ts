@@ -214,11 +214,14 @@ export function validateExecutionOutput(output: unknown): ValidationResult {
     });
   }
 
-  if (typeof output.rulesExecuted !== "number") {
+  if (
+    typeof output.rulesExecuted !== "number" &&
+    output.rulesExecuted !== null
+  ) {
     errors.push({
       path: "$.rulesExecuted",
-      code: "required_number",
-      message: "Expected number at $.rulesExecuted.",
+      code: "required_number_or_null",
+      message: "Expected number or null at $.rulesExecuted.",
     });
   }
 
