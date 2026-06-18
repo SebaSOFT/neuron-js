@@ -110,12 +110,14 @@ neuron.registerParameter(StateNumberParameter.TYPE, StateNumberParameter);
 neuron.registerAction(SetRouteAction.TYPE, SetRouteAction);
 
 const result = new Synapse(neuron).execute(script, input as ExecutionContext);
-const workflow = result.context.state.workflow as { route?: string; slaHours?: number };
+const workflow = result.context.state.workflow as
+  | { route?: string; slaHours?: number }
+  | undefined;
 const actual = {
   ok: result.isSuccessful(),
   rulesExecuted: result.value,
-  route: workflow.route,
-  slaHours: workflow.slaHours,
+  route: workflow?.route,
+  slaHours: workflow?.slaHours,
   messages: result.context.messages.map((message) => message.text),
 };
 

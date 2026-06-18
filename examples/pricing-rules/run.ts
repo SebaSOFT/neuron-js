@@ -116,12 +116,14 @@ neuron.registerParameter(StateNumberParameter.TYPE, StateNumberParameter);
 neuron.registerAction(ApplyDiscountAction.TYPE, ApplyDiscountAction);
 
 const result = new Synapse(neuron).execute(script, input as ExecutionContext);
-const cart = result.context.state.cart as { finalTotal?: number; discountAmount?: number };
+const cart = result.context.state.cart as
+  | { finalTotal?: number; discountAmount?: number }
+  | undefined;
 const actual = {
   ok: result.isSuccessful(),
   rulesExecuted: result.value,
-  finalTotal: cart.finalTotal,
-  discountAmount: cart.discountAmount,
+  finalTotal: cart?.finalTotal,
+  discountAmount: cart?.discountAmount,
   messages: result.context.messages.map((message) => message.text),
 };
 

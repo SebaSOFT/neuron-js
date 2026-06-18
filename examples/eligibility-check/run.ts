@@ -108,12 +108,14 @@ neuron.registerParameter(StateNumberParameter.TYPE, StateNumberParameter);
 neuron.registerAction(SetDecisionAction.TYPE, SetDecisionAction);
 
 const result = new Synapse(neuron).execute(script, input as ExecutionContext);
-const eligibility = result.context.state.eligibility as { eligible?: boolean; decision?: string };
+const eligibility = result.context.state.eligibility as
+  | { eligible?: boolean; decision?: string }
+  | undefined;
 const actual = {
   ok: result.isSuccessful(),
   rulesExecuted: result.value,
-  eligible: eligibility.eligible,
-  decision: eligibility.decision,
+  eligible: eligibility?.eligible,
+  decision: eligibility?.decision,
   messages: result.context.messages.map((message) => message.text),
 };
 
