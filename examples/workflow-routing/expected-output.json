@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "rulesExecuted": 1,
+  "route": "escalation",
+  "slaHours": 4,
+  "messages": ["Workflow route: escalation within 4h"]
+}

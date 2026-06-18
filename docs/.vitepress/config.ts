@@ -10,6 +10,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Concepts', link: '/overview' },
+      { text: 'Examples', link: '/use-cases/runnable-examples' },
       { text: 'API', link: '/api/README' }
     ],
     sidebar: [
@@ -25,6 +26,14 @@ export default defineConfig({
           { text: 'Core Engine', link: '/concepts/core-engine' },
           { text: 'Context & State', link: '/concepts/context-and-state' },
           { text: 'Implementation Examples', link: '/concepts/implementation-examples' }
+        ]
+      },
+      {
+        text: 'Use Cases',
+        items: [
+          { text: 'Runnable Examples', link: '/use-cases/runnable-examples' },
+          { text: 'Business Rules Engine', link: '/use-cases/business-rules-engine' },
+          { text: 'Dynamic Routing', link: '/use-cases/dynamic-routing' }
         ]
       },
       {

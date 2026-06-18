@@ -20,7 +20,7 @@ Use it when hardcoded `if/else` logic is too rigid, but a heavyweight workflow o
 - Documentation: <https://sebasoft.github.io/neuron-js/>
 - npm: <https://www.npmjs.com/package/@sebasoft/neuron-js>
 - GitHub: <https://github.com/SebaSOFT/neuron-js>
-- Examples: planned under `examples/` as `NJS-GROWTH-02`
+- Examples: [`examples/`](examples/) with pricing, eligibility, and workflow-routing scenarios
 - Schemas and validation docs: planned as `NJS-GROWTH-03`
 - AI-readable docs: planned as `NJS-GROWTH-04`
 
@@ -152,11 +152,14 @@ interface ExecutionContext {
 
 ## Roadmap-aligned docs
 
-The current public surface focuses on installation, positioning, core concepts, and runtime architecture.
+The current public surface includes installation, positioning, core concepts, runtime architecture, and runnable examples.
+
+Available adoption assets:
+
+- Runnable examples: [`examples/`](examples/)
 
 Planned next adoption assets:
 
-- Runnable examples: `NJS-GROWTH-02`
 - JSON Schemas, validation, and explain output: `NJS-GROWTH-03`
 - `llms.txt` and AI-assistant documentation: `NJS-GROWTH-04`
 - Comparison and migration pages: `NJS-GROWTH-05`
@@ -177,6 +180,7 @@ We use a modern toolchain for high-signal development:
 ```bash
 yarn test    # Run test suite
 yarn lint    # Check linting and formatting
+yarn examples # Build and verify runnable examples
 yarn build   # Generate ESM/CJS bundles
 yarn docs:build # Build API docs and VitePress site
 ```

@@ -13,6 +13,9 @@ hero:
       text: Get Started
       link: /overview
     - theme: alt
+      text: Run Examples
+      link: /use-cases/runnable-examples
+    - theme: alt
       text: View on GitHub
       link: https://github.com/SebaSOFT/neuron-js
 

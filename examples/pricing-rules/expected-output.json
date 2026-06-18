@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "rulesExecuted": 1,
+  "finalTotal": 105,
+  "discountAmount": 20,
+  "messages": ["Applied 16% discount: -20"]
+}
