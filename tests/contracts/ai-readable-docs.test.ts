@@ -32,4 +32,10 @@ describe('AI-readable documentation contracts', () => {
     expect(llms).toContain('https://sebasoft.github.io/neuron-js/schemas/script.schema.json');
     expect(llms).toContain('summarizeExecutionOutput');
   });
+
+  it('ensures the public skill and npm package skill are identical', () => {
+    const publicSkill = readFileSync('docs/public/skills/neuron-js/SKILL.md', 'utf8');
+    const packageSkill = readFileSync('ai/skills/neuron-js/SKILL.md', 'utf8');
+    expect(publicSkill).toBe(packageSkill);
+  });
 });

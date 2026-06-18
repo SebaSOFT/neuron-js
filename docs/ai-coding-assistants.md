@@ -64,12 +64,16 @@ import {
   validateExecutionContext,
   validateScript,
 } from '@sebasoft/neuron-js';
-
+```typescript
 const scriptValidation = validateScript(script);
 const contextValidation = validateExecutionContext(context);
 
 if (!scriptValidation.ok || !contextValidation.ok) {
-  throw new Error('Invalid Neuron-JS input');
+  const errors = [
+    ...(scriptValidation.errors ?? []),
+    ...(contextValidation.errors ?? []),
+  ];
+  throw new Error(`Invalid Neuron-JS input: ${JSON.stringify(errors)}`);
 }
 
 const result = new Synapse(new Neuron()).execute(script, context);

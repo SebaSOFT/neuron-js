@@ -80,10 +80,13 @@ const contextValidation = validateExecutionContext(context);
 if (!scriptValidation.ok || !contextValidation.ok) {
   return {
     ok: false,
-    errors: [...scriptValidation.errors, ...contextValidation.errors],
+    errors: [
+      ...(scriptValidation.errors ?? []),
+      ...(contextValidation.errors ?? []),
+    ],
   };
 }
-
+```
 const neuron = new Neuron();
 const synapse = new Synapse(neuron);
 const result = synapse.execute(script, context);
