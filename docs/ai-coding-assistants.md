@@ -66,7 +66,7 @@ const scriptValidation = validateScript(script);
 const contextValidation = validateExecutionContext(context);
 
 if (!scriptValidation.ok || !contextValidation.ok) {
-  return [{ json: { ok: false, errors: [...scriptValidation.errors, ...contextValidation.errors] } }];
+  return [{ json: { ok: false, errors: [...(scriptValidation.errors ?? []), ...(contextValidation.errors ?? [])] } }];
 }
 
 const result = new Synapse(new Neuron()).execute(script, context);
