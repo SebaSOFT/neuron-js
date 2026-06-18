@@ -1,0 +1,32 @@
+{
+  "id": "pricing-rules-demo",
+  "rules": [
+    {
+      "id": "vip-order-discount",
+      "type": "simple_rule",
+      "options": {},
+      "conditions": [
+        {
+          "id": "minimum-cart-subtotal",
+          "type": "compare_two_numbers",
+          "options": {},
+          "params": [
+            { "id": "cart-subtotal", "name": "op1", "type": "state_number", "value": "cart.subtotal", "options": {} },
+            { "id": "comparison", "name": "comp", "type": "comparator", "value": ">=", "options": {} },
+            { "id": "discount-threshold", "name": "op2", "type": "simple_number", "value": "100", "options": {} }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "apply-vip-discount",
+          "type": "apply_discount",
+          "options": {},
+          "params": [
+            { "id": "discount-percent", "name": "percent", "type": "simple_number", "value": "16", "options": {} }
+          ]
+        }
+      ]
+    }
+  ]
+}

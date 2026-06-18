@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "rulesExecuted": 1,
+  "eligible": true,
+  "decision": "approved",
+  "messages": ["Eligibility decision: approved"]
+}

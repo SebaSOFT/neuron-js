@@ -16,6 +16,7 @@
     "build": "node -e \"fs.rmSync('dist', { recursive: true, force: true })\" && tshy",
     "dev": "vitest",
     "test": "vitest run",
+    "examples": "yarn build && node examples/pricing-rules/run.ts && node examples/eligibility-check/run.ts && node examples/workflow-routing/run.ts",
     "lint": "biome check .",
     "format": "biome format --write .",
     "prepare": "yarn build",
@@ -48,6 +49,7 @@
   "files": [
     "dist",
     "src",
+    "examples",
     "!src/**/*.test.ts",
     "README.md",
     "LICENSE"
