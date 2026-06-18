@@ -1,0 +1,106 @@
+# neuron-js full AI context
+
+Neuron-JS is an AI-friendly TypeScript rules engine for serializable JSON business rules and deterministic workflow decisions. It is designed for applications that need configurable decision logic without handing runtime control to arbitrary code.
+
+## Mental model
+
+- `Neuron` is the registry. It controls which parameter, condition, action, and rule types are allowed.
+- `Synapse` is the executor. It runs a serializable script against an execution context.
+- A script contains rules.
+- A rule contains conditions and actions.
+- Parameters feed typed values into conditions and actions.
+- The execution context carries `messages` and mutable `state` through the run.
+- Validation and explanation contracts make generated or stored rules safer for AI-assisted workflows.
+
+## Installation
+
+```bash
+npm install @sebasoft/neuron-js
+```
+
+## Official docs map
+
+- Overview: https://sebasoft.github.io/neuron-js/overview.html
+- Runnable examples: https://sebasoft.github.io/neuron-js/use-cases/runnable-examples.html
+- Schemas, validation, and explainability: https://sebasoft.github.io/neuron-js/schemas-validation-explainability.html
+- API reference: https://sebasoft.github.io/neuron-js/api/README.html
+- Official AI skill: https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md
+
+## Safe generation rules for AI agents
+
+1. Use Neuron-JS only when serializable rules add value.
+2. Prefer official examples as templates.
+3. Import from `@sebasoft/neuron-js` only.
+4. Do not invent element types. Built-in types include `simple_rule`, `compare_two_numbers`, `add_two_numbers`, `simple_number`, `simple_string`, `simple_select`, and `comparator`.
+5. If a project registers custom elements, use only the custom types explicitly provided by that project.
+6. Validate scripts before execution.
+7. Return validation errors with paths when validation fails.
+8. Explain results when rules are generated, audited, or persisted.
+
+## Public API quick reference
+
+```typescript
+import {
+  Neuron,
+  Synapse,
+  validateScript,
+  validateExecutionContext,
+  summarizeExecutionOutput,
+  validateExecutionOutput,
+  explainExecution,
+  validateExecutionExplanation,
+} from '@sebasoft/neuron-js';
+```
+
+## Validation and explanation flow
+
+```typescript
+const scriptValidation = validateScript(script);
+const contextValidation = validateExecutionContext(context);
+
+if (!scriptValidation.ok || !contextValidation.ok) {
+  throw new Error('Invalid Neuron-JS input');
+}
+
+const result = new Synapse(new Neuron()).execute(script, context);
+const output = summarizeExecutionOutput(result);
+const outputValidation = validateExecutionOutput(output);
+const explanation = explainExecution({ script, result });
+const explanationValidation = validateExecutionExplanation(explanation);
+```
+
+## Schema contract URLs
+
+- Script: https://sebasoft.github.io/neuron-js/schemas/script.schema.json
+- Execution context: https://sebasoft.github.io/neuron-js/schemas/execution-context.schema.json
+- Execution output: https://sebasoft.github.io/neuron-js/schemas/execution-output.schema.json
+- Validation errors: https://sebasoft.github.io/neuron-js/schemas/validation-error.schema.json
+- Explanation trace: https://sebasoft.github.io/neuron-js/schemas/explanation-trace.schema.json
+
+## Common tasks
+
+### Generate pricing rules
+
+Use the pricing example as the starting shape. Validate the generated JSON before execution. Return both normalized output and explanation trace.
+
+### Migrate if/else logic
+
+Identify decision inputs, outputs, and allowed operations. If the branch logic is stable and rarely changes, keep it as TypeScript. If it must be stored, audited, or edited without redeploy, model it as a Neuron-JS script.
+
+### Build workflow routing
+
+Use Neuron-JS as a deterministic decision node after upstream extraction or classification. Do not use it to run side effects directly. Let the workflow engine handle side effects after Neuron-JS returns a route.
+
+## Anti-patterns
+
+- Running generated rules without validation.
+- Treating Neuron-JS as a sandbox for arbitrary user code.
+- Hiding validation errors by silently changing user rules.
+- Deep-importing private files from `src/` or `dist/`.
+- Using Neuron-JS where a one-line condition is clearer.
+
+## Official skill
+
+For agent runtimes that support reusable skills, load the official skill from:
+
+https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md

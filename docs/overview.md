@@ -77,12 +77,12 @@ Available now:
 - GitHub repository: <https://github.com/SebaSOFT/neuron-js>
 - Documentation site: <https://sebasoft.github.io/neuron-js/>
 - Core concepts and use-case documentation in this site
+- Runnable examples: [Runnable Examples](/use-cases/runnable-examples)
+- JSON Schemas, validation, and explain output: [Schemas, validation, and explainability](/schemas-validation-explainability)
+- AI-readable docs: [AI coding assistants](/ai-coding-assistants), [`/llms.txt`](/llms.txt), [`/llms-full.txt`](/llms-full.txt), and the official [Neuron-JS AI skill](/skills/neuron-js/SKILL.md)
 
 Planned next:
 
-- Runnable examples: `NJS-GROWTH-02`
-- JSON Schemas, validation, and explain output: `NJS-GROWTH-03`
-- `llms.txt` and AI-assistant documentation: `NJS-GROWTH-04`
 - Comparison and migration pages: `NJS-GROWTH-05`
 
 ## Key features

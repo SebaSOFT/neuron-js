@@ -1,0 +1,7 @@
+{
+  "messages": [],
+  "state": {
+    "cart": { "subtotal": 125, "currency": "USD" },
+    "customer": { "segment": "vip" }
+  }
+}

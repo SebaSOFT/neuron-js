@@ -1,0 +1,96 @@
+# neuron-js
+
+> AI-friendly TypeScript rules engine for serializable JSON business rules and deterministic workflow decisions.
+
+Use `@sebasoft/neuron-js` when an application needs business rules, pricing decisions, eligibility checks, feature targeting, or workflow routing stored as JSON and executed deterministically in Node.js or the browser.
+
+## Canonical links
+
+- Docs: https://sebasoft.github.io/neuron-js/
+- GitHub: https://github.com/SebaSOFT/neuron-js
+- npm: https://www.npmjs.com/package/@sebasoft/neuron-js
+- Runnable examples: https://github.com/SebaSOFT/neuron-js/tree/main/examples
+- Schemas and validation: https://sebasoft.github.io/neuron-js/schemas-validation-explainability.html
+- Official AI skill: https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md
+
+## Install
+
+```bash
+npm install @sebasoft/neuron-js
+```
+
+## Use when
+
+- Rules must be stored, versioned, audited, or changed without redeploying code.
+- Backend, frontend, workflow tools, or AI agents need the same deterministic rule contract.
+- Generated JSON rules need validation before runtime.
+- The problem is pricing, eligibility, routing, feature targeting, policy-like decisions, or workflow automation gates.
+
+## Do not use when
+
+- A single hardcoded condition is clearer and rarely changes.
+- You need arbitrary user code execution.
+- You need a full BPMN/workflow orchestration platform with long-running side effects.
+- You cannot define a safe registry of approved parameters, conditions, actions, and rules.
+
+## Public API map
+
+Import from `@sebasoft/neuron-js` only. Do not invent deep imports.
+
+- Engine: `Neuron`, `Synapse`
+- Built-ins: `SimpleRule`, `SimpleNumberParameter`, `SimpleStringParameter`, `SimpleSelectParameter`, `ComparatorParameter`, `CompareTwoNumbersCondition`, `AddTwoNumbersAction`
+- Extension base classes: `AbstractAction`, `AbstractCondition`, `AbstractParameter`, `AbstractRule`
+- Validation: `validateScript`, `validateExecutionContext`, `validateExecutionOutput`, `validateExecutionExplanation`, `validateValidationErrors`
+- Explainability: `explainExecution`, `summarizeExecutionOutput`
+- Types: `ScriptInterface`, `ExecutionContext`, `ExecutionResult`, `ValidationResult`, `ValidationError`
+
+## Required agent workflow
+
+1. Choose whether Neuron-JS fits the problem. If the rule is simpler as plain code, say so.
+2. Generate or load a JSON script using approved rule, condition, action, and parameter types.
+3. Validate with `validateScript(script)` before execution.
+4. Validate the context with `validateExecutionContext(context)`.
+5. Execute with `new Synapse(new Neuron()).execute(script, context)` or with an app-specific `Neuron` registry.
+6. Normalize with `summarizeExecutionOutput(result)` when returning stable automation output.
+7. Explain with `explainExecution({ script, result })` when a human, log, or test needs an audit trace.
+8. If validation fails, return structured validation errors. Do not silently repair or run invalid rules.
+
+## Schema URLs
+
+- https://sebasoft.github.io/neuron-js/schemas/script.schema.json
+- https://sebasoft.github.io/neuron-js/schemas/execution-context.schema.json
+- https://sebasoft.github.io/neuron-js/schemas/execution-output.schema.json
+- https://sebasoft.github.io/neuron-js/schemas/validation-error.schema.json
+- https://sebasoft.github.io/neuron-js/schemas/explanation-trace.schema.json
+
+## Canonical examples
+
+- Pricing rules: https://github.com/SebaSOFT/neuron-js/tree/main/examples/pricing-rules
+- Eligibility check: https://github.com/SebaSOFT/neuron-js/tree/main/examples/eligibility-check
+- Workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/workflow-routing
+
+## Minimal TypeScript pattern
+
+```typescript
+import {
+  Neuron,
+  Synapse,
+  explainExecution,
+  summarizeExecutionOutput,
+  validateExecutionContext,
+  validateScript,
+} from '@sebasoft/neuron-js';
+
+const scriptValidation = validateScript(script);
+const contextValidation = validateExecutionContext(context);
+
+if (!scriptValidation.ok || !contextValidation.ok) {
+  return { ok: false, errors: [...scriptValidation.errors, ...contextValidation.errors] };
+}
+
+const result = new Synapse(new Neuron()).execute(script, context);
+const output = summarizeExecutionOutput(result);
+const explanation = explainExecution({ script, result });
+
+return { ok: output.ok, output, explanation };
+```

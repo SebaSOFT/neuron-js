@@ -22,7 +22,7 @@ Use it when hardcoded `if/else` logic is too rigid, but a heavyweight workflow o
 - GitHub: <https://github.com/SebaSOFT/neuron-js>
 - Examples: [`examples/`](examples/) with pricing, eligibility, and workflow-routing scenarios
 - Schemas and validation docs: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
-- AI-readable docs: planned as `NJS-GROWTH-04`
+- AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), and the official [`neuron-js` AI skill](docs/public/skills/neuron-js/SKILL.md)
 
 ---
 
@@ -158,10 +158,10 @@ Available adoption assets:
 
 - Runnable examples: [`examples/`](examples/)
 - JSON Schemas, validation, and explain output: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
+- AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), [`docs/public/llms-full.txt`](docs/public/llms-full.txt), and [`docs/public/skills/neuron-js/SKILL.md`](docs/public/skills/neuron-js/SKILL.md)
 
 Planned next adoption assets:
 
-- `llms.txt` and AI-assistant documentation: `NJS-GROWTH-04`
 - Comparison and migration pages: `NJS-GROWTH-05`
 
 ---
