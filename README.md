@@ -107,7 +107,7 @@ const result = synapse.execute(script, context);
 
 console.log(result.isSuccessful()); // true
 console.log(result.value); // 1 rule executed
-console.log(result.context.messages); // includes "Sum result: 15"
+console.log(result.context.messages.map((message) => message.text)); // includes "Sum result: 15"
 ```
 
 ---
