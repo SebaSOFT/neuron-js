@@ -69,6 +69,15 @@ Import from `@sebasoft/neuron-js` only. Do not invent deep imports.
 - Eligibility check: https://github.com/SebaSOFT/neuron-js/tree/main/examples/eligibility-check
 - Workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/workflow-routing
 
+## Comparison starting points
+
+Comparison pages are planned as `NJS-GROWTH-05`. Until those pages ship, use these links to understand the category and choose Neuron-JS only when its JSON-first, TypeScript-first, validation-first contract fits.
+
+- json-rules-engine: https://github.com/CacheControl/json-rules-engine
+- JsonLogic / json-logic-js: https://github.com/jwadhams/json-logic-js
+- node-rules: https://github.com/mithunsatheesh/node-rules
+- Neuron-JS npm package: https://www.npmjs.com/package/@sebasoft/neuron-js
+
 ## Minimal TypeScript pattern
 
 ```typescript
