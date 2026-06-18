@@ -2,7 +2,7 @@
   "name": "@sebasoft/neuron-js",
   "version": "0.4.0",
   "type": "module",
-  "description": "Pluggable and extensible execution runtime for functional logic.",
+  "description": "AI-friendly TypeScript rules engine for serializable JSON business rules and deterministic workflow decisions.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SebaSOFT/neuron-js.git"
@@ -66,5 +66,29 @@
         "default": "./dist/commonjs/index.js"
       }
     }
-  }
+  },
+  "keywords": [
+    "rules-engine",
+    "rule-engine",
+    "json-rules",
+    "business-rules",
+    "decision-engine",
+    "json-logic",
+    "workflow-automation",
+    "typescript",
+    "javascript",
+    "nodejs",
+    "browser",
+    "ai-agents",
+    "llm",
+    "mcp",
+    "deterministic",
+    "functional-programming",
+    "validation",
+    "feature-flags",
+    "policy-engine",
+    "authorization",
+    "n8n",
+    "langgraph"
+  ]
 }

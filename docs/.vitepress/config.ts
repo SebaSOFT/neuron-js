@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: "neuron-js",
-  description: "Pluggable rules engine",
+  description: "AI-friendly TypeScript rules engine for serializable JSON business rules and deterministic workflow decisions.",
   base: '/neuron-js/',
   ignoreDeadLinks: true,
   themeConfig: {
