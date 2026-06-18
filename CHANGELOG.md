@@ -1,5 +1,11 @@
 # @sebasoft/neuron-js
 
+## 0.5.2
+
+### Patch Changes
+
+- 9947358: Complete the AI-readable documentation contract with package-level `llms` and `llmsFull` autodiscovery fields, Claude guidance, richer workflow-agent docs, and corrected AI-skill Markdown examples.
+
 ## 0.5.1
 
 ### Patch Changes
