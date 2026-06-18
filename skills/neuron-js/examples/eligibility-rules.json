@@ -1,0 +1,32 @@
+{
+  "id": "eligibility-check-demo",
+  "rules": [
+    {
+      "id": "approve-qualified-applicant",
+      "type": "simple_rule",
+      "options": {},
+      "conditions": [
+        {
+          "id": "score-threshold",
+          "type": "compare_two_numbers",
+          "options": {},
+          "params": [
+            { "id": "applicant-score", "name": "op1", "type": "state_number", "value": "applicant.score", "options": {} },
+            { "id": "comparison", "name": "comp", "type": "comparator", "value": ">=", "options": {} },
+            { "id": "required-score", "name": "op2", "type": "simple_number", "value": "700", "options": {} }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "mark-approved",
+          "type": "set_decision",
+          "options": {},
+          "params": [
+            { "id": "decision-value", "name": "decision", "type": "simple_string", "value": "approved", "options": {} }
+          ]
+        }
+      ]
+    }
+  ]
+}

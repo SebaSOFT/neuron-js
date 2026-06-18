@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/schemas/execution-output.schema.json",
+  "title": "Neuron-JS Execution Output",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["ok", "rulesExecuted", "messages"],
+  "properties": {
+    "ok": { "type": "boolean" },
+    "rulesExecuted": { "type": ["number", "null"] },
+    "messages": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

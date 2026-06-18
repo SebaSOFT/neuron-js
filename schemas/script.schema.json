@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/schemas/script.schema.json",
+  "title": "Neuron-JS Script",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "rules"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "rules": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/rule" }
+    }
+  },
+  "$defs": {
+    "element": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id", "type", "options"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "type": { "type": "string", "minLength": 1 },
+        "options": { "type": "object" }
+      }
+    },
+    "parameter": {
+      "allOf": [
+        { "$ref": "#/$defs/element" },
+        {
+          "type": "object",
+          "required": ["name", "value"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "value": {},
+            "defaultValue": {}
+          }
+        }
+      ]
+    },
+    "condition": {
+      "allOf": [
+        { "$ref": "#/$defs/element" },
+        {
+          "type": "object",
+          "required": ["params"],
+          "properties": {
+            "params": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/parameter" }
+            }
+          }
+        }
+      ]
+    },
+    "action": {
+      "allOf": [
+        { "$ref": "#/$defs/element" },
+        {
+          "type": "object",
+          "required": ["params"],
+          "properties": {
+            "params": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/parameter" }
+            }
+          }
+        }
+      ]
+    },
+    "rule": {
+      "allOf": [
+        { "$ref": "#/$defs/element" },
+        {
+          "type": "object",
+          "required": ["conditions", "actions"],
+          "properties": {
+            "conditions": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/condition" }
+            },
+            "actions": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/action" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
