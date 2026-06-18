@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: neuron-js
-  text: Pluggable, serializable rules engine
-  tagline: Functional logic in pure JSON.
+  text: AI-friendly TypeScript rules engine
+  tagline: Serializable JSON business rules for deterministic workflow decisions.
   image:
     src: /img/neuron-cover640.png
     alt: neuron-js logo
@@ -17,10 +17,12 @@ hero:
       link: https://github.com/SebaSOFT/neuron-js
 
 features:
-  - title: Pluggable
-    details: Easily extend the engine with custom actions and conditions.
-  - title: Serializable
-    details: Define logic in pure JSON, store it in a database, and execute it anywhere.
-  - title: Modern
-    details: Built with TypeScript, support for Node.js and browser environments.
+  - title: JSON business rules
+    details: Store, version, transmit, and audit rule definitions as serializable JSON.
+  - title: Deterministic decisions
+    details: Execute predictable workflow and business decisions in Node.js or the browser.
+  - title: TypeScript extensibility
+    details: Register custom actions, conditions, parameters, rules, and lifecycle hooks.
+  - title: AI-friendly surface
+    details: Designed for generated rules, future schema validation, explainability, and coding-assistant workflows.
 ---
