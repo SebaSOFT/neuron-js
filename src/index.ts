@@ -186,6 +186,22 @@ export { AbstractCondition } from "./abstracts/AbstractCondition.js";
 export { AbstractElement } from "./abstracts/AbstractElement.js";
 export { AbstractParameter } from "./abstracts/AbstractParameter.js";
 export { AbstractRule } from "./abstracts/AbstractRule.js";
+export type { ExplainExecutionOptions } from "./contracts/explain.js";
+export { explainExecution } from "./contracts/explain.js";
+export type {
+  ExecutionExplanation,
+  ExecutionExplanationEvent,
+  ValidationError,
+  ValidationResult,
+} from "./contracts/validation.js";
+export {
+  summarizeExecutionOutput,
+  validateExecutionContext,
+  validateExecutionExplanation,
+  validateExecutionOutput,
+  validateScript,
+  validateValidationErrors,
+} from "./contracts/validation.js";
 export type { ActionInterface, ActionOptions } from "./interfaces/Action.js";
 export type {
   ConditionInterface,

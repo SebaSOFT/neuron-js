@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/schemas/explanation-trace.schema.json",
+  "title": "Neuron-JS Explanation Trace",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["scriptId", "ok", "rulesEvaluated", "rulesExecuted", "messages", "trace"],
+  "properties": {
+    "scriptId": { "type": "string", "minLength": 1 },
+    "ok": { "type": "boolean" },
+    "rulesEvaluated": { "type": "number" },
+    "rulesExecuted": { "type": ["number", "null"] },
+    "messages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "trace": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["step", "type", "message"],
+        "properties": {
+          "step": { "type": "number" },
+          "type": { "type": "string", "minLength": 1 },
+          "message": { "type": "string", "minLength": 1 },
+          "ruleId": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

@@ -49,6 +49,7 @@
   "files": [
     "dist",
     "src",
+    "schemas",
     "examples",
     "!src/**/*.test.ts",
     "README.md",
