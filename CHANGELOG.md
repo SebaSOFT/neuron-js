@@ -1,5 +1,11 @@
 # @sebasoft/neuron-js
 
+## 0.5.1
+
+### Patch Changes
+
+- 8a90267: Add AI-readable documentation assets, `llms.txt`, `llms-full.txt`, assistant instructions, and an official Neuron-JS AI skill for coding agents.
+
 ## 0.5.0
 
 ### Minor Changes
