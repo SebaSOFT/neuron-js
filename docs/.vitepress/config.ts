@@ -12,6 +12,7 @@ export default defineConfig({
       { text: 'Concepts', link: '/overview' },
       { text: 'Examples', link: '/use-cases/runnable-examples' },
       { text: 'Schemas', link: '/schemas-validation-explainability' },
+      { text: 'AI Docs', link: '/ai-coding-assistants' },
       { text: 'API', link: '/api/README' }
     ],
     sidebar: [
@@ -19,7 +20,8 @@ export default defineConfig({
         text: 'Introduction',
         items: [
           { text: 'Overview', link: '/overview' },
-          { text: 'Schemas, Validation & Explainability', link: '/schemas-validation-explainability' }
+          { text: 'Schemas, Validation & Explainability', link: '/schemas-validation-explainability' },
+          { text: 'AI Coding Assistants', link: '/ai-coding-assistants' }
         ]
       },
       {

@@ -1,0 +1,28 @@
+---
+description: Official Neuron-JS project rules for AI coding assistants
+globs:
+  - "**/*.ts"
+  - "**/*.md"
+  - "**/*.json"
+alwaysApply: true
+---
+
+# Neuron-JS AI coding rule
+
+Neuron-JS is an AI-friendly TypeScript rules engine for serializable JSON business rules and deterministic workflow decisions.
+
+Follow these rules:
+
+- Use package-root public APIs only.
+- Validate generated scripts with `validateScript` before execution.
+- Validate execution contexts with `validateExecutionContext` before execution.
+- Stop and return structured errors if validation fails.
+- Execute with `Synapse` plus an approved `Neuron` registry.
+- Normalize with `summarizeExecutionOutput`.
+- Explain with `explainExecution` when output needs auditability.
+- Do not invent CLI commands; use programmatic APIs unless a documented CLI exists.
+- Keep official examples and docs valid with `yarn examples` and `yarn docs:build`.
+
+Official skill:
+
+https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md

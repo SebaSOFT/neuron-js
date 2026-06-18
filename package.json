@@ -51,6 +51,7 @@
     "src",
     "schemas",
     "examples",
+    "ai/skills",
     "!src/**/*.test.ts",
     "README.md",
     "LICENSE"

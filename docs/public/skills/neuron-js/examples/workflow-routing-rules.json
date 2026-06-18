@@ -1,0 +1,33 @@
+{
+  "id": "workflow-routing-demo",
+  "rules": [
+    {
+      "id": "route-critical-ticket",
+      "type": "simple_rule",
+      "options": {},
+      "conditions": [
+        {
+          "id": "priority-threshold",
+          "type": "compare_two_numbers",
+          "options": {},
+          "params": [
+            { "id": "ticket-priority", "name": "op1", "type": "state_number", "value": "ticket.priority", "options": {} },
+            { "id": "comparison", "name": "comp", "type": "comparator", "value": ">=", "options": {} },
+            { "id": "critical-threshold", "name": "op2", "type": "simple_number", "value": "8", "options": {} }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "assign-escalation-route",
+          "type": "set_route",
+          "options": {},
+          "params": [
+            { "id": "route-name", "name": "route", "type": "simple_string", "value": "escalation", "options": {} },
+            { "id": "sla-hours", "name": "slaHours", "type": "simple_number", "value": "4", "options": {} }
+          ]
+        }
+      ]
+    }
+  ]
+}
