@@ -7,6 +7,8 @@
     "type": "git",
     "url": "git+https://github.com/SebaSOFT/neuron-js.git"
   },
+  "llms": "https://sebasoft.github.io/neuron-js/llms.txt",
+  "llmsFull": "https://sebasoft.github.io/neuron-js/llms-full.txt",
   "packageManager": "yarn@4.13.0",
   "license": "MIT",
   "engines": {

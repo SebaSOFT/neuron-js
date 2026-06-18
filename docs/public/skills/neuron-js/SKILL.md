@@ -86,7 +86,7 @@ if (!scriptValidation.ok || !contextValidation.ok) {
     ],
   };
 }
-```
+
 const neuron = new Neuron();
 const synapse = new Synapse(neuron);
 const result = synapse.execute(script, context);

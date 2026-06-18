@@ -53,6 +53,34 @@ Then implement against the official examples and schemas.
 
 Use Neuron-JS as a deterministic decision node after upstream extraction or classification. Do not use it as the side-effect runner. Let n8n or LangGraph route to side-effect nodes after Neuron-JS returns a decision.
 
+### n8n pattern
+
+1. Use upstream nodes to collect or classify input data.
+2. Use a Code node to load an approved Neuron-JS script and context.
+3. Validate the script and context.
+4. Execute Neuron-JS and return a normalized routing result.
+5. Route downstream side-effect nodes from the deterministic output.
+
+```typescript
+const scriptValidation = validateScript(script);
+const contextValidation = validateExecutionContext(context);
+
+if (!scriptValidation.ok || !contextValidation.ok) {
+  return [{ json: { ok: false, errors: [...(scriptValidation.errors ?? []), ...(contextValidation.errors ?? [])] } }];
+}
+
+const result = new Synapse(new Neuron()).execute(script, context);
+return [{ json: summarizeExecutionOutput(result) }];
+```
+
+### LangGraph pattern
+
+1. Let the LLM classify or extract structured inputs.
+2. Validate the generated context with `validateExecutionContext`.
+3. Run Neuron-JS as a deterministic guardrail node.
+4. Store `summarizeExecutionOutput(result)` and `explainExecution({ script, result })` in graph state.
+5. Route the next edge from the normalized decision, not from free-form LLM text.
+
 ## Basic pricing example flow
 
 ```typescript
@@ -64,7 +92,7 @@ import {
   validateExecutionContext,
   validateScript,
 } from '@sebasoft/neuron-js';
-```typescript
+
 const scriptValidation = validateScript(script);
 const contextValidation = validateExecutionContext(context);
 
