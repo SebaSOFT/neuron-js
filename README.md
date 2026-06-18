@@ -21,7 +21,7 @@ Use it when hardcoded `if/else` logic is too rigid, but a heavyweight workflow o
 - npm: <https://www.npmjs.com/package/@sebasoft/neuron-js>
 - GitHub: <https://github.com/SebaSOFT/neuron-js>
 - Examples: [`examples/`](examples/) with pricing, eligibility, and workflow-routing scenarios
-- Schemas and validation docs: planned as `NJS-GROWTH-03`
+- Schemas and validation docs: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
 - AI-readable docs: planned as `NJS-GROWTH-04`
 
 ---
@@ -157,10 +157,10 @@ The current public surface includes installation, positioning, core concepts, ru
 Available adoption assets:
 
 - Runnable examples: [`examples/`](examples/)
+- JSON Schemas, validation, and explain output: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
 
 Planned next adoption assets:
 
-- JSON Schemas, validation, and explain output: `NJS-GROWTH-03`
 - `llms.txt` and AI-assistant documentation: `NJS-GROWTH-04`
 - Comparison and migration pages: `NJS-GROWTH-05`
 

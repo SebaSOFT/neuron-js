@@ -11,13 +11,15 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Concepts', link: '/overview' },
       { text: 'Examples', link: '/use-cases/runnable-examples' },
+      { text: 'Schemas', link: '/schemas-validation-explainability' },
       { text: 'API', link: '/api/README' }
     ],
     sidebar: [
       {
         text: 'Introduction',
         items: [
-          { text: 'Overview', link: '/overview' }
+          { text: 'Overview', link: '/overview' },
+          { text: 'Schemas, Validation & Explainability', link: '/schemas-validation-explainability' }
         ]
       },
       {

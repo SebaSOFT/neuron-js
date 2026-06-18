@@ -11,6 +11,13 @@ import {
   ExecutionResult,
   HookEvents,
   Neuron,
+  explainExecution,
+  summarizeExecutionOutput,
+  validateExecutionContext,
+  validateExecutionExplanation,
+  validateExecutionOutput,
+  validateScript,
+  validateValidationErrors,
   SimpleNumberParameter,
   SimpleRule,
   SimpleSelectParameter,
@@ -23,6 +30,13 @@ test("package root exports the supported public API", () => {
   expect(Synapse).toBeDefined();
   expect(ExecutionResult).toBeDefined();
   expect(HookEvents).toBeDefined();
+  expect(validateScript).toBeDefined();
+  expect(validateExecutionContext).toBeDefined();
+  expect(validateExecutionOutput).toBeDefined();
+  expect(validateValidationErrors).toBeDefined();
+  expect(validateExecutionExplanation).toBeDefined();
+  expect(summarizeExecutionOutput).toBeDefined();
+  expect(explainExecution).toBeDefined();
   expect(AbstractAction).toBeDefined();
   expect(AbstractCondition).toBeDefined();
   expect(AbstractElement).toBeDefined();

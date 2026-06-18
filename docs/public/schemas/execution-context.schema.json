@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/schemas/execution-context.schema.json",
+  "title": "Neuron-JS Execution Context",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["messages", "state"],
+  "properties": {
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "text"],
+        "properties": {
+          "type": { "enum": ["debug", "info", "warn", "error"] },
+          "text": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "state": { "type": "object", "additionalProperties": true }
+  }
+}

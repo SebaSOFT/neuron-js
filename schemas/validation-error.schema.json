@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/schemas/validation-error.schema.json",
+  "title": "Neuron-JS Validation Error",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["path", "code", "message"],
+  "properties": {
+    "path": { "type": "string", "minLength": 1 },
+    "code": { "type": "string", "minLength": 1 },
+    "message": { "type": "string", "minLength": 1 }
+  }
+}
