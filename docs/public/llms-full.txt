@@ -347,13 +347,15 @@ Run the script, call `explainExecution({ script, result })`, and return the trac
 
 Extract inputs, decisions, allowed operations, and outputs. If the logic must be edited without redeploy or shared across systems, convert it to a script. If the logic is simple and stable, recommend keeping TypeScript.
 
-## Comparison starting points
+## Comparison and migration guides
 
-Full comparison and migration pages are planned as `NJS-GROWTH-05`. Until those pages ship, use these category links only as starting context. Choose Neuron-JS when the JSON-first, TypeScript-first, validation-first, explainable contract fits.
+Use the official comparison pages to choose the right tool and migrate only when Neuron-JS's JSON-first, TypeScript-first, validation-first, explainable contract fits. Each page includes a decision matrix, a migration guide, validation steps, and choose-when boundaries.
 
-- json-rules-engine: https://github.com/CacheControl/json-rules-engine
-- JsonLogic / json-logic-js: https://github.com/jwadhams/json-logic-js
-- node-rules: https://github.com/mithunsatheesh/node-rules
+- Comparison hub: https://sebasoft.github.io/neuron-js/comparisons/
+- Neuron-JS vs json-rules-engine: https://sebasoft.github.io/neuron-js/comparisons/json-rules-engine.html
+- Neuron-JS vs JsonLogic / json-logic-js: https://sebasoft.github.io/neuron-js/comparisons/json-logic-js.html
+- Neuron-JS vs node-rules: https://sebasoft.github.io/neuron-js/comparisons/node-rules.html
+- Rules engine vs if/else: https://sebasoft.github.io/neuron-js/comparisons/if-else.html
 - Neuron-JS npm package: https://www.npmjs.com/package/@sebasoft/neuron-js
 
 ## Anti-patterns

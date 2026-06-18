@@ -12,6 +12,7 @@ export default defineConfig({
       { text: 'Concepts', link: '/overview' },
       { text: 'Examples', link: '/use-cases/runnable-examples' },
       { text: 'Schemas', link: '/schemas-validation-explainability' },
+      { text: 'Comparisons', link: '/comparisons/' },
       { text: 'AI Docs', link: '/ai-coding-assistants' },
       { text: 'API', link: '/api/README' }
     ],
@@ -38,6 +39,16 @@ export default defineConfig({
           { text: 'Runnable Examples', link: '/use-cases/runnable-examples' },
           { text: 'Business Rules Engine', link: '/use-cases/business-rules-engine' },
           { text: 'Dynamic Routing', link: '/use-cases/dynamic-routing' }
+        ]
+      },
+      {
+        text: 'Comparisons',
+        items: [
+          { text: 'Comparison Guide', link: '/comparisons/' },
+          { text: 'vs json-rules-engine', link: '/comparisons/json-rules-engine' },
+          { text: 'vs JsonLogic', link: '/comparisons/json-logic-js' },
+          { text: 'vs node-rules', link: '/comparisons/node-rules' },
+          { text: 'vs if/else', link: '/comparisons/if-else' }
         ]
       },
       {

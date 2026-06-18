@@ -23,6 +23,7 @@ Use it when hardcoded `if/else` logic is too rigid, but a heavyweight workflow o
 - Examples: [`examples/`](examples/) with pricing, eligibility, and workflow-routing scenarios
 - Schemas and validation docs: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
 - AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), and the official [`neuron-js` AI skill](docs/public/skills/neuron-js/SKILL.md)
+- Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for json-rules-engine, JsonLogic, node-rules, and if/else migrations
 
 ---
 
@@ -158,11 +159,8 @@ Available adoption assets:
 
 - Runnable examples: [`examples/`](examples/)
 - JSON Schemas, validation, and explain output: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
+- Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for choosing and migrating from json-rules-engine, JsonLogic, node-rules, and hand-written if/else
 - AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), [`docs/public/llms-full.txt`](docs/public/llms-full.txt), and [`docs/public/skills/neuron-js/SKILL.md`](docs/public/skills/neuron-js/SKILL.md)
-
-Planned next adoption assets:
-
-- Comparison and migration pages: `NJS-GROWTH-05`
 
 ---
 

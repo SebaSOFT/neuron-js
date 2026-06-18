@@ -11,6 +11,7 @@ Use `@sebasoft/neuron-js` when an application needs business rules, pricing deci
 - npm: https://www.npmjs.com/package/@sebasoft/neuron-js
 - Runnable examples: https://github.com/SebaSOFT/neuron-js/tree/main/examples
 - Schemas and validation: https://sebasoft.github.io/neuron-js/schemas-validation-explainability.html
+- Comparison and migration guides: https://sebasoft.github.io/neuron-js/comparisons/
 - Official AI skill: https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md
 
 ## Install
@@ -69,13 +70,15 @@ Import from `@sebasoft/neuron-js` only. Do not invent deep imports.
 - Eligibility check: https://github.com/SebaSOFT/neuron-js/tree/main/examples/eligibility-check
 - Workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/workflow-routing
 
-## Comparison starting points
+## Comparison and migration guides
 
-Comparison pages are planned as `NJS-GROWTH-05`. Until those pages ship, use these links to understand the category and choose Neuron-JS only when its JSON-first, TypeScript-first, validation-first contract fits.
+Use these pages to choose the right tool and migrate only when Neuron-JS's JSON-first, TypeScript-first, validation-first, explainable contract fits.
 
-- json-rules-engine: https://github.com/CacheControl/json-rules-engine
-- JsonLogic / json-logic-js: https://github.com/jwadhams/json-logic-js
-- node-rules: https://github.com/mithunsatheesh/node-rules
+- Comparison hub: https://sebasoft.github.io/neuron-js/comparisons/
+- Neuron-JS vs json-rules-engine: https://sebasoft.github.io/neuron-js/comparisons/json-rules-engine.html
+- Neuron-JS vs JsonLogic / json-logic-js: https://sebasoft.github.io/neuron-js/comparisons/json-logic-js.html
+- Neuron-JS vs node-rules: https://sebasoft.github.io/neuron-js/comparisons/node-rules.html
+- Rules engine vs if/else: https://sebasoft.github.io/neuron-js/comparisons/if-else.html
 - Neuron-JS npm package: https://www.npmjs.com/package/@sebasoft/neuron-js
 
 ## Minimal TypeScript pattern

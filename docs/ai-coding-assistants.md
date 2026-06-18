@@ -7,6 +7,7 @@ Neuron-JS is intentionally documented for AI coding assistants and workflow agen
 - [`/llms.txt`](/llms.txt): compact agent routing document.
 - [`/llms-full.txt`](/llms-full.txt): expanded AI context without navigation chrome.
 - [`/skills/neuron-js/SKILL.md`](/skills/neuron-js/SKILL.md): official reusable skill for agent runtimes.
+- [`/comparisons/`](/comparisons/): comparison and migration guides for tool selection and safe migration.
 - [`/schemas/script.schema.json`](/schemas/script.schema.json): JSON Schema for scripts and rule definitions.
 - [`/schemas/execution-context.schema.json`](/schemas/execution-context.schema.json): JSON Schema for runtime context.
 - [`/schemas/execution-output.schema.json`](/schemas/execution-output.schema.json): JSON Schema for normalized execution output.
@@ -24,6 +25,17 @@ Neuron-JS is intentionally documented for AI coding assistants and workflow agen
 7. Summarize with `summarizeExecutionOutput`.
 8. Explain with `explainExecution` when decisions are generated, persisted, reviewed, or audited.
 9. Do not invent a CLI. Use the documented programmatic APIs unless a future package release documents CLI commands.
+
+
+## Tool-selection and migration guides
+
+Use the comparison pages before recommending a migration. Neuron-JS is the right fit only when its serializable JSON, TypeScript registry, validation, and explainability contract improves the system.
+
+- [Comparison hub](/comparisons/)
+- [Neuron-JS vs json-rules-engine](/comparisons/json-rules-engine)
+- [Neuron-JS vs JsonLogic / json-logic-js](/comparisons/json-logic-js)
+- [Neuron-JS vs node-rules](/comparisons/node-rules)
+- [Rules engine vs if/else](/comparisons/if-else)
 
 ## Cursor
 
