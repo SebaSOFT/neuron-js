@@ -30,7 +30,11 @@
   "devDependencies": {
     "@biomejs/biome": "^2.4.13",
     "@changesets/cli": "^2.31.0",
+    "@types/json-logic-js": "^2",
     "@types/node": "^25.6.0",
+    "json-logic-js": "^2.0.5",
+    "json-rules-engine": "^7.3.1",
+    "rule-engine-js": "^1.0.7",
     "tshy": "^4.1.1",
     "typedoc": "^0.28.19",
     "typedoc-plugin-markdown": "^4.11.0",

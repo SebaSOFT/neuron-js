@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/benchmarks/results.schema.json",
+  "title": "Neuron-JS benchmark result contract",
+  "description": "Stable machine-readable result format for NJS-GROWTH-07 benchmark and visual-proof assets. Placeholder fixtures are explicitly non-claim data.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "result_kind",
+    "is_placeholder",
+    "claims_allowed",
+    "generated_at",
+    "methodology",
+    "competitors",
+    "scenarios",
+    "input_sizes",
+    "results"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "result_kind": { "type": "string", "enum": ["actual_benchmark", "placeholder_sample"] },
+    "is_placeholder": { "type": "boolean" },
+    "claims_allowed": { "type": "boolean" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "disclaimer": { "type": "string" },
+    "methodology": { "type": "string" },
+    "competitors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "@sebasoft/neuron-js",
+          "json-rules-engine",
+          "json-logic-js",
+          "hand-coded-typescript",
+          "rule-engine-js"
+        ]
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["pricing-discount", "eligibility-approval", "workflow-routing"]
+      }
+    },
+    "input_sizes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["smoke", "small", "medium", "large"]
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "engine",
+          "scenario",
+          "input_size",
+          "warmup_iterations",
+          "measured_iterations",
+          "throughput_decisions_per_second",
+          "p50_ms",
+          "p95_ms",
+          "cold_start_ms",
+          "bundle_size_minified_bytes",
+          "validation_overhead_ms",
+          "explanation_overhead_ms",
+          "node_version",
+          "package_version",
+          "commit_sha"
+        ],
+        "properties": {
+          "engine": {
+            "type": "string",
+            "enum": ["@sebasoft/neuron-js", "json-rules-engine", "json-logic-js", "hand-coded-typescript", "rule-engine-js"],
+            "unit": "identifier",
+            "source": "Harness adapter name for the implementation under test; fixed enum for cross-run joins.",
+            "description": "Harness adapter name for the implementation under test; fixed enum for cross-run joins."
+          },
+          "scenario": {
+            "type": "string",
+            "enum": ["pricing-discount", "eligibility-approval", "workflow-routing"],
+            "unit": "identifier",
+            "source": "Scenario slug produced by the benchmark scenario matrix.",
+            "description": "Scenario slug produced by the benchmark scenario matrix."
+          },
+          "input_size": {
+            "type": "string",
+            "enum": ["smoke", "small", "medium", "large"],
+            "unit": "profile",
+            "source": "Named workload profile, not raw row count, so visual assets can group runs consistently.",
+            "description": "Named workload profile, not raw row count, so visual assets can group runs consistently."
+          },
+          "warmup_iterations": {
+            "type": "integer",
+            "minimum": 0,
+            "unit": "decisions",
+            "source": "Number of unmeasured warmup decisions completed before timing.",
+            "description": "Number of unmeasured warmup decisions completed before timing."
+          },
+          "measured_iterations": {
+            "type": "integer",
+            "minimum": 1,
+            "unit": "decisions",
+            "source": "Number of measured decisions included in timing statistics.",
+            "description": "Number of measured decisions included in timing statistics."
+          },
+          "throughput_decisions_per_second": {
+            "type": "number",
+            "minimum": 0,
+            "unit": "decisions/second",
+            "source": "Measured decisions divided by elapsed measured wall-clock seconds.",
+            "description": "Measured decisions divided by elapsed measured wall-clock seconds."
+          },
+          "p50_ms": {
+            "type": "number",
+            "minimum": 0,
+            "unit": "milliseconds",
+            "source": "Median per-decision latency from measured iterations.",
+            "description": "Median per-decision latency from measured iterations."
+          },
+          "p95_ms": {
+            "type": "number",
+            "minimum": 0,
+            "unit": "milliseconds",
+            "source": "95th percentile per-decision latency from measured iterations.",
+            "description": "95th percentile per-decision latency from measured iterations."
+          },
+          "cold_start_ms": {
+            "type": "number",
+            "minimum": 0,
+            "unit": "milliseconds",
+            "source": "Wall-clock time to load/import the engine adapter and execute the first decision in a fresh process or isolated worker.",
+            "description": "Wall-clock time to load/import the engine adapter and execute the first decision in a fresh process or isolated worker."
+          },
+          "bundle_size_minified_bytes": {
+            "type": "integer",
+            "minimum": 0,
+            "unit": "bytes",
+            "source": "Minified adapter+engine bundle byte count from the configured bundler output.",
+            "description": "Minified adapter+engine bundle byte count from the configured bundler output."
+          },
+          "validation_overhead_ms": {
+            "type": "number",
+            "minimum": 0,
+            "unit": "milliseconds",
+            "source": "Additional median latency for validation-enabled execution versus validation-disabled execution on the same scenario/input profile.",
+            "description": "Additional median latency for validation-enabled execution versus validation-disabled execution on the same scenario/input profile."
+          },
+          "explanation_overhead_ms": {
+            "type": "number",
+            "minimum": 0,
+            "unit": "milliseconds",
+            "source": "Additional median latency for trace/explanation-enabled execution versus trace-disabled execution on the same scenario/input profile.",
+            "description": "Additional median latency for trace/explanation-enabled execution versus trace-disabled execution on the same scenario/input profile."
+          },
+          "node_version": {
+            "type": "string",
+            "unit": "semver/runtime",
+            "source": "Node.js version reported by process.version for the benchmark run.",
+            "description": "Node.js version reported by process.version for the benchmark run."
+          },
+          "package_version": {
+            "type": "string",
+            "unit": "semver or source",
+            "source": "Package version or source label for the engine adapter under test.",
+            "description": "Package version or source label for the engine adapter under test."
+          },
+          "commit_sha": {
+            "type": "string",
+            "unit": "git sha",
+            "source": "Repository commit SHA for the Neuron-JS benchmark harness and local implementation.",
+            "description": "Repository commit SHA for the Neuron-JS benchmark harness and local implementation."
+          },
+          "result_kind": {
+            "type": "string",
+            "enum": ["actual_benchmark", "placeholder_sample"],
+            "unit": "classification",
+            "source": "Set by harness output mode.",
+            "description": "Distinguishes measured results from non-claim sample fixtures."
+          },
+          "notes": {
+            "type": "string",
+            "unit": "free text",
+            "source": "Human or harness annotation.",
+            "description": "Required caveats, methodology notes, or placeholder warnings."
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}
