@@ -54,6 +54,100 @@ class StateNumberParameter {
   }
 }
 
+class StateStringParameter {
+  static readonly TYPE = "state_string";
+
+  readonly id: string;
+  readonly type: string;
+  readonly name: string;
+  readonly value: string;
+  readonly options: Record<string, unknown>;
+
+  constructor(
+    id: string,
+    type: string,
+    name: string,
+    value: string,
+    options: Record<string, unknown>,
+  ) {
+    this.id = id;
+    this.type = type;
+    this.name = name;
+    this.value = value;
+    this.options = options;
+  }
+
+  getValue(context: ExecutionContext): string | null {
+    const value = readStatePath(context, this.value);
+    return typeof value === "string" ? value : null;
+  }
+}
+
+class CompareTwoStringsCondition {
+  static readonly TYPE = "compare_two_strings";
+
+  readonly id: string;
+  readonly type: string;
+  private readonly params: ParameterInterface[];
+  readonly options: ActionOptions;
+  private readonly neuron: Neuron;
+
+  constructor(
+    id: string,
+    type: string,
+    params: ParameterInterface[],
+    options: ActionOptions,
+    neuron: Neuron,
+  ) {
+    this.id = id;
+    this.type = type;
+    this.params = params;
+    this.options = options;
+    this.neuron = neuron;
+  }
+
+  private resolveParam(context: ExecutionContext, name: string): unknown {
+    const param = this.params.find((item) => item.name === name);
+    if (!param) return null;
+    const ParamCtor = this.neuron.getParameter(param.type);
+    return ParamCtor
+      ? new ParamCtor(
+          param.id,
+          param.type,
+          param.name,
+          param.value,
+          param.options,
+          param.defaultValue,
+        ).getValue(context)
+      : null;
+  }
+
+  execute(context: ExecutionContext): ExecutionResult<boolean> {
+    const op1 = this.resolveParam(context, "op1");
+    const comp = this.resolveParam(context, "comp");
+    const op2 = this.resolveParam(context, "op2");
+
+    if (
+      typeof op1 !== "string" ||
+      typeof comp !== "string" ||
+      typeof op2 !== "string"
+    ) {
+      return new ExecutionResult(false, context, false, [
+        "Invalid string comparison input",
+      ]);
+    }
+
+    if (comp !== "=" && comp !== "!=") {
+      return new ExecutionResult(false, context, false, [
+        `Unsupported string comparator: ${comp}`,
+      ]);
+    }
+
+    const matched = comp === "=" ? op1 === op2 : op1 !== op2;
+    return new ExecutionResult(true, context, matched);
+  }
+}
+
 class SetLangGraphDecisionAction {
   static readonly TYPE = "set_langgraph_decision";
 
@@ -145,7 +239,9 @@ if (!scriptValidation.ok || !contextValidation.ok) {
 }
 
 const neuron = new Neuron();
-neuron.registerParameter(StateNumberParameter.TYPE, StateNumberParameter);
+neuron.registerParameter(StateNumberParameter.TYPE, StateNumberParameter as any);
+neuron.registerParameter(StateStringParameter.TYPE, StateStringParameter as any);
+neuron.registerCondition(CompareTwoStringsCondition.TYPE, CompareTwoStringsCondition as any);
 neuron.registerAction(SetLangGraphDecisionAction.TYPE, SetLangGraphDecisionAction);
 
 const result = new Synapse(neuron).execute(script, input as ExecutionContext);

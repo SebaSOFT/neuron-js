@@ -7,6 +7,26 @@
       "options": {},
       "conditions": [
         {
+          "id": "intent-check",
+          "type": "compare_two_strings",
+          "options": {},
+          "params": [
+            { "id": "classification-intent", "name": "op1", "type": "state_string", "value": "classification.intent", "options": {} },
+            { "id": "intent-comparison", "name": "comp", "type": "comparator", "value": "=", "options": {} },
+            { "id": "refund-intent", "name": "op2", "type": "simple_string", "value": "refund_request", "options": {} }
+          ]
+        },
+        {
+          "id": "risk-check",
+          "type": "compare_two_strings",
+          "options": {},
+          "params": [
+            { "id": "classification-risk", "name": "op1", "type": "state_string", "value": "classification.risk", "options": {} },
+            { "id": "risk-comparison", "name": "comp", "type": "comparator", "value": "=", "options": {} },
+            { "id": "high-risk", "name": "op2", "type": "simple_string", "value": "high", "options": {} }
+          ]
+        },
+        {
           "id": "confidence-threshold",
           "type": "compare_two_numbers",
           "options": {},
