@@ -1,0 +1,12 @@
+{
+  "messages": [],
+  "state": {
+    "classification": {
+      "intent": "refund_request",
+      "risk": "high",
+      "riskScore": 95,
+      "confidence": 0.91
+    },
+    "llmBoundary": "LLM extraction/classification only; deterministic routing happens in Neuron-JS."
+  }
+}

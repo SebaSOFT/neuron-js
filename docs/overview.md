@@ -80,10 +80,11 @@ Available now:
 - Runnable examples: [Runnable Examples](/use-cases/runnable-examples)
 - JSON Schemas, validation, and explain output: [Schemas, validation, and explainability](/schemas-validation-explainability)
 - AI-readable docs: [AI coding assistants](/ai-coding-assistants), [`/llms.txt`](/llms.txt), [`/llms-full.txt`](/llms-full.txt), and the official [Neuron-JS AI skill](/skills/neuron-js/SKILL.md)
+- Workflow automation recipes: [Integrations](/integrations/) for n8n deterministic routing and LangGraph decision nodes
 
 Planned next:
 
-- Comparison and migration pages: `NJS-GROWTH-05`
+- Benchmark, playground, and visual proof assets: `NJS-GROWTH-07`
 
 ## Key features
 

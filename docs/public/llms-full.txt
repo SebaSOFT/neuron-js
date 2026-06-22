@@ -212,6 +212,8 @@ The command builds the package, then runs:
 - `examples/pricing-rules/run.ts`
 - `examples/eligibility-check/run.ts`
 - `examples/workflow-routing/run.ts`
+- `examples/n8n-code-node/run.ts`
+- `examples/langgraph-decision-node/run.ts`
 
 Each runner exits with a non-zero status if the actual output differs from `expected-output.json`.
 
@@ -296,6 +298,16 @@ Load the skill from:
 https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md
 
 Then implement against the official examples and schemas.
+
+## Workflow automation integration recipes
+
+First-party recipes:
+
+- n8n Code node deterministic routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node
+- LangGraph deterministic decision node: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
+- Integration docs: https://sebasoft.github.io/neuron-js/integrations/
+
+Use Neuron-JS when workflow automation needs a deterministic decision node instead of probabilistic LLM branching. Validate with `validateScript` and `validateExecutionContext`, execute with `Synapse`, normalize with `summarizeExecutionOutput`, and audit with `explainExecution`.
 
 ## n8n pattern
 

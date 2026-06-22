@@ -1,0 +1,12 @@
+{
+  "messages": [],
+  "state": {
+    "ticket": {
+      "id": "SUP-2048",
+      "priority": 9,
+      "customerTier": "enterprise",
+      "sentimentScore": -0.72,
+      "subject": "Production checkout failure"
+    }
+  }
+}

@@ -20,10 +20,11 @@ Use it when hardcoded `if/else` logic is too rigid, but a heavyweight workflow o
 - Documentation: <https://sebasoft.github.io/neuron-js/>
 - npm: <https://www.npmjs.com/package/@sebasoft/neuron-js>
 - GitHub: <https://github.com/SebaSOFT/neuron-js>
-- Examples: [`examples/`](examples/) with pricing, eligibility, and workflow-routing scenarios
+- Examples: [`examples/`](examples/) with pricing, eligibility, workflow-routing, n8n, and LangGraph scenarios
 - Schemas and validation docs: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
 - AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), and the official [`neuron-js` AI skill](docs/public/skills/neuron-js/SKILL.md)
 - Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for json-rules-engine, JsonLogic, node-rules, and if/else migrations
+- Workflow automation recipes: [`docs/integrations/`](docs/integrations/) for n8n deterministic routing and LangGraph decision nodes
 
 ---
 
@@ -157,7 +158,7 @@ The current public surface includes installation, positioning, core concepts, ru
 
 Available adoption assets:
 
-- Runnable examples: [`examples/`](examples/)
+- Runnable examples: [`examples/`](examples/) including n8n and LangGraph workflow automation recipes
 - JSON Schemas, validation, and explain output: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
 - Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for choosing and migrating from json-rules-engine, JsonLogic, node-rules, and hand-written if/else
 - AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), [`docs/public/llms-full.txt`](docs/public/llms-full.txt), and [`docs/public/skills/neuron-js/SKILL.md`](docs/public/skills/neuron-js/SKILL.md)

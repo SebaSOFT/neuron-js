@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "rulesExecuted": 1,
+  "messages": [
+    "INFO: Deterministic support route set to human-escalation within 2h",
+    "INFO: Action \"assign-human-escalation\" executed successfully",
+    "INFO: Rule \"route-high-risk-enterprise-ticket\" conditions met and actions executed"
+  ],
+  "route": "human-escalation",
+  "slaHours": 2,
+  "reason": "High-priority enterprise ticket with negative sentiment requires deterministic workflow routing.",
+  "explanation": {
+    "scriptId": "n8n-support-ticket-routing",
+    "rulesEvaluated": 1,
+    "rulesExecuted": 1,
+    "traceTypes": ["script_received", "rule_available", "execution_completed"]
+  }
+}

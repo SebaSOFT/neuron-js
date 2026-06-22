@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "rulesExecuted": 1,
+  "messages": [
+    "INFO: Deterministic LangGraph decision set to refund-human-review",
+    "INFO: Action \"set-langgraph-next-node\" executed successfully",
+    "INFO: Rule \"route-high-risk-refund\" conditions met and actions executed"
+  ],
+  "nextNode": "refund-human-review",
+  "requiresApproval": true,
+  "reason": "LLM extraction classified a high-risk refund request; Neuron-JS made the deterministic Neuron-JS decision.",
+  "explanation": {
+    "scriptId": "langgraph-refund-decision",
+    "rulesEvaluated": 1,
+    "rulesExecuted": 1,
+    "traceTypes": ["script_received", "rule_available", "execution_completed"]
+  }
+}
