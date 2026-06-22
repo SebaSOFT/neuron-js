@@ -16,6 +16,7 @@ docs/benchmarks/assets/
     readme-proof-strip.md
   storyboard/
     playground-readme-gif.md
+    ai-rule-safety-carousel.md
   generated/
     benchmark-chart-throughput.svg
     benchmark-chart-cold-start.svg
@@ -29,7 +30,7 @@ docs/benchmarks/assets/
 ## Folder rules
 
 - `source-data/` stores benchmark input data and schemas only. Generated assets must cite these files when they include measurements.
-- `prompts/` stores frozen prompts copied or split from `docs/benchmarks/prompt-kit.md` for repeatable generation.
+- `prompts/` stores frozen prompts copied or split from `docs/benchmarks/prompt-kit.md` for repeatable generation. The benchmark chart prompt set lives at `prompts/benchmark-chart-prompts.md`; the methodology card prompt lives at `prompts/methodology-infographic.md`.
 - `storyboard/` stores GIF/clip scripts, frame lists, and capture notes.
 - `generated/` stores exported SVG/PNG/GIF/MP4 assets.
 
@@ -39,6 +40,15 @@ docs/benchmarks/assets/
 - Example files must be named `.example.*` and must use obviously non-claiming values or schema-only structures.
 - Real benchmark files must include `node_version`, `package_version`, `commit_sha`, `warmup_iterations`, and `measured_iterations`.
 - Any generated benchmark chart must name its source data file in adjacent metadata or in the SVG metadata block.
+
+## Generated assets
+
+Current generated proof assets:
+
+- `generated/methodology-card.svg`: 16:9 methodology card explaining no-fabricated-benchmark rules without performance numbers.
+- `generated/explainability-trace-diagram.svg`: 16:9 SVG diagram showing business input -> schema validation -> registry -> rule evaluation -> match/fail trace -> deterministic decision.
+- `generated/explainability-trace-diagram.html`: browser preview wrapper with caption and alt text.
+- `generated/explainability-trace-diagram.md`: source grounding, caption, alt text, integrity notes, and export notes.
 
 ## Accessibility rules
 

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Benchmark methodology card for @sebasoft/neuron-js</title>
+  <desc id="desc">Methodology infographic with no performance numbers. It explains that public claims require actual benchmark output and placeholder data is blocked.</desc>
+  <rect width="1600" height="900" fill="#020617"/>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#grid)" opacity="0.55"/>
+  <text x="90" y="120" fill="#e5e7eb" font-family="Inter, system-ui, sans-serif" font-size="52" font-weight="760">Benchmark proof without fake numbers</text>
+  <text x="92" y="168" fill="#94a3b8" font-family="Inter, system-ui, sans-serif" font-size="24">@sebasoft/neuron-js publishes methodology before claims.</text>
+  <g font-family="Inter, system-ui, sans-serif" font-size="25" font-weight="650" fill="#e5e7eb">
+    <rect x="90" y="240" width="430" height="128" rx="20" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+    <text x="130" y="294">Same scenario</text><text x="130" y="330" fill="#94a3b8" font-size="19" font-weight="500">Compare like-for-like decision tasks.</text>
+    <rect x="585" y="240" width="430" height="128" rx="20" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+    <text x="625" y="294">Same input size</text><text x="625" y="330" fill="#94a3b8" font-size="19" font-weight="500">Name workload profile before charting.</text>
+    <rect x="1080" y="240" width="430" height="128" rx="20" fill="#0f172a" stroke="#34d399" stroke-width="2"/>
+    <text x="1120" y="294">Warmup before timing</text><text x="1120" y="330" fill="#94a3b8" font-size="19" font-weight="500">Separate setup from measured run.</text>
+    <rect x="90" y="430" width="430" height="128" rx="20" fill="#0f172a" stroke="#a78bfa" stroke-width="2"/>
+    <text x="130" y="484">Real versions</text><text x="130" y="520" fill="#94a3b8" font-size="19" font-weight="500">Record package and Node versions.</text>
+    <rect x="585" y="430" width="430" height="128" rx="20" fill="#0f172a" stroke="#a78bfa" stroke-width="2"/>
+    <text x="625" y="484">Commit attached</text><text x="625" y="520" fill="#94a3b8" font-size="19" font-weight="500">Tie every chart to source code state.</text>
+    <rect x="1080" y="430" width="430" height="128" rx="20" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+    <text x="1120" y="484">Claims gate</text><text x="1120" y="520" fill="#94a3b8" font-size="19" font-weight="500">Publish only actual benchmark output.</text>
+  </g>
+  <rect x="90" y="630" width="1420" height="128" rx="22" fill="#111827" stroke="#fb7185" stroke-width="2"/>
+  <text x="130" y="688" fill="#fb7185" font-family="Inter, system-ui, sans-serif" font-size="30" font-weight="720">Blocked placeholder rule</text>
+  <text x="130" y="732" fill="#e5e7eb" font-family="JetBrains Mono, Menlo, monospace" font-size="23">Public claims require result_kind=actual_benchmark, is_placeholder=false, claims_allowed=true.</text>
+  <text x="90" y="824" fill="#94a3b8" font-family="JetBrains Mono, Menlo, monospace" font-size="20">Methodology: docs/benchmarks/methodology.md · Placeholder data is for wiring only.</text>
+</svg>
