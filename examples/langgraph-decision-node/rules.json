@@ -1,0 +1,64 @@
+{
+  "id": "langgraph-refund-decision",
+  "rules": [
+    {
+      "id": "route-high-risk-refund",
+      "type": "simple_rule",
+      "options": {},
+      "conditions": [
+        {
+          "id": "intent-check",
+          "type": "compare_two_strings",
+          "options": {},
+          "params": [
+            { "id": "classification-intent", "name": "op1", "type": "state_string", "value": "classification.intent", "options": {} },
+            { "id": "intent-comparison", "name": "comp", "type": "comparator", "value": "=", "options": {} },
+            { "id": "refund-intent", "name": "op2", "type": "simple_string", "value": "refund_request", "options": {} }
+          ]
+        },
+        {
+          "id": "risk-check",
+          "type": "compare_two_strings",
+          "options": {},
+          "params": [
+            { "id": "classification-risk", "name": "op1", "type": "state_string", "value": "classification.risk", "options": {} },
+            { "id": "risk-comparison", "name": "comp", "type": "comparator", "value": "=", "options": {} },
+            { "id": "high-risk", "name": "op2", "type": "simple_string", "value": "high", "options": {} }
+          ]
+        },
+        {
+          "id": "confidence-threshold",
+          "type": "compare_two_numbers",
+          "options": {},
+          "params": [
+            { "id": "classification-confidence", "name": "op1", "type": "state_number", "value": "classification.confidence", "options": {} },
+            { "id": "confidence-comparison", "name": "comp", "type": "comparator", "value": ">=", "options": {} },
+            { "id": "confidence-threshold-value", "name": "op2", "type": "simple_number", "value": "0.9", "options": {} }
+          ]
+        },
+        {
+          "id": "risk-score-threshold",
+          "type": "compare_two_numbers",
+          "options": {},
+          "params": [
+            { "id": "risk-score", "name": "op1", "type": "state_number", "value": "classification.riskScore", "options": {} },
+            { "id": "risk-comparison", "name": "comp", "type": "comparator", "value": ">=", "options": {} },
+            { "id": "risk-threshold-value", "name": "op2", "type": "simple_number", "value": "80", "options": {} }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "set-langgraph-next-node",
+          "type": "set_langgraph_decision",
+          "options": {},
+          "params": [
+            { "id": "next-node", "name": "nextNode", "type": "simple_string", "value": "refund-human-review", "options": {} },
+            { "id": "approval", "name": "requiresApproval", "type": "simple_string", "value": "true", "options": {} },
+            { "id": "reason", "name": "reason", "type": "simple_string", "value": "LLM extraction classified a high-risk refund request; Neuron-JS made the deterministic Neuron-JS decision.", "options": {} }
+          ]
+        }
+      ]
+    }
+  ]
+}

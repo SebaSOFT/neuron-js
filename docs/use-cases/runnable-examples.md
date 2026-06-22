@@ -15,6 +15,8 @@ The command builds the package, then runs:
 - `examples/pricing-rules/run.ts`
 - `examples/eligibility-check/run.ts`
 - `examples/workflow-routing/run.ts`
+- `examples/n8n-code-node/run.ts`
+- `examples/langgraph-decision-node/run.ts`
 
 Each runner exits with a non-zero status if the actual output differs from `expected-output.json`.
 
@@ -57,6 +59,32 @@ Files:
 - `rules.json` — serializable script.
 - `input.json` — execution context.
 - `expected-output.json` — verified output summary.
+- `run.ts` — executable TypeScript runner.
+
+### n8n Code node
+
+Path: [`examples/n8n-code-node/`](https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node)
+
+Demonstrates deterministic workflow routing for n8n. The script checks support-ticket risk signals and returns a human-escalation route with an SLA.
+
+Files:
+
+- `rules.json` — serializable script.
+- `input.json` — execution context.
+- `expected-output.json` — verified output summary and explanation metadata.
+- `run.ts` — executable TypeScript runner.
+
+### LangGraph decision node
+
+Path: [`examples/langgraph-decision-node/`](https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node)
+
+Demonstrates LLM extraction/classification followed by deterministic Neuron-JS decisioning. The script routes a high-risk refund request to human review.
+
+Files:
+
+- `rules.json` — serializable script.
+- `input.json` — execution context.
+- `expected-output.json` — verified output summary and explanation metadata.
 - `run.ts` — executable TypeScript runner.
 
 ## Why this structure

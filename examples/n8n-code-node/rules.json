@@ -1,0 +1,54 @@
+{
+  "id": "n8n-support-ticket-routing",
+  "rules": [
+    {
+      "id": "route-high-risk-enterprise-ticket",
+      "type": "simple_rule",
+      "options": {},
+      "conditions": [
+        {
+          "id": "priority-threshold",
+          "type": "compare_two_numbers",
+          "options": {},
+          "params": [
+            { "id": "ticket-priority", "name": "op1", "type": "state_number", "value": "ticket.priority", "options": {} },
+            { "id": "priority-comparison", "name": "comp", "type": "comparator", "value": ">=", "options": {} },
+            { "id": "priority-threshold-value", "name": "op2", "type": "simple_number", "value": "8", "options": {} }
+          ]
+        },
+        {
+          "id": "negative-sentiment-threshold",
+          "type": "compare_two_numbers",
+          "options": {},
+          "params": [
+            { "id": "ticket-sentiment", "name": "op1", "type": "state_number", "value": "ticket.sentimentScore", "options": {} },
+            { "id": "sentiment-comparison", "name": "comp", "type": "comparator", "value": "<=", "options": {} },
+            { "id": "sentiment-threshold-value", "name": "op2", "type": "simple_number", "value": "-0.4", "options": {} }
+          ]
+        },
+        {
+          "id": "enterprise-tier-check",
+          "type": "compare_two_strings",
+          "options": {},
+          "params": [
+            { "id": "ticket-tier", "name": "op1", "type": "state_string", "value": "ticket.customerTier", "options": {} },
+            { "id": "tier-comparison", "name": "comp", "type": "comparator", "value": "=", "options": {} },
+            { "id": "enterprise-tier", "name": "op2", "type": "simple_string", "value": "enterprise", "options": {} }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "assign-human-escalation",
+          "type": "set_support_route",
+          "options": {},
+          "params": [
+            { "id": "route-name", "name": "route", "type": "simple_string", "value": "human-escalation", "options": {} },
+            { "id": "sla-hours", "name": "slaHours", "type": "simple_number", "value": "2", "options": {} },
+            { "id": "reason", "name": "reason", "type": "simple_string", "value": "High-priority enterprise ticket with negative sentiment requires deterministic workflow routing.", "options": {} }
+          ]
+        }
+      ]
+    }
+  ]
+}

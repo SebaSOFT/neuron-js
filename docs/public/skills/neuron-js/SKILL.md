@@ -122,6 +122,8 @@ Use the official schemas when checking generated artifacts or giving another sys
 - Pricing rules: https://github.com/SebaSOFT/neuron-js/tree/main/examples/pricing-rules
 - Eligibility check: https://github.com/SebaSOFT/neuron-js/tree/main/examples/eligibility-check
 - Workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/workflow-routing
+- n8n deterministic workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node
+- LangGraph deterministic decision node: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
 
 Public skill example JSON is available under:
 
@@ -129,6 +131,13 @@ Public skill example JSON is available under:
 - https://sebasoft.github.io/neuron-js/skills/neuron-js/examples/pricing-input.json
 - https://sebasoft.github.io/neuron-js/skills/neuron-js/examples/eligibility-rules.json
 - https://sebasoft.github.io/neuron-js/skills/neuron-js/examples/workflow-routing-rules.json
+
+## Workflow automation recipes
+
+Use Neuron-JS when workflow automation needs a deterministic decision node instead of probabilistic LLM branching.
+
+- n8n recipe: load workflow data, run `validateScript(script)`, run `validateExecutionContext(context)`, execute Neuron-JS in a Code node, return `summarizeExecutionOutput(result)` and `explainExecution({ script, result })`, then route side effects in n8n. Example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node
+- LangGraph recipe: let the LLM perform extraction/classification, validate the generated context, run Neuron-JS as the deterministic Neuron-JS decision node, store the explanation trace, and route graph edges from the normalized output. Example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
 
 ## Prompt recipes
 

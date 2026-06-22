@@ -13,6 +13,7 @@ export default defineConfig({
       { text: 'Examples', link: '/use-cases/runnable-examples' },
       { text: 'Schemas', link: '/schemas-validation-explainability' },
       { text: 'Comparisons', link: '/comparisons/' },
+      { text: 'Integrations', link: '/integrations/' },
       { text: 'AI Docs', link: '/ai-coding-assistants' },
       { text: 'API', link: '/api/README' }
     ],
@@ -49,6 +50,14 @@ export default defineConfig({
           { text: 'vs JsonLogic', link: '/comparisons/json-logic-js' },
           { text: 'vs node-rules', link: '/comparisons/node-rules' },
           { text: 'vs if/else', link: '/comparisons/if-else' }
+        ]
+      },
+      {
+        text: 'Integrations',
+        items: [
+          { text: 'Integration Guide', link: '/integrations/' },
+          { text: 'n8n deterministic routing', link: '/integrations/n8n' },
+          { text: 'LangGraph decision node', link: '/integrations/langgraph' }
         ]
       },
       {

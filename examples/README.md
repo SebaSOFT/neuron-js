@@ -7,6 +7,8 @@ These examples are copy-paste friendly Neuron-JS scenarios. Each folder contains
 - [Pricing rules](pricing-rules/) — apply a VIP discount when a cart meets a subtotal threshold.
 - [Eligibility check](eligibility-check/) — approve an applicant when a score crosses a threshold.
 - [Workflow routing](workflow-routing/) — route a high-priority support ticket to an escalation lane.
+- [n8n Code node](n8n-code-node/) — use Neuron-JS for deterministic workflow routing in n8n.
+- [LangGraph decision node](langgraph-decision-node/) — use LLM extraction/classification followed by deterministic Neuron-JS decisioning.
 
 ## Run all examples
 

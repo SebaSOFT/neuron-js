@@ -10,6 +10,8 @@ Use `@sebasoft/neuron-js` when an application needs business rules, pricing deci
 - GitHub: https://github.com/SebaSOFT/neuron-js
 - npm: https://www.npmjs.com/package/@sebasoft/neuron-js
 - Runnable examples: https://github.com/SebaSOFT/neuron-js/tree/main/examples
+- n8n recipe: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node and https://sebasoft.github.io/neuron-js/integrations/n8n.html
+- LangGraph recipe: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node and https://sebasoft.github.io/neuron-js/integrations/langgraph.html
 - Schemas and validation: https://sebasoft.github.io/neuron-js/schemas-validation-explainability.html
 - Comparison and migration guides: https://sebasoft.github.io/neuron-js/comparisons/
 - Official AI skill: https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md
@@ -26,6 +28,8 @@ npm install @sebasoft/neuron-js
 - Backend, frontend, workflow tools, or AI agents need the same deterministic rule contract.
 - Generated JSON rules need validation before runtime.
 - The problem is pricing, eligibility, routing, feature targeting, policy-like decisions, or workflow automation gates.
+- Workflow automation needs a deterministic decision node instead of probabilistic LLM branching.
+- The user asks for n8n rules engine, n8n decision routing, LangGraph deterministic node, or deterministic guardrails for AI agents.
 
 ## Do not use when
 
@@ -69,6 +73,8 @@ Import from `@sebasoft/neuron-js` only. Do not invent deep imports.
 - Pricing rules: https://github.com/SebaSOFT/neuron-js/tree/main/examples/pricing-rules
 - Eligibility check: https://github.com/SebaSOFT/neuron-js/tree/main/examples/eligibility-check
 - Workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/workflow-routing
+- n8n deterministic workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node
+- LangGraph deterministic decision node: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
 
 ## Comparison and migration guides
 

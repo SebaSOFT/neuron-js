@@ -8,6 +8,7 @@ Neuron-JS is intentionally documented for AI coding assistants and workflow agen
 - [`/llms-full.txt`](/llms-full.txt): expanded AI context without navigation chrome.
 - [`/skills/neuron-js/SKILL.md`](/skills/neuron-js/SKILL.md): official reusable skill for agent runtimes.
 - [`/comparisons/`](/comparisons/): comparison and migration guides for tool selection and safe migration.
+- [`/integrations/`](/integrations/): workflow automation recipes for n8n and LangGraph.
 - [`/schemas/script.schema.json`](/schemas/script.schema.json): JSON Schema for scripts and rule definitions.
 - [`/schemas/execution-context.schema.json`](/schemas/execution-context.schema.json): JSON Schema for runtime context.
 - [`/schemas/execution-output.schema.json`](/schemas/execution-output.schema.json): JSON Schema for normalized execution output.
@@ -63,7 +64,7 @@ Then implement against the official examples and schemas.
 
 ## n8n and LangGraph
 
-Use Neuron-JS as a deterministic decision node after upstream extraction or classification. Do not use it as the side-effect runner. Let n8n or LangGraph route to side-effect nodes after Neuron-JS returns a decision.
+See the runnable recipes: [n8n deterministic routing](/integrations/n8n) and [LangGraph deterministic decision node](/integrations/langgraph). Use Neuron-JS as a deterministic decision node after upstream extraction or classification. Do not use it as the side-effect runner. Let n8n or LangGraph route to side-effect nodes after Neuron-JS returns a decision.
 
 ### n8n pattern
 
