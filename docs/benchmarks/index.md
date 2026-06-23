@@ -7,7 +7,7 @@ This section is a design and generation foundation. It does not publish benchmar
 ## Files
 
 - [Benchmark methodology and result contract](./methodology.md): competitor set, scenario matrix, input-size matrix, metric definitions, and placeholder-data policy.
-- [Result JSON schema](./results.schema.json): machine-readable contract for benchmark output and downstream chart data.
+- [Result JSON schema](/benchmarks/results.schema.json): machine-readable contract for benchmark output and downstream chart data.
 - [Visual proof system](./visual-proof-system.md): palette, typography, composition, diagram style, chart rules, social-card constraints, and README proof strip guidance.
 - [Benchmark visual pack plan](./benchmark-visual-pack.md): chart asset matrix, aspect ratios, channel guardrails, draft prompt paths, and publication blocker.
 - [Explainability trace diagram metadata](./assets/generated/explainability-trace-diagram.md): source grounding, caption, alt text, integrity notes, and README-safe SVG path.

@@ -17,6 +17,7 @@ const requiredFields = [
   'node_version',
   'package_version',
   'commit_sha',
+  'result_kind',
 ];
 
 const requiredEngines = [
@@ -42,12 +43,12 @@ function readJson(path: string) {
 describe('benchmark result-data contract', () => {
   it('publishes methodology, JSON schema, and placeholder sample data files', () => {
     expect(existsSync('docs/benchmarks/methodology.md')).toBe(true);
-    expect(existsSync('docs/benchmarks/results.schema.json')).toBe(true);
+    expect(existsSync('docs/public/benchmarks/results.schema.json')).toBe(true);
     expect(existsSync('benchmarks/sample-results.placeholder.json')).toBe(true);
   });
 
   it('defines every NJS-GROWTH-07 metric with a stable type, unit, and source note', () => {
-    const schema = readJson('docs/benchmarks/results.schema.json');
+    const schema = readJson('docs/public/benchmarks/results.schema.json');
     const resultProperties = ((schema.properties as Record<string, unknown>).results as Record<string, unknown>).items as Record<string, unknown>;
     const properties = resultProperties.properties as Record<string, Record<string, unknown>>;
     const required = resultProperties.required as string[];
@@ -70,7 +71,7 @@ describe('benchmark result-data contract', () => {
 
   it('documents the complete competitor, scenario, and input-size matrix', () => {
     const methodology = readFileSync('docs/benchmarks/methodology.md', 'utf8');
-    const schema = readFileSync('docs/benchmarks/results.schema.json', 'utf8');
+    const schema = readFileSync('docs/public/benchmarks/results.schema.json', 'utf8');
 
     for (const engine of requiredEngines) {
       expect(methodology).toContain(engine);

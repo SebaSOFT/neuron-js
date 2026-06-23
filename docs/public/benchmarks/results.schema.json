@@ -70,7 +70,8 @@
           "explanation_overhead_ms",
           "node_version",
           "package_version",
-          "commit_sha"
+          "commit_sha",
+          "result_kind"
         ],
         "properties": {
           "engine": {

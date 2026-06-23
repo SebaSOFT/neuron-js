@@ -16,7 +16,7 @@ The harness/result contract covers exactly these engines for the first public pr
 | Hand-coded TypeScript | `hand-coded-typescript` | Baseline for direct conditional logic without engine overhead. |
 | rule-engine-js | `rule-engine-js` | Smaller modern competitor selected because it installs/builds in this repository. |
 
-`rulepilot` remains an alternate candidate only if `rule-engine-js` becomes infeasible later. Do not mix both in the same first chart set without updating `docs/benchmarks/results.schema.json`.
+`rulepilot` remains an alternate candidate only if `rule-engine-js` becomes infeasible later. Do not mix both in the same first chart set without updating `docs/public/benchmarks/results.schema.json`.
 
 ## Scenario matrix
 
@@ -37,7 +37,7 @@ The harness/result contract covers exactly these engines for the first public pr
 
 ## Stable result fields
 
-Every result row must contain these fields. Units and source definitions are duplicated in `docs/benchmarks/results.schema.json` for machine consumers.
+Every result row must contain these fields. Units and source definitions are duplicated in `docs/public/benchmarks/results.schema.json` for machine consumers.
 
 | Field | Unit | Source |
 | --- | --- | --- |
@@ -79,14 +79,14 @@ A future executable harness should:
 3. Execute `smoke`, `small`, and `medium` profiles by default; gate `large` behind an explicit flag.
 4. Measure cold start separately from warm throughput.
 5. Measure validation and explanation overhead as delta timings against the same scenario/input profile.
-6. Emit JSON matching `docs/benchmarks/results.schema.json`.
+6. Emit JSON matching `docs/public/benchmarks/results.schema.json`.
 7. Set `result_kind: "actual_benchmark"`, `is_placeholder: false`, and `claims_allowed: true` only for real measured output.
 
 ## Visual asset consumers
 
 The first visual asset bundle can safely bind to these paths:
 
-- Schema: `docs/benchmarks/results.schema.json`
+- Schema: `docs/public/benchmarks/results.schema.json`
 - Placeholder sample: `benchmarks/sample-results.placeholder.json`
 - Methodology: `docs/benchmarks/methodology.md`
 
