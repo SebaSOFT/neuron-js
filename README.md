@@ -59,10 +59,9 @@ Measured throughput, cold-start, bundle-size, validation, and explanation overhe
 
 ### Methodology and inspectability
 
-- Benchmark methodology and result contract: [`docs/benchmarks/methodology.md`](docs/benchmarks/methodology.md)
-- Explainability proof metadata and alt text: [`docs/benchmarks/assets/generated/explainability-trace-diagram.md`](docs/benchmarks/assets/generated/explainability-trace-diagram.md)
-- Visual proof system and publication guardrails: [`docs/benchmarks/visual-proof-system.md`](docs/benchmarks/visual-proof-system.md)
-- Playground README demo capture spec: [`docs/playground/readme-demo-capture.md`](docs/playground/readme-demo-capture.md)
+- Benchmark methodology (how each metric is measured): [`docs/benchmarks/methodology.md`](docs/benchmarks/methodology.md)
+- AI-rule safety (why AI-drafted rules need validation): [`docs/benchmarks/ai-rule-safety.md`](docs/benchmarks/ai-rule-safety.md)
+- Proof overview and explainability diagram: [`docs/benchmarks/`](docs/benchmarks/)
 
 ---
 
@@ -184,7 +183,7 @@ Available adoption assets:
 
 - Runnable examples: [`examples/`](examples/) including n8n and LangGraph workflow automation recipes
 - JSON Schemas, validation, and explain output: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
-- Benchmark methodology, visual proof, and playground capture specifications: [`docs/benchmarks/`](docs/benchmarks/) and [`docs/playground/readme-demo-capture.md`](docs/playground/readme-demo-capture.md)
+- Measured benchmarks, methodology, and AI-rule-safety proof: [`docs/benchmarks/`](docs/benchmarks/)
 - Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for choosing and migrating from json-rules-engine, JsonLogic, node-rules, and hand-written if/else
 - AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), [`docs/public/llms-full.txt`](docs/public/llms-full.txt), and [`docs/public/skills/neuron-js/SKILL.md`](docs/public/skills/neuron-js/SKILL.md)
 

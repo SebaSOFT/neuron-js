@@ -1,44 +1,30 @@
-# Benchmarks and visual proof
+# Benchmarks & proof
 
-NJS-GROWTH-07 defines the public proof system for Neuron-JS benchmarks, playground captures, explanation diagrams, README media, and social proof assets.
+Honest, reproducible evidence that Neuron-JS is fast enough, small enough, and — above
+all — inspectable. Every number on these pages comes from a real benchmark run you can
+reproduce with `yarn benchmark`; nothing is hand-entered.
 
-Benchmark numbers come from measured harness output only. The [benchmark results](./results.md) are now published from a real `actual_benchmark` run; the rest of this section documents the methodology and generation system behind them.
+## What's here
 
-## Files
+- **[Benchmark results](./results.md)** — measured throughput, cold-start, bundle-size,
+  validation, and explanation-overhead, compared against `json-rules-engine`,
+  `json-logic-js`, a hand-coded TypeScript baseline, and `rule-engine-js`.
+- **[Methodology](./methodology.md)** — what we compare, how each metric is measured, and
+  our no-fabricated-numbers policy.
+- **[AI-rule safety](./ai-rule-safety.md)** — why AI-drafted JSON rules still need schema
+  validation, a developer-owned registry, and explanation traces before production.
 
-- [Benchmark results](./results.md): measured throughput, cold-start, bundle-size, validation, and explanation-overhead charts plus the full results table and provenance.
-- [Benchmark methodology and result contract](./methodology.md): competitor set, scenario matrix, input-size matrix, metric definitions, and placeholder-data policy.
-- [Result JSON schema](/benchmarks/results.schema.json): machine-readable contract for benchmark output and downstream chart data.
-- [Visual proof system](./visual-proof-system.md): palette, typography, composition, diagram style, chart rules, social-card constraints, and README proof strip guidance.
-- [Benchmark visual pack plan](./benchmark-visual-pack.md): chart asset matrix, aspect ratios, channel guardrails, draft prompt paths, and publication blocker.
-- [Explainability trace diagram metadata](./assets/generated/explainability-trace-diagram.md): source grounding, caption, alt text, integrity notes, and README-safe SVG path.
-- [Methodology card metadata](./assets/generated/methodology-card.md): caption, alt text, and integrity notes for the no-fake-numbers methodology card.
-- [AI-rule-safety carousel metadata](./assets/generated/ai-rule-safety-carousel.md): five-slide qualitative carousel on safe AI-generated JSON rules, with per-slide alt text.
-- [Visual proof prompt kit](./prompt-kit.md): reusable prompts for benchmark infographics, explainability trace diagrams, playground README GIF storyboards, AI-rule safety carousels, and README proof strips.
-- [Playground README demo capture specification](../playground/readme-demo-capture.md): route, selectors, storyboard, future capture command, and fixture-backed result contract.
-- [Asset folder recommendation](./assets/): recommended `docs/benchmarks/assets/` structure and data-integrity rules.
+## How a rule becomes an explainable decision
 
-## Proof promise
+Neuron-JS turns serializable JSON rules into deterministic, auditable decisions: input and
+rule JSON are schema-validated, executed through a developer-owned registry and Synapse, and
+returned with an explanation trace showing why a rule matched or failed.
 
-Neuron-JS visual proof assets should make four claims visible:
+![Neuron-JS diagram showing rule JSON and business input flowing through schema validation, developer registry, deterministic Synapse evaluation, result output, explanation trace, and audit-ready decision.](./assets/generated/explainability-trace-diagram.svg)
+
+This makes four things visible:
 
 1. Rules are serializable JSON data.
 2. Schema validation happens before runtime.
 3. Execution is deterministic through a developer-owned registry and Synapse.
 4. Explanation traces show why a rule matched or failed.
-
-## README-safe proof visual
-
-The current README uses the explainability trace diagram because it is inspectable, asset-backed, and contains no benchmark numbers or superiority claims.
-
-![Neuron-JS diagram showing rule JSON and business input flowing through schema validation, developer registry, deterministic Synapse evaluation, result output, explanation trace, and audit-ready decision.](./assets/generated/explainability-trace-diagram.svg)
-
-Supporting files:
-
-- SVG asset: [`assets/generated/explainability-trace-diagram.svg`](./assets/generated/explainability-trace-diagram.svg)
-- Metadata, caption, and integrity notes: [`assets/generated/explainability-trace-diagram.md`](./assets/generated/explainability-trace-diagram.md)
-- HTML preview wrapper: [`assets/generated/explainability-trace-diagram.html`](./assets/generated/explainability-trace-diagram.html)
-
-## Data policy
-
-Do not fabricate benchmark results. When data is unavailable, use non-numeric structure, empty states, or labels such as `pending measured data`.

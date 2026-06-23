@@ -44,16 +44,12 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Proof Assets',
+        text: 'Benchmarks & Proof',
         items: [
-          { text: 'Benchmarks & Visual Proof', link: '/benchmarks/' },
+          { text: 'Overview', link: '/benchmarks/' },
           { text: 'Benchmark Results', link: '/benchmarks/results' },
-          { text: 'Benchmark Methodology', link: '/benchmarks/methodology' },
-          { text: 'Visual Proof System', link: '/benchmarks/visual-proof-system' },
-          { text: 'Benchmark Visual Pack', link: '/benchmarks/benchmark-visual-pack' },
-          { text: 'Playground Capture Spec', link: '/playground/readme-demo-capture' },
-          { text: 'Prompt Kit', link: '/benchmarks/prompt-kit' },
-          { text: 'Asset Folder', link: '/benchmarks/assets/' }
+          { text: 'Methodology', link: '/benchmarks/methodology' },
+          { text: 'AI-Rule Safety', link: '/benchmarks/ai-rule-safety' }
         ]
       },
       {
