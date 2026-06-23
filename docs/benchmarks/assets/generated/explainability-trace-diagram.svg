@@ -1,30 +1,858 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
-  <title id="title">From JSON rule to explainable decision</title>
-  <desc id="desc">Neuron-JS inspectability diagram showing business input and serializable rule JSON passing through schema validation, developer-owned registry constraints, deterministic Synapse evaluation, result output, match/fail trace, and audit-ready decision. A dashed error branch shows validation errors returning to a repair loop.</desc>
-  <metadata>Asset: NJS-GROWTH-07 explainability-trace-diagram. Package: @sebasoft/neuron-js. Sources: docs/schemas-validation-explainability.md, docs/benchmarks/visual-proof-system.md, docs/benchmarks/prompt-kit.md, internal NJS-GROWTH-07 research notes. Integrity: no benchmark or performance claims.</metadata>
-  <defs>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0v40" fill="none" stroke="#1e293b" stroke-width="0.7"/></pattern>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    <marker id="cyanArrow" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto"><path d="M0 0l12 4-12 4z" fill="#22d3ee"/></marker>
-    <marker id="violetArrow" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto"><path d="M0 0l12 4-12 4z" fill="#a78bfa"/></marker>
-    <marker id="roseArrow" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto"><path d="M0 0l12 4-12 4z" fill="#fb7185"/></marker>
-    <style><![CDATA[
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1600"
+   height="900"
+   viewBox="0 0 1600 900"
+   role="img"
+   aria-labelledby="title desc"
+   version="1.1"
+   id="svg57"
+   sodipodi:docname="explainability-trace-diagram.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview57"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="0.355"
+     inkscape:cx="549.29577"
+     inkscape:cy="26.760563"
+     inkscape:window-width="1920"
+     inkscape:window-height="1022"
+     inkscape:window-x="1728"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg57" />
+  <title
+     id="title">From JSON rule to explainable decision</title>
+  <desc
+     id="desc">Neuron-JS inspectability diagram showing business input and serializable rule JSON passing through schema validation, developer-owned registry constraints, deterministic Synapse evaluation, result output, match/fail trace, and audit-ready decision. A dashed error branch shows validation errors returning to a repair loop.</desc>
+  <metadata
+     id="metadata1">Asset: NJS-GROWTH-07 explainability-trace-diagram. Package: @sebasoft/neuron-js. Sources: docs/schemas-validation-explainability.md, docs/benchmarks/visual-proof-system.md, docs/benchmarks/prompt-kit.md, internal NJS-GROWTH-07 research notes. Integrity: no benchmark or performance claims.</metadata>
+  <defs
+     id="defs4">
+    <pattern
+       id="grid"
+       width="40"
+       height="40"
+       patternUnits="userSpaceOnUse">
+      <path
+         d="M40 0H0v40"
+         fill="none"
+         stroke="#1e293b"
+         stroke-width="0.7"
+         id="path1" />
+    </pattern>
+    <filter
+       id="glow"
+       x="-0.36"
+       y="-0.36"
+       width="1.72"
+       height="1.72">
+      <feGaussianBlur
+         stdDeviation="3"
+         result="b"
+         id="feGaussianBlur1" />
+      <feMerge
+         id="feMerge2">
+        <feMergeNode
+           in="b"
+           id="feMergeNode1" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode2" />
+      </feMerge>
+    </filter>
+    <marker
+       id="cyanArrow"
+       markerWidth="12"
+       markerHeight="8"
+       refX="10"
+       refY="4"
+       orient="auto">
+      <path
+         d="M0 0l12 4-12 4z"
+         fill="#22d3ee"
+         id="path2" />
+    </marker>
+    <marker
+       id="violetArrow"
+       markerWidth="12"
+       markerHeight="8"
+       refX="10"
+       refY="4"
+       orient="auto">
+      <path
+         d="M0 0l12 4-12 4z"
+         fill="#a78bfa"
+         id="path3" />
+    </marker>
+    <marker
+       id="roseArrow"
+       markerWidth="12"
+       markerHeight="8"
+       refX="10"
+       refY="4"
+       orient="auto">
+      <path
+         d="M0 0l12 4-12 4z"
+         fill="#fb7185"
+         id="path4" />
+    </marker>
+    <style
+       id="style4"><![CDATA[
       .bg{fill:#020617}.card{fill:#0f172a}.text{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#e5e7eb}.mono{font-family:"JetBrains Mono",SFMono-Regular,Menlo,Consolas,monospace;fill:#e5e7eb}.muted{fill:#94a3b8}.title{font-size:44px;font-weight:750;letter-spacing:-.04em}.cap{font-size:20px;font-weight:500}.nodeTitle{font-size:23px;font-weight:700}.nodeSub{font-size:16px;font-weight:500}.tiny{font-size:14px;font-weight:500}.label{font-size:22px;font-weight:650}.micro{font-size:18px;font-weight:500}
     ]]></style>
   </defs>
-  <rect class="bg" width="1600" height="900"/><rect width="1600" height="900" fill="url(#grid)" opacity=".72"/><rect x="32" y="32" width="1536" height="836" rx="28" fill="rgba(15,23,42,.62)" stroke="#1e293b" stroke-width="2"/>
-  <circle cx="78" cy="78" r="10" fill="#22d3ee" filter="url(#glow)"/><text x="104" y="92" class="text title">From JSON rule to explainable decision</text><text x="104" y="126" class="text cap muted">@sebasoft/neuron-js: validate inputs, constrain execution vocabulary, run deterministically, then inspect why a rule matched or failed.</text>
-  <rect x="1120" y="62" width="388" height="72" rx="14" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-width="1.5"/><text x="1144" y="91" class="mono micro" fill="#fbbf24">Integrity note</text><text x="1144" y="118" class="mono tiny muted">No benchmark numbers or speed claims in this asset.</text>
-  <path d="M252 390h79M498 390h79M744 390h79M990 390h79" fill="none" stroke="#22d3ee" stroke-width="4" marker-end="url(#cyanArrow)"/><path d="M1236 390h79" fill="none" stroke="#a78bfa" stroke-width="4" marker-end="url(#violetArrow)"/>
-  <path d="M414 500c0 110-100 140-194 140" fill="none" stroke="#fb7185" stroke-width="3" stroke-dasharray="10 9" marker-end="url(#roseArrow)"/><path d="M390 615c86 23 140-21 195-107" fill="none" stroke="#fb7185" stroke-width="2.5" stroke-dasharray="8 8" marker-end="url(#roseArrow)" opacity=".76"/><path d="M660 284c-10-62 36-98 110-98" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="8 7" marker-end="url(#cyanArrow)"/>
-  <g transform="translate(86 282)"><rect width="166" height="216" rx="16" class="card"/><rect width="166" height="216" rx="16" fill="rgba(8,51,68,.42)" stroke="#22d3ee" stroke-width="2"/><text x="20" y="38" class="text nodeTitle">Business input</text><text x="20" y="66" class="mono nodeSub muted">Rule JSON + data</text><rect x="18" y="88" width="130" height="92" rx="10" fill="#111827" stroke="#1e293b"/><text x="32" y="116" class="mono tiny" fill="#22d3ee">script.id</text><text x="32" y="140" class="mono tiny muted">pricing-rules</text><text x="32" y="164" class="mono tiny" fill="#22d3ee">cart.total</text><text x="32" y="188" class="mono tiny muted">125.00</text></g>
-  <g transform="translate(332 282)"><rect width="166" height="216" rx="16" class="card"/><rect width="166" height="216" rx="16" fill="rgba(6,78,59,.42)" stroke="#34d399" stroke-width="2"/><text x="20" y="38" class="text nodeTitle">Schema validation</text><text x="20" y="66" class="mono nodeSub muted">validateScript()</text><circle cx="36" cy="112" r="16" fill="rgba(52,211,153,.16)" stroke="#34d399" stroke-width="2"/><path d="M28 112l6 7 12-15" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round"/><text x="62" y="118" class="mono nodeSub">known shape</text><text x="24" y="158" class="mono tiny muted">Invalid paths return</text><text x="24" y="180" class="mono tiny" fill="#fb7185">$.rules[0].actions</text></g>
-  <g transform="translate(578 282)"><rect width="166" height="216" rx="16" class="card"/><rect width="166" height="216" rx="16" fill="rgba(120,53,15,.30)" stroke="#fbbf24" stroke-width="2"/><text x="20" y="38" class="text nodeTitle">Registry</text><text x="20" y="66" class="mono nodeSub muted">developer-owned</text><rect x="20" y="92" width="126" height="34" rx="8" fill="#111827" stroke="#334155"/><text x="34" y="115" class="mono tiny">Conditions</text><rect x="20" y="138" width="126" height="34" rx="8" fill="#111827" stroke="#334155"/><text x="34" y="161" class="mono tiny">Actions</text><rect x="20" y="184" width="126" height="20" rx="6" fill="rgba(251,191,36,.10)" stroke="#fbbf24"/><text x="34" y="199" class="mono tiny" fill="#fbbf24">No arbitrary code</text></g>
-  <g transform="translate(824 282)"><rect width="166" height="216" rx="16" class="card"/><rect width="166" height="216" rx="16" fill="rgba(8,51,68,.42)" stroke="#22d3ee" stroke-width="2"/><text x="20" y="38" class="text nodeTitle">Synapse</text><text x="20" y="66" class="mono nodeSub muted">deterministic run</text><path d="M42 102h82M42 136h82M42 170h82" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" opacity=".75"/><circle cx="42" cy="102" r="7" fill="#22d3ee"/><circle cx="124" cy="136" r="7" fill="#22d3ee"/><circle cx="42" cy="170" r="7" fill="#22d3ee"/><text x="20" y="204" class="mono tiny muted">same input -> same result</text></g>
-  <g transform="translate(1070 282)"><rect width="166" height="216" rx="16" class="card"/><rect width="166" height="216" rx="16" fill="rgba(76,29,149,.42)" stroke="#a78bfa" stroke-width="2"/><text x="20" y="38" class="text nodeTitle">Result object</text><text x="20" y="66" class="mono nodeSub muted">normalized output</text><rect x="20" y="88" width="126" height="92" rx="10" fill="#111827" stroke="#1e293b"/><text x="34" y="116" class="mono tiny" fill="#34d399">ok: true</text><text x="34" y="140" class="mono tiny muted">rulesExecuted: 1</text><text x="34" y="164" class="mono tiny muted">messages: [...]</text><text x="20" y="204" class="mono tiny muted">stable for tests/logs</text></g>
-  <g transform="translate(1316 282)"><rect width="198" height="216" rx="16" class="card"/><rect width="198" height="216" rx="16" fill="rgba(76,29,149,.42)" stroke="#a78bfa" stroke-width="2"/><text x="20" y="38" class="text nodeTitle">Match/fail trace</text><text x="20" y="66" class="mono nodeSub muted">why it happened</text><g transform="translate(24 94)"><circle cx="8" cy="8" r="7" fill="#a78bfa"/><line x1="8" y1="18" x2="8" y2="44" stroke="#a78bfa" stroke-width="2"/><circle cx="8" cy="54" r="7" fill="#a78bfa"/><line x1="8" y1="64" x2="8" y2="90" stroke="#a78bfa" stroke-width="2"/><circle cx="8" cy="100" r="7" fill="#a78bfa"/><text x="28" y="13" class="mono tiny muted">script_received</text><text x="28" y="59" class="mono tiny muted">rule_available</text><text x="28" y="105" class="mono tiny muted">execution_completed</text></g></g>
-  <g transform="translate(92 608)"><rect width="260" height="92" rx="14" class="card"/><rect width="260" height="92" rx="14" fill="rgba(136,19,55,.32)" stroke="#fb7185" stroke-width="2" stroke-dasharray="8 6"/><text x="22" y="34" class="text label">Validation errors</text><text x="22" y="64" class="mono nodeSub muted">exact JSON paths guide repair</text></g><g transform="translate(458 608)"><rect width="246" height="92" rx="14" class="card"/><rect width="246" height="92" rx="14" fill="rgba(136,19,55,.20)" stroke="#fb7185" stroke-width="2" stroke-dasharray="8 6"/><text x="22" y="34" class="text label">Repair loop</text><text x="22" y="64" class="mono nodeSub muted">fix input before execution</text></g>
-  <g transform="translate(770 152)"><rect width="470" height="84" rx="16" class="card"/><rect width="470" height="84" rx="16" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-width="2"/><text x="24" y="34" class="text label">Control boundary</text><text x="24" y="62" class="mono nodeSub muted">Only approved actions, conditions, parameters, and rules can execute.</text></g>
-  <g transform="translate(1148 608)"><rect width="366" height="112" rx="18" class="card"/><rect width="366" height="112" rx="18" fill="rgba(76,29,149,.20)" stroke="#a78bfa" stroke-width="2"/><text x="24" y="38" class="text label">Audit-ready decision</text><text x="24" y="70" class="mono nodeSub muted">deterministic result + explanation trace</text><text x="24" y="94" class="mono tiny" fill="#a78bfa">review, snapshot, log, or support ticket</text></g><path d="M1415 500v106" fill="none" stroke="#a78bfa" stroke-width="3.5" marker-end="url(#violetArrow)"/>
-  <g transform="translate(86 768)"><rect width="1428" height="58" rx="15" fill="rgba(15,23,42,.78)" stroke="#1e293b"/><text x="24" y="37" class="mono micro" fill="#22d3ee">Inspectability path:</text><text x="238" y="37" class="mono micro muted">Business input -> schema validation -> registry -> rule evaluation -> match/fail trace -> deterministic decision</text></g>
+  <rect
+     class="bg"
+     width="1600"
+     height="900"
+     id="rect4" />
+  <rect
+     width="1600"
+     height="900"
+     fill="url(#grid)"
+     opacity=".72"
+     id="rect5" />
+  <rect
+     x="32"
+     y="32"
+     width="1536"
+     height="836"
+     rx="28"
+     fill="rgba(15,23,42,.62)"
+     stroke="#1e293b"
+     stroke-width="2"
+     id="rect6" />
+  <circle
+     cx="78"
+     cy="78"
+     r="10"
+     fill="#22d3ee"
+     filter="url(#glow)"
+     id="circle6" />
+  <text
+     x="104"
+     y="92"
+     class="text title"
+     id="text6">From JSON rule to explainable decision</text>
+  <text
+     x="104"
+     y="126"
+     class="text cap muted"
+     id="text7"
+     style="white-space:pre;inline-size:988.134"
+     xml:space="preserve"><tspan
+       x="104"
+       y="126"
+       id="tspan1">@sebasoft/neuron-js: validate inputs, constrain execution vocabulary, run deterministically, then </tspan><tspan
+       x="104"
+       y="150.99999"
+       id="tspan2">inspect why a rule matched or failed.</tspan></text>
+  <rect
+     x="1156.6198"
+     y="48.734375"
+     width="388"
+     height="72"
+     rx="14"
+     fill="rgba(251,191,36,.08)"
+     stroke="#fbbf24"
+     stroke-width="1.5"
+     id="rect7" />
+  <text
+     x="1170.0889"
+     y="69.9879"
+     class="mono micro"
+     fill="#fbbf24"
+     id="text8">Integrity note</text>
+  <text
+     x="1171.7256"
+     y="90.388672"
+     class="mono tiny muted"
+     id="text9"
+     style="white-space:pre;inline-size:361.582"
+     xml:space="preserve"><tspan
+       x="1171.7256"
+       y="90.388672"
+       id="tspan3">No benchmark numbers or speed claims in </tspan><tspan
+       x="1171.7256"
+       y="107.88867"
+       id="tspan4">this asset.</tspan></text>
+  <path
+     d="M252 390h79M498 390h79M744 390h79M990 390h79"
+     fill="none"
+     stroke="#22d3ee"
+     stroke-width="4"
+     marker-end="url(#cyanArrow)"
+     id="path9" />
+  <path
+     d="M1236 390h79"
+     fill="none"
+     stroke="#a78bfa"
+     stroke-width="4"
+     marker-end="url(#violetArrow)"
+     id="path10" />
+  <path
+     d="M414 500c0 110-100 140-194 140"
+     fill="none"
+     stroke="#fb7185"
+     stroke-width="3"
+     stroke-dasharray="10 9"
+     marker-end="url(#roseArrow)"
+     id="path11" />
+  <path
+     d="M390 615c86 23 140-21 195-107"
+     fill="none"
+     stroke="#fb7185"
+     stroke-width="2.5"
+     stroke-dasharray="8 8"
+     marker-end="url(#roseArrow)"
+     opacity=".76"
+     id="path12" />
+  <path
+     d="M660 284c-10-62 36-98 110-98"
+     fill="none"
+     stroke="#fbbf24"
+     stroke-width="2.5"
+     stroke-dasharray="8 7"
+     marker-end="url(#cyanArrow)"
+     id="path13" />
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     class="card"
+     id="rect13"
+     x="86"
+     y="282" />
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     fill="rgba(8,51,68,.42)"
+     stroke="#22d3ee"
+     stroke-width="2"
+     id="rect14"
+     x="86"
+     y="282" />
+  <text
+     x="92.555008"
+     y="308.18665"
+     class="text nodeTitle"
+     id="text14"
+     style="white-space:pre;inline-size:159.445"
+     xml:space="preserve"><tspan
+       x="92.555008"
+       y="308.18665"
+       id="tspan5">Business </tspan><tspan
+       x="92.555008"
+       y="336.93663"
+       id="tspan6">input</tspan></text>
+  <text
+     x="90.929665"
+     y="359.6741"
+     class="mono nodeSub muted"
+     id="text15">Rule JSON + data</text>
+  <rect
+     x="94.08709"
+     y="371.44144"
+     width="129.90732"
+     height="109.92294"
+     rx="9.9928703"
+     fill="#111827"
+     stroke="#1e293b"
+     id="rect15"
+     style="stroke-width:1.09269" />
+  <text
+     x="108.04075"
+     y="399.39508"
+     class="mono tiny"
+     fill="#22d3ee"
+     id="text16">script.id</text>
+  <text
+     x="108.04075"
+     y="423.39508"
+     class="mono tiny muted"
+     id="text17">pricing-rules</text>
+  <text
+     x="108.04075"
+     y="447.39508"
+     class="mono tiny"
+     fill="#22d3ee"
+     id="text18">cart.total</text>
+  <text
+     x="108.04075"
+     y="471.39508"
+     class="mono tiny muted"
+     id="text19">125.00</text>
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     class="card"
+     id="rect19"
+     x="332"
+     y="282" />
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     fill="rgba(6,78,59,.42)"
+     stroke="#34d399"
+     stroke-width="2"
+     id="rect20"
+     x="332"
+     y="282" />
+  <text
+     x="339.55713"
+     y="308.04889"
+     class="text nodeTitle"
+     id="text20"
+     style="white-space:pre;inline-size:147.521"
+     xml:space="preserve"><tspan
+       x="339.55713"
+       y="308.04889"
+       id="tspan7">Schema </tspan><tspan
+       x="339.55713"
+       y="336.79887"
+       id="tspan8">validation</tspan></text>
+  <text
+     x="339.21094"
+     y="360.39285"
+     class="mono nodeSub muted"
+     id="text21">validateScript()</text>
+  <circle
+     cx="356"
+     cy="394"
+     r="16"
+     fill="rgba(52,211,153,.16)"
+     stroke="#34d399"
+     stroke-width="2"
+     id="circle21" />
+  <path
+     d="m 348,394 6,7 12,-15"
+     fill="none"
+     stroke="#34d399"
+     stroke-width="3"
+     stroke-linecap="round"
+     id="path21" />
+  <text
+     x="382"
+     y="400"
+     class="mono nodeSub"
+     id="text22">known shape</text>
+  <text
+     x="340.12677"
+     y="426.95676"
+     class="mono tiny muted"
+     id="text23"
+     style="white-space:pre;inline-size:146.951"
+     xml:space="preserve"><tspan
+       x="340.12677"
+       y="426.95676"
+       id="tspan9">Invalid paths </tspan><tspan
+       x="340.12677"
+       y="444.45676"
+       id="tspan10">return</tspan></text>
+  <text
+     x="337.70117"
+     y="472.64691"
+     class="mono tiny"
+     fill="#fb7185"
+     id="text24">$.rules[0].actions</text>
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     class="card"
+     id="rect24"
+     x="578"
+     y="282" />
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     fill="rgba(120,53,15,.30)"
+     stroke="#fbbf24"
+     stroke-width="2"
+     id="rect25"
+     x="578"
+     y="282" />
+  <text
+     x="580.07336"
+     y="308.04889"
+     class="text nodeTitle"
+     id="text25">Registry</text>
+  <text
+     x="584.09003"
+     y="360.39285"
+     class="mono nodeSub muted"
+     id="text26">developer-owned</text>
+  <rect
+     x="585.46545"
+     y="375.39499"
+     width="126.17097"
+     height="23.336012"
+     rx="8.0108557"
+     fill="#111827"
+     stroke="#334155"
+     id="rect26"
+     style="stroke-width:0.829026" />
+  <text
+     x="593.07745"
+     y="392.28223"
+     class="mono tiny"
+     id="text27">Conditions</text>
+  <rect
+     x="585.50049"
+     y="407.94952"
+     width="126.10095"
+     height="27.459778"
+     rx="8.0064096"
+     fill="#111827"
+     stroke="#334155"
+     id="rect27"
+     style="stroke-width:0.899048" />
+  <text
+     x="594.57135"
+     y="426.88156"
+     class="mono tiny"
+     id="text28">Actions</text>
+  <rect
+     x="585.72174"
+     y="452.59747"
+     width="150.55649"
+     height="30.125687"
+     rx="7.1693568"
+     fill="rgba(251,191,36,.10)"
+     stroke="#fbbf24"
+     id="rect28"
+     style="stroke-width:1.34158" />
+  <text
+     x="589.67725"
+     y="471.96332"
+     class="mono tiny"
+     fill="#fbbf24"
+     id="text29">No arbitrary code</text>
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     class="card"
+     id="rect29"
+     x="824"
+     y="282" />
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     fill="rgba(8,51,68,.42)"
+     stroke="#22d3ee"
+     stroke-width="2"
+     id="rect30"
+     x="824"
+     y="282" />
+  <text
+     x="832.54688"
+     y="307.59967"
+     class="text nodeTitle"
+     id="text30">Synapse</text>
+  <text
+     x="832.81006"
+     y="359.45312"
+     class="mono nodeSub muted"
+     id="text31"
+     style="white-space:pre;inline-size:152.412"
+     xml:space="preserve"><tspan
+       x="832.81006"
+       y="359.45312"
+       id="tspan11">deterministic </tspan><tspan
+       x="832.81006"
+       y="379.45312"
+       id="tspan12">run</tspan></text>
+  <path
+     d="m 866,393.50098 h 82 m -82,34 h 82 m -82,34 h 82"
+     stroke="#22d3ee"
+     stroke-width="3"
+     stroke-linecap="round"
+     opacity="0.75"
+     id="path31" />
+  <circle
+     cx="866"
+     cy="393.50098"
+     r="7"
+     fill="#22d3ee"
+     id="circle31" />
+  <circle
+     cx="948"
+     cy="427.50098"
+     r="7"
+     fill="#22d3ee"
+     id="circle32" />
+  <circle
+     cx="866"
+     cy="461.50098"
+     r="7"
+     fill="#22d3ee"
+     id="circle33" />
+  <text
+     x="1022.8339"
+     y="396.43793"
+     class="mono tiny muted"
+     id="text33"
+     transform="scale(0.81478528,1.2273172)"
+     style="font-size:12px;stroke-width:0.665706">same input -&gt; same result</text>
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     class="card"
+     id="rect33"
+     x="1070"
+     y="282" />
+  <rect
+     width="166"
+     height="216"
+     rx="16"
+     fill="rgba(76,29,149,.42)"
+     stroke="#a78bfa"
+     stroke-width="2"
+     id="rect34"
+     x="1070"
+     y="282" />
+  <text
+     x="1078.049"
+     y="308.37451"
+     class="text nodeTitle"
+     id="text34"
+     style="white-space:pre;inline-size:148.875"
+     xml:space="preserve"><tspan
+       x="1078.049"
+       y="308.37451"
+       id="tspan13">Result </tspan><tspan
+       x="1078.049"
+       y="337.1245"
+       id="tspan14">object</tspan></text>
+  <text
+     x="1073.8125"
+     y="359.5"
+     class="mono nodeSub muted"
+     id="text35"
+     style="white-space:pre;inline-size:137.758"
+     xml:space="preserve"><tspan
+       x="1073.8125"
+       y="359.5"
+       id="tspan15">normalized </tspan><tspan
+       x="1073.8125"
+       y="379.5"
+       id="tspan16">output</tspan></text>
+  <rect
+     x="1078.8944"
+     y="383.21774"
+     width="147.49518"
+     height="89.69313"
+     rx="11.705967"
+     fill="#111827"
+     stroke="#1e293b"
+     id="rect35"
+     style="stroke-width:1.06829" />
+  <text
+     x="1084.8081"
+     y="406.41162"
+     class="mono tiny"
+     fill="#34d399"
+     id="text36">ok: true</text>
+  <text
+     x="1084.8081"
+     y="430.41162"
+     class="mono tiny muted"
+     id="text37">rulesExecuted: 1</text>
+  <text
+     x="1084.8081"
+     y="454.41162"
+     class="mono tiny muted"
+     id="text38">messages: [...]</text>
+  <text
+     x="1077.1123"
+     y="486.28711"
+     class="mono tiny muted"
+     id="text39"
+     style="font-size:12px">stable for tests/logs</text>
+  <rect
+     width="198"
+     height="216"
+     rx="16"
+     class="card"
+     id="rect39"
+     x="1316"
+     y="282" />
+  <rect
+     width="198"
+     height="216"
+     rx="16"
+     fill="rgba(76,29,149,.42)"
+     stroke="#a78bfa"
+     stroke-width="2"
+     id="rect40"
+     x="1316"
+     y="282" />
+  <text
+     x="1320.8662"
+     y="308.48682"
+     class="text nodeTitle"
+     id="text40"
+     style="white-space:pre;inline-size:185.974"
+     xml:space="preserve"><tspan
+       x="1320.8662"
+       y="308.48682"
+       id="tspan17">Match/fail </tspan><tspan
+       x="1320.8662"
+       y="337.2368"
+       id="tspan18">trace</tspan></text>
+  <text
+     x="1323"
+     y="359.45312"
+     class="mono nodeSub muted"
+     id="text41">why it happened</text>
+  <g
+     transform="translate(1320,376.49796)"
+     id="g45">
+    <circle
+       cx="8"
+       cy="8"
+       r="7"
+       fill="#a78bfa"
+       id="circle41" />
+    <line
+       x1="8"
+       y1="18"
+       x2="8"
+       y2="44"
+       stroke="#a78bfa"
+       stroke-width="2"
+       id="line41" />
+    <circle
+       cx="8"
+       cy="54"
+       r="7"
+       fill="#a78bfa"
+       id="circle42" />
+    <line
+       x1="8"
+       y1="64"
+       x2="8"
+       y2="90"
+       stroke="#a78bfa"
+       stroke-width="2"
+       id="line42" />
+    <circle
+       cx="8"
+       cy="100"
+       r="7"
+       fill="#a78bfa"
+       id="circle43" />
+    <text
+       x="28"
+       y="13"
+       class="mono tiny muted"
+       id="text43">script_received</text>
+    <text
+       x="28"
+       y="59"
+       class="mono tiny muted"
+       id="text44">rule_available</text>
+    <text
+       x="28"
+       y="105"
+       class="mono tiny muted"
+       id="text45">execution_completed</text>
+  </g>
+  <rect
+     width="260"
+     height="92"
+     rx="14"
+     class="card"
+     id="rect46"
+     x="92"
+     y="608" />
+  <rect
+     width="260"
+     height="92"
+     rx="14"
+     fill="rgba(136,19,55,.32)"
+     stroke="#fb7185"
+     stroke-width="2"
+     stroke-dasharray="8, 6"
+     id="rect47"
+     x="92"
+     y="608" />
+  <text
+     x="98.563164"
+     y="642"
+     class="text label"
+     id="text47">Validation errors</text>
+  <text
+     x="98.563164"
+     y="672"
+     class="mono nodeSub muted"
+     id="text48"
+     style="white-space:pre;inline-size:248.899"
+     xml:space="preserve"><tspan
+       x="98.563164"
+       y="672"
+       id="tspan19">exact JSON paths guide </tspan><tspan
+       x="98.563164"
+       y="692"
+       id="tspan20">repair</tspan></text>
+  <rect
+     width="246"
+     height="92"
+     rx="14"
+     class="card"
+     id="rect48"
+     x="458"
+     y="608" />
+  <rect
+     width="246"
+     height="92"
+     rx="14"
+     fill="rgba(136,19,55,.20)"
+     stroke="#fb7185"
+     stroke-width="2"
+     stroke-dasharray="8, 6"
+     id="rect49"
+     x="458"
+     y="608" />
+  <text
+     x="463.06927"
+     y="642"
+     class="text label"
+     id="text49">Repair loop</text>
+  <text
+     x="463.06927"
+     y="672"
+     class="mono nodeSub muted"
+     id="text50"
+     style="white-space:pre;inline-size:230.079"
+     xml:space="preserve"><tspan
+       x="463.06927"
+       y="672"
+       id="tspan21">fix input before </tspan><tspan
+       x="463.06927"
+       y="692"
+       id="tspan22">execution</tspan></text>
+  <rect
+     width="470"
+     height="84"
+     rx="16"
+     class="card"
+     id="rect50"
+     x="770"
+     y="152" />
+  <rect
+     width="470"
+     height="84"
+     rx="16"
+     fill="rgba(251,191,36,.08)"
+     stroke="#fbbf24"
+     stroke-width="2"
+     id="rect51"
+     x="770"
+     y="152" />
+  <text
+     x="781.32391"
+     y="181.59375"
+     class="text label"
+     id="text51">Control boundary</text>
+  <text
+     x="781.6452"
+     y="203.43661"
+     class="mono nodeSub muted"
+     id="text52"
+     style="white-space:pre;inline-size:445.279"
+     xml:space="preserve"><tspan
+       x="781.6452"
+       y="203.43661"
+       id="tspan23">Only approved actions, conditions, parameters, </tspan><tspan
+       x="781.6452"
+       y="223.43661"
+       id="tspan24">and rules can execute.</tspan></text>
+  <rect
+     width="366"
+     height="112"
+     rx="18"
+     class="card"
+     id="rect52"
+     x="1148"
+     y="608" />
+  <rect
+     width="366"
+     height="112"
+     rx="18"
+     fill="rgba(76,29,149,.20)"
+     stroke="#a78bfa"
+     stroke-width="2"
+     id="rect53"
+     x="1148"
+     y="608" />
+  <text
+     x="1158.5551"
+     y="636.04077"
+     class="text label"
+     id="text53">Audit-ready decision</text>
+  <text
+     x="1157.8734"
+     y="660.07336"
+     class="mono nodeSub muted"
+     id="text54"
+     style="white-space:pre;inline-size:349.901"
+     xml:space="preserve"><tspan
+       x="1157.8734"
+       y="660.07336"
+       id="tspan25">deterministic result + explanation </tspan><tspan
+       x="1157.8734"
+       y="680.07336"
+       id="tspan26">trace</tspan></text>
+  <text
+     x="1156.3594"
+     y="697.51831"
+     class="mono tiny"
+     fill="#a78bfa"
+     id="text55">review, snapshot, log, or support ticket</text>
+  <path
+     d="M1415 500v106"
+     fill="none"
+     stroke="#a78bfa"
+     stroke-width="3.5"
+     marker-end="url(#violetArrow)"
+     id="path55" />
+  <rect
+     width="1428"
+     height="58"
+     rx="15"
+     fill="rgba(15,23,42,.78)"
+     stroke="#1e293b"
+     id="rect55"
+     x="86"
+     y="768" />
+  <text
+     x="93.069275"
+     y="787.52734"
+     class="mono micro"
+     fill="#22d3ee"
+     id="text56">Inspectability path:</text>
+  <text
+     x="98.064453"
+     y="809.48169"
+     class="mono micro muted"
+     id="text57">Business input -&gt; schema validation -&gt; registry -&gt; rule evaluation -&gt; match/fail trace -&gt; deterministic decision</text>
 </svg>
