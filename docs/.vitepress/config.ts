@@ -12,6 +12,7 @@ export default defineConfig({
       { text: 'Concepts', link: '/overview' },
       { text: 'Examples', link: '/use-cases/runnable-examples' },
       { text: 'Schemas', link: '/schemas-validation-explainability' },
+      { text: 'Proof Assets', link: '/benchmarks/methodology' },
       { text: 'Comparisons', link: '/comparisons/' },
       { text: 'Integrations', link: '/integrations/' },
       { text: 'AI Docs', link: '/ai-coding-assistants' },
@@ -40,6 +41,16 @@ export default defineConfig({
           { text: 'Runnable Examples', link: '/use-cases/runnable-examples' },
           { text: 'Business Rules Engine', link: '/use-cases/business-rules-engine' },
           { text: 'Dynamic Routing', link: '/use-cases/dynamic-routing' }
+        ]
+      },
+      {
+        text: 'Proof Assets',
+        items: [
+          { text: 'Benchmarks & Visual Proof', link: '/benchmarks/' },
+          { text: 'Benchmarks', link: '/benchmarks/methodology' },
+          { text: 'Visual Proof System', link: '/benchmarks/visual-proof-system' },
+          { text: 'Prompt Kit', link: '/benchmarks/prompt-kit' },
+          { text: 'Asset Folder', link: '/benchmarks/assets/' }
         ]
       },
       {

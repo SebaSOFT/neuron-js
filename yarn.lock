@@ -860,6 +860,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jsep-plugin/assignment@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@jsep-plugin/assignment@npm:1.3.0"
+  peerDependencies:
+    jsep: ^0.4.0||^1.0.0
+  checksum: 10c0/d749554dc691798116eb068eebe2d9bcb0b0d89ef6c7cc7c2a9f37d03da15fdbf8053407e97008090cd1bd6f256ea6c26abbada7399cf79f0b6b502e164b084b
+  languageName: node
+  linkType: hard
+
+"@jsep-plugin/regex@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@jsep-plugin/regex@npm:1.0.4"
+  peerDependencies:
+    jsep: ^0.4.0||^1.0.0
+  checksum: 10c0/bec7eb7ea6ab453a2672edc808644c5be3dc06b2a9d77182e18cd595b37deba6dcdb3760849d8684afc5779a86b7d2604dd525cb612a548f9ed9f31a8032ec24
+  languageName: node
+  linkType: hard
+
 "@manypkg/find-root@npm:^1.1.0":
   version: 1.1.0
   resolution: "@manypkg/find-root@npm:1.1.0"
@@ -1229,7 +1247,11 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:^2.4.13"
     "@changesets/cli": "npm:^2.31.0"
+    "@types/json-logic-js": "npm:^2"
     "@types/node": "npm:^25.6.0"
+    json-logic-js: "npm:^2.0.5"
+    json-rules-engine: "npm:^7.3.1"
+    rule-engine-js: "npm:^1.0.7"
     tshy: "npm:^4.1.1"
     typedoc: "npm:^0.28.19"
     typedoc-plugin-markdown: "npm:^4.11.0"
@@ -1403,6 +1425,13 @@ __metadata:
   dependencies:
     "@types/unist": "npm:*"
   checksum: 10c0/3249781a511b38f1d330fd1e3344eed3c4e7ea8eff82e835d35da78e637480d36fad37a78be5a7aed8465d237ad0446abc1150859d0fde395354ea634decf9f7
+  languageName: node
+  linkType: hard
+
+"@types/json-logic-js@npm:^2":
+  version: 2.0.8
+  resolution: "@types/json-logic-js@npm:2.0.8"
+  checksum: 10c0/b1fc0b39242b8f1f939c86f47bfda213e1eb57686ee4dfbe11057df88fad0dbe0abc3582b72429975e8fb07b0267959d98341e5079ba945345931973538d2f43
   languageName: node
   linkType: hard
 
@@ -2031,6 +2060,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clone@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "clone@npm:2.1.2"
+  checksum: 10c0/ed0601cd0b1606bc7d82ee7175b97e68d1dd9b91fd1250a3617b38d34a095f8ee0431d40a1a611122dcccb4f93295b4fdb94942aa763392b5fe44effa50c2d5e
+  languageName: node
+  linkType: hard
+
 "comma-separated-tokens@npm:^2.0.0":
   version: 2.0.3
   resolution: "comma-separated-tokens@npm:2.0.3"
@@ -2262,6 +2298,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eventemitter2@npm:^6.4.4":
+  version: 6.4.9
+  resolution: "eventemitter2@npm:6.4.9"
+  checksum: 10c0/b2adf7d9f1544aa2d95ee271b0621acaf1e309d85ebcef1244fb0ebc7ab0afa6ffd5e371535d0981bc46195ad67fd6ff57a8d1db030584dee69aa5e371a27ea7
+  languageName: node
+  linkType: hard
+
 "expect-type@npm:^1.3.0":
   version: 1.3.0
   resolution: "expect-type@npm:1.3.0"
@@ -2436,6 +2479,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hash-it@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "hash-it@npm:6.0.1"
+  checksum: 10c0/b5abe8f6f3d3040522ba0ecb64a34eda7de653bae6db19bb260dad2eeafe1b0be5e88dc57a7200d2ed2f6537dd9549597950cde6424e0dac31cfea438b49ec13
+  languageName: node
+  linkType: hard
+
 "hast-util-to-html@npm:^9.0.4":
   version: 9.0.5
   resolution: "hast-util-to-html@npm:9.0.5"
@@ -2586,6 +2636,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsep@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "jsep@npm:1.4.0"
+  checksum: 10c0/fe60adf47e050e22eadced42514a51a15a3cf0e2d147896584486acd8ee670fc16641101b9aeb81f4aaba382043d29744b7aac41171e8106515b14f27e0c7116
+  languageName: node
+  linkType: hard
+
+"json-logic-js@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "json-logic-js@npm:2.0.5"
+  checksum: 10c0/c80d96a9f704dac2f4488c7119d9c94cbf67adbd93cb47eaa5b7eadc4947f18ed6d62fd5555f245cc2f87525f9e8d7bd5f70bd9e7fba2c70366e63bd68010f23
+  languageName: node
+  linkType: hard
+
+"json-rules-engine@npm:^7.3.1":
+  version: 7.3.1
+  resolution: "json-rules-engine@npm:7.3.1"
+  dependencies:
+    clone: "npm:^2.1.2"
+    eventemitter2: "npm:^6.4.4"
+    hash-it: "npm:^6.0.0"
+    jsonpath-plus: "npm:^10.3.0"
+  checksum: 10c0/2429358d7425232a2ccb830d0d3137e17c2b44218f772316efb98b9170945d1ae269798dd9f7af484b4b559e153d3c1de0a374dd3b41af58b0407171852b5cfe
+  languageName: node
+  linkType: hard
+
 "jsonc-simple-parser@npm:^3.0.0":
   version: 3.0.0
   resolution: "jsonc-simple-parser@npm:3.0.0"
@@ -2604,6 +2680,20 @@ __metadata:
     graceful-fs:
       optional: true
   checksum: 10c0/7dc94b628d57a66b71fb1b79510d460d662eb975b5f876d723f81549c2e9cd316d58a2ddf742b2b93a4fa6b17b2accaf1a738a0e2ea114bdfb13a32e5377e480
+  languageName: node
+  linkType: hard
+
+"jsonpath-plus@npm:^10.3.0":
+  version: 10.4.0
+  resolution: "jsonpath-plus@npm:10.4.0"
+  dependencies:
+    "@jsep-plugin/assignment": "npm:^1.3.0"
+    "@jsep-plugin/regex": "npm:^1.0.4"
+    jsep: "npm:^1.4.0"
+  bin:
+    jsonpath: bin/jsonpath-cli.js
+    jsonpath-plus: bin/jsonpath-cli.js
+  checksum: 10c0/500ace17c7b8d084f9e1284e96761722600909b8ddc1f3a5b18f9152ad9e1d63a61e3d713abd6d7141d4b61e1f632f1eb67b57be6a220b17b215b95ba050af07
   languageName: node
   linkType: hard
 
@@ -3439,6 +3529,13 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: 10c0/f67d6156fc5b895f33b929a4762392906d00fa5550f0a1f5e66519ab1c05d835aec5f201b4e748c29d1c87f024d3d9c4b0a2d1285668456db661d82b961d379c
+  languageName: node
+  linkType: hard
+
+"rule-engine-js@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "rule-engine-js@npm:1.0.7"
+  checksum: 10c0/6cc975b52dc670f67a7332f84111902cee8b3d612a7ff99204e5b453459234fc158ac8a96f97087e7c652c5c4034026e5000bba6ae23bdfd495d7add570ef4a9
   languageName: node
   linkType: hard
 
