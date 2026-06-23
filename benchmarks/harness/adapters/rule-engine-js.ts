@@ -19,3 +19,6 @@ export const ruleEngineJsAdapter: Adapter = {
     };
   },
 };
+
+/** Canonical export consumed by the cold-start probe. */
+export const adapter = ruleEngineJsAdapter;

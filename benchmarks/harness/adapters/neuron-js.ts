@@ -57,7 +57,14 @@ export const neuronJsAdapter: Adapter = {
             slaHours: workflow.slaHours as number,
           };
         }
+        default:
+          throw new Error(
+            `Unhandled scenario in neuronJsAdapter: ${scenario.id}`,
+          );
       }
     };
   },
 };
+
+/** Canonical export consumed by the cold-start probe. */
+export const adapter = neuronJsAdapter;

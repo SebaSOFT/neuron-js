@@ -19,6 +19,12 @@ import workflowScript from "../../examples/workflow-routing/rules.json" with {
 };
 import type { Decision, ScenarioDef } from "./types.ts";
 
+// Pricing inputs, declared once so the scenario data and the decision derivation
+// stay in sync (matches examples/pricing-rules).
+const PRICING_SUBTOTAL = 125;
+const PRICING_PERCENT = 16;
+const PRICING_DISCOUNT = Math.round(PRICING_SUBTOTAL * (PRICING_PERCENT / 100));
+
 /**
  * The three NJS-GROWTH-07 scenarios. Each is a single numeric-threshold decision
  * whose canonical output matches the runnable example expected-output fixtures, so
@@ -29,22 +35,24 @@ export const scenarios: ScenarioDef[] = [
     id: "pricing-discount",
     neuronScript: pricingScript,
     neuronInput: pricingInput as ExecutionContext,
-    data: { cart: { subtotal: 125, currency: "USD" } },
+    data: { cart: { subtotal: PRICING_SUBTOTAL, currency: "USD" } },
     factPath: "cart.subtotal",
-    flatFacts: { subtotal: 125 },
+    flatFacts: { subtotal: PRICING_SUBTOTAL },
     flatFactName: "subtotal",
     threshold: 100,
     decide(matched: boolean): Decision {
       if (!matched) return { matched: false };
-      const subtotal = 125;
-      const discountAmount = Math.round(subtotal * (16 / 100));
       return {
         matched: true,
-        discountAmount,
-        finalTotal: subtotal - discountAmount,
+        discountAmount: PRICING_DISCOUNT,
+        finalTotal: PRICING_SUBTOTAL - PRICING_DISCOUNT,
       };
     },
-    canonical: { matched: true, discountAmount: 20, finalTotal: 105 },
+    canonical: {
+      matched: true,
+      discountAmount: PRICING_DISCOUNT,
+      finalTotal: PRICING_SUBTOTAL - PRICING_DISCOUNT,
+    },
   },
   {
     id: "eligibility-approval",

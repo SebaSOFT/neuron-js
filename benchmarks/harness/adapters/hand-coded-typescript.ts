@@ -1,13 +1,5 @@
+import { readPath } from "../read-path.ts";
 import type { Adapter, Decision, Runner, ScenarioDef } from "../types.ts";
-
-function readPath(data: Record<string, unknown>, path: string): unknown {
-  return path.split(".").reduce<unknown>((current, segment) => {
-    if (current && typeof current === "object" && segment in current) {
-      return (current as Record<string, unknown>)[segment];
-    }
-    return undefined;
-  }, data);
-}
 
 /**
  * Hand-coded TypeScript baseline. No engine: a direct `>=` comparison, the
@@ -23,3 +15,6 @@ export const handCodedAdapter: Adapter = {
     };
   },
 };
+
+/** Canonical export consumed by the cold-start probe. */
+export const adapter = handCodedAdapter;

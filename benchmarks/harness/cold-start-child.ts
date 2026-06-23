@@ -12,11 +12,9 @@ const scenario =
   scenarios.find((item) => item.id === scenarioId) ?? scenarios[0];
 
 const start = performance.now();
-const moduleExports = (await import(`./adapters/${adapterFile}.ts`)) as Record<
-  string,
-  Adapter
->;
-const adapter = Object.values(moduleExports)[0];
+const { adapter } = (await import(`./adapters/${adapterFile}.ts`)) as {
+  adapter: Adapter;
+};
 const runner = adapter.prepare(scenario);
 await runner();
 const ms = performance.now() - start;

@@ -13,17 +13,13 @@ import {
   type Neuron,
   type ParameterInterface,
 } from "../../dist/esm/index.js";
+import { readPath } from "./read-path.ts";
 
 export function readStatePath(
   context: ExecutionContext,
   path: string,
 ): unknown {
-  return path.split(".").reduce<unknown>((current, segment) => {
-    if (current && typeof current === "object" && segment in current) {
-      return (current as Record<string, unknown>)[segment];
-    }
-    return undefined;
-  }, context.state);
+  return readPath(context.state, path);
 }
 
 export class StateNumberParameter {
@@ -71,7 +67,6 @@ function resolveParam(
         param.name,
         param.value,
         param.options,
-        param.defaultValue,
       ).getValue(context)
     : null;
 }
