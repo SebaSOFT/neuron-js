@@ -17,9 +17,9 @@ Diagram showing business input and rule JSON flowing through schema validation, 
 
 Source grounding:
 
-- `chaos-vault/50-research/neuron-js-growth-plan.md`, NJS-GROWTH-07 lines 294-318: proof assets objective and README visual proof baseline.
-- `chaos-vault/50-research/neuron-js-marketing-assets-benchmark.md`, lines 87-100 and 160-174: honest benchmark proof, playground, trace panel, README GIF pattern.
-- `chaos-vault/50-research/neuron-js-social-demand-gap.md`, lines 184-210: target pains and wedge around schema validation, deterministic guardrails, and explanation traces.
+- the Neuron-JS growth plan (internal research), NJS-GROWTH-07 lines 294-318: proof assets objective and README visual proof baseline.
+- internal marketing/benchmark research, lines 87-100 and 160-174: honest benchmark proof, playground, trace panel, README GIF pattern.
+- internal social-demand research, lines 184-210: target pains and wedge around schema validation, deterministic guardrails, and explanation traces.
 - `docs/benchmarks/visual-proof-system.md`: palette, typography, diagram rules, brand guardrails, and canonical trace flow.
 - `docs/benchmarks/prompt-kit.md`: explainability trace diagram prompt, labels, branches, and negative constraints.
 - `docs/schemas-validation-explainability.md`: validation, deterministic execution, normalized output, and explanation trace contracts.

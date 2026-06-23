@@ -1,8 +1,8 @@
 # Neuron-JS benchmark methodology and result contract
 
-Source of record: `chaos-vault/50-research/neuron-js-growth-plan.md` lines 294-318, supported by `neuron-js-marketing-assets-benchmark.md` lines 87-100 and `neuron-js-social-demand-gap.md` lines 160-169. Hindsight recall was queried for this task and returned no relevant stored memories; the vault notes above are the governing source.
+Source of record: internal Neuron-JS growth, marketing/benchmark, and social-demand research for NJS-GROWTH-07.
 
-This page defines the NJS-GROWTH-07 benchmark harness contract. It is intentionally conservative: no benchmark claim is valid until the executable harness emits `result_kind: "actual_benchmark"` with `is_placeholder: false` and `claims_allowed: true`.
+This page defines the NJS-GROWTH-07 benchmark harness contract. It is intentionally conservative: no benchmark claim is valid until the executable harness emits `result_kind: "actual_benchmark"` with `is_placeholder: false` and `claims_allowed: true`. That harness now exists (`benchmarks/run.ts`, run with `yarn benchmark`); the published numbers are on the [benchmark results](./results.md) page.
 
 ## Competitor set
 
@@ -70,17 +70,25 @@ Visual/publication agents must reject files where any of these are true:
 
 Synthetic sample values must never be used in README copy, social posts, npm copy, or public performance claims.
 
-## Initial harness contract
+## Harness contract
 
-A future executable harness should:
+The executable harness (`benchmarks/run.ts`):
 
-1. Build adapters for `@sebasoft/neuron-js`, `json-rules-engine`, `json-logic-js`, `hand-coded-typescript`, and `rule-engine-js`.
-2. Run each adapter against `pricing-discount`, `eligibility-approval`, and `workflow-routing` fixtures.
-3. Execute `smoke`, `small`, and `medium` profiles by default; gate `large` behind an explicit flag.
-4. Measure cold start separately from warm throughput.
-5. Measure validation and explanation overhead as delta timings against the same scenario/input profile.
-6. Emit JSON matching `docs/public/benchmarks/results.schema.json`.
-7. Set `result_kind: "actual_benchmark"`, `is_placeholder: false`, and `claims_allowed: true` only for real measured output.
+1. Builds adapters for `@sebasoft/neuron-js`, `json-rules-engine`, `json-logic-js`, `hand-coded-typescript`, and `rule-engine-js`.
+2. Runs each adapter against `pricing-discount`, `eligibility-approval`, and `workflow-routing` fixtures (reused from `examples/`).
+3. Executes `smoke`, `small`, and `medium` profiles by default; `large` is reserved for explicit runs.
+4. Measures cold start separately from warm throughput.
+5. Measures validation and explanation overhead as delta timings against the same scenario/input profile.
+6. Emits JSON matching `docs/public/benchmarks/results.schema.json`.
+7. Sets `result_kind: "actual_benchmark"`, `is_placeholder: false`, and `claims_allowed: true` only for real measured output.
+
+## How each metric is measured
+
+- **Fairness gate.** Before timing, every engine must reproduce the scenario's canonical decision (e.g. pricing `finalTotal: 105`, `discountAmount: 20`); the run aborts on any mismatch, so all engines are timed doing equivalent work.
+- **Throughput / p50 / p95.** Warmup iterations run untimed, then measured iterations run in batches; per-decision latency is averaged per batch (so per-call timer overhead does not dominate sub-microsecond engines). Throughput is total measured decisions over total measured seconds.
+- **Cold start.** Median wall-clock across several fresh Node processes to import the engine adapter and execute the first decision; the child starts its timer before importing the engine, so Node's own startup is excluded.
+- **Bundle size.** `esbuild` bundles and minifies the engine's public surface (`export * from "<engine>"`, ESM, node platform); the output byte length is recorded. The hand-coded baseline has no library dependency (`0`).
+- **Validation / explanation overhead.** Neuron-JS only: the per-decision latency delta of running `validateScript` (resp. `explainExecution`) around an otherwise identical execution. Competitors provide no equivalent step, so their measured delta is `0`.
 
 ## Visual asset consumers
 

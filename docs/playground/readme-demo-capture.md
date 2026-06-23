@@ -4,9 +4,9 @@ Status: capture contract for the future Neuron-JS playground. The repository doe
 
 Source of record:
 
-- `chaos-vault/50-research/neuron-js-growth-plan.md`, `NJS-GROWTH-07` lines 294-318: proof assets must include benchmarks, playground, visual explanation, and a README GIF when the playground is stable.
-- `chaos-vault/50-research/neuron-js-marketing-assets-benchmark.md`, lines 160-174: live demos require browser playground, shareable URLs, explain trace panel, README GIF, and optional visual rule builder.
-- `chaos-vault/50-research/neuron-js-social-demand-gap.md`, lines 160-169: social proof should show playground validation, explanation traces, before/after logic, and AI-generated rule validation.
+- the Neuron-JS growth plan (internal research), `NJS-GROWTH-07` lines 294-318: proof assets must include benchmarks, playground, visual explanation, and a README GIF when the playground is stable.
+- internal marketing/benchmark research, lines 160-174: live demos require browser playground, shareable URLs, explain trace panel, README GIF, and optional visual rule builder.
+- internal social-demand research, lines 160-169: social proof should show playground validation, explanation traces, before/after logic, and AI-generated rule validation.
 - Runnable fixture source: `examples/pricing-rules/rules.json`, `examples/pricing-rules/input.json`, and `examples/pricing-rules/expected-output.json`.
 
 Do not record or publish this asset until the playground renders the fixture data below and the capture command can validate the result against `examples/pricing-rules/expected-output.json`.

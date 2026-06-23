@@ -9,13 +9,13 @@ Recommended format: 5 slides, 4:5 vertical carousel, 1080x1350 or 1200x1500.
 
 Source of record:
 
-- `chaos-vault/50-research/neuron-js-growth-plan.md`, NJS-GROWTH-07 lines 294-318: proof assets must support benchmarks, playground, and visual explanation; README proof asset waits for stable proof.
-- `chaos-vault/50-research/neuron-js-marketing-assets-benchmark.md`, lines 87-100 and 160-174: publish honest proof, live demos, trace panels, and README visual proof; do not overclaim without measured evidence.
-- `chaos-vault/50-research/neuron-js-social-demand-gap.md`, lines 184-210: target the pain that LLM-generated rules are dangerous without validation/schemas and that developers need deterministic guardrails and explanations.
+- the Neuron-JS growth plan (internal research), NJS-GROWTH-07 lines 294-318: proof assets must support benchmarks, playground, and visual explanation; README proof asset waits for stable proof.
+- internal marketing/benchmark research, lines 87-100 and 160-174: publish honest proof, live demos, trace panels, and README visual proof; do not overclaim without measured evidence.
+- internal social-demand research, lines 184-210: target the pain that LLM-generated rules are dangerous without validation/schemas and that developers need deterministic guardrails and explanations.
 - `docs/benchmarks/visual-proof-system.md`, lines 13-23, 110-118, and 179-189: visual assets should communicate credibility, inspectability, determinism, and AI safety; AI-rule-safety carousel uses a bridge/funnel technical comic with safety gates; social slides need short copy and `@sebasoft/neuron-js`.
 - `docs/benchmarks/prompt-kit.md`, lines 213-258: base prompt for the AI-generated-rule safety carousel.
 
-Hindsight memory helped: no. Hindsight recall returned no relevant stored memories; this asset is grounded in the vault and repository files above.
+This asset is grounded in the internal research and repository files above.
 
 ## Positioning guardrails
 

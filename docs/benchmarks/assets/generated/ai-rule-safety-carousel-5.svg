@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="t d">
+  <title id="t">Then execute deterministically</title>
+  <desc id="d">An approved JSON rule flows into a Synapse execution node. A result card and violet explanation trace rows show why the rule matched and what action ran.</desc>
+  <metadata>Asset: NJS-GROWTH-07 ai-rule-safety-carousel slide 5 of 5. Package: @sebasoft/neuron-js. Qualitative safety/governance content; no benchmark or performance claims.</metadata>
+  <defs>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0v44" fill="none" stroke="#1e293b" stroke-width="0.7"/></pattern>
+    <marker id="cyan" markerWidth="12" markerHeight="9" refX="10" refY="4.5" orient="auto"><path d="M0 0l12 4.5L0 9z" fill="#22d3ee"/></marker>
+    <marker id="violet" markerWidth="12" markerHeight="9" refX="10" refY="4.5" orient="auto"><path d="M0 0l12 4.5L0 9z" fill="#a78bfa"/></marker>
+    <style><![CDATA[
+      .text{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;fill:#e5e7eb}
+      .mono{font-family:"JetBrains Mono",SFMono-Regular,Menlo,Consolas,monospace}
+      .idx{font-size:24px;font-weight:700;fill:#22d3ee}
+      .brand{font-size:22px;font-weight:500;fill:#94a3b8}
+      .head{font-size:60px;font-weight:780;letter-spacing:-.03em;fill:#e5e7eb}
+      .body{font-size:31px;font-weight:500;fill:#cbd5e1}
+      .label{font-size:24px;font-weight:600}
+      .small{font-size:22px;font-weight:500}
+      .cap{font-size:34px;font-weight:750;fill:#22d3ee}
+      .foot{font-size:24px;font-weight:600;fill:#94a3b8}
+    ]]></style>
+  </defs>
+  <rect width="1080" height="1350" fill="#020617"/>
+  <rect width="1080" height="1350" fill="url(#grid)" opacity=".6"/>
+  <rect x="28" y="28" width="1024" height="1294" rx="30" fill="rgba(15,23,42,.55)" stroke="#1e293b" stroke-width="2"/>
+  <text x="72" y="108" class="mono idx">05 / 05</text>
+  <text x="1008" y="108" text-anchor="end" class="text brand">AI-rule safety</text>
+  <text x="72" y="216" class="text head">Then execute deterministically.</text>
+  <text x="72" y="292" class="text body">Synapse runs the approved rule path, and the</text>
+  <text x="72" y="334" class="text body">trace explains why the decision matched or failed.</text>
+
+  <!-- synapse node -->
+  <g transform="translate(96 430)">
+    <rect width="250" height="200" rx="18" fill="#0f172a"/>
+    <rect width="250" height="200" rx="18" fill="rgba(8,51,68,.42)" stroke="#22d3ee" stroke-width="2"/>
+    <text x="125" y="56" text-anchor="middle" class="mono label" fill="#22d3ee">Synapse</text>
+    <path d="M50 104h150M50 140h150" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+    <circle cx="50" cy="104" r="7" fill="#22d3ee"/><circle cx="200" cy="140" r="7" fill="#22d3ee"/>
+    <text x="125" y="184" text-anchor="middle" class="mono small" fill="#94a3b8">deterministic run</text>
+  </g>
+
+  <!-- result card -->
+  <g transform="translate(420 430)">
+    <rect width="250" height="200" rx="18" fill="#0f172a"/>
+    <rect width="250" height="200" rx="18" fill="rgba(76,29,149,.30)" stroke="#a78bfa" stroke-width="2"/>
+    <text x="125" y="56" text-anchor="middle" class="mono label" fill="#a78bfa">result</text>
+    <text x="36" y="108" class="mono small" fill="#34d399">ok: true</text>
+    <text x="36" y="146" class="mono small" fill="#94a3b8">rulesExecuted: 1</text>
+    <text x="36" y="184" class="mono small" fill="#94a3b8">finalTotal: 105</text>
+  </g>
+  <path d="M346 530h66" fill="none" stroke="#22d3ee" stroke-width="3.5" marker-end="url(#cyan)"/>
+
+  <!-- trace rows -->
+  <g transform="translate(744 430)">
+    <rect width="240" height="200" rx="18" fill="#0f172a"/>
+    <rect width="240" height="200" rx="18" fill="rgba(76,29,149,.20)" stroke="#a78bfa" stroke-width="2"/>
+    <text x="120" y="46" text-anchor="middle" class="mono label" fill="#a78bfa">trace</text>
+    <g transform="translate(28 70)">
+      <circle cx="8" cy="8" r="7" fill="#a78bfa"/><line x1="8" y1="16" x2="8" y2="44" stroke="#a78bfa" stroke-width="2"/>
+      <circle cx="8" cy="54" r="7" fill="#a78bfa"/><line x1="8" y1="62" x2="8" y2="90" stroke="#a78bfa" stroke-width="2"/>
+      <circle cx="8" cy="100" r="7" fill="#a78bfa"/>
+      <text x="26" y="13" class="mono small" fill="#94a3b8">script_received</text>
+      <text x="26" y="59" class="mono small" fill="#94a3b8">rule_available</text>
+      <text x="26" y="105" class="mono small" fill="#94a3b8">execution_done</text>
+    </g>
+  </g>
+  <path d="M670 530h66" fill="none" stroke="#a78bfa" stroke-width="3.5" marker-end="url(#violet)"/>
+
+  <rect x="96" y="760" width="888" height="150" rx="20" fill="rgba(8,51,68,.35)" stroke="#22d3ee" stroke-width="2"/>
+  <text x="540" y="852" text-anchor="middle" class="text cap">AI drafts. Neuron-JS verifies.</text>
+
+  <text x="540" y="1296" text-anchor="middle" class="mono foot">@sebasoft/neuron-js — TypeScript-first JSON business rules</text>
+</svg>

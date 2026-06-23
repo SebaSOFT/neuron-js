@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="t d">
+  <title id="t">AI can draft rules</title>
+  <desc id="d">A developer inspects an amber LLM-generated JSON rule card. A small rose warning marker highlights a risky business assumption, with text saying the draft is not production-ready.</desc>
+  <metadata>Asset: NJS-GROWTH-07 ai-rule-safety-carousel slide 1 of 5. Package: @sebasoft/neuron-js. Qualitative safety/governance content; no benchmark or performance claims.</metadata>
+  <defs>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0v44" fill="none" stroke="#1e293b" stroke-width="0.7"/></pattern>
+    <marker id="rose" markerWidth="12" markerHeight="9" refX="10" refY="4.5" orient="auto"><path d="M0 0l12 4.5L0 9z" fill="#fb7185"/></marker>
+    <style><![CDATA[
+      .text{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;fill:#e5e7eb}
+      .mono{font-family:"JetBrains Mono",SFMono-Regular,Menlo,Consolas,monospace}
+      .idx{font-size:24px;font-weight:700;fill:#22d3ee}
+      .brand{font-size:22px;font-weight:500;fill:#94a3b8}
+      .head{font-size:64px;font-weight:780;letter-spacing:-.03em;fill:#e5e7eb}
+      .body{font-size:31px;font-weight:500;fill:#cbd5e1}
+      .label{font-size:24px;font-weight:600}
+      .code{font-size:25px;fill:#e5e7eb}
+      .foot{font-size:24px;font-weight:600;fill:#94a3b8}
+    ]]></style>
+  </defs>
+  <rect width="1080" height="1350" fill="#020617"/>
+  <rect width="1080" height="1350" fill="url(#grid)" opacity=".6"/>
+  <rect x="28" y="28" width="1024" height="1294" rx="30" fill="rgba(15,23,42,.55)" stroke="#1e293b" stroke-width="2"/>
+  <text x="72" y="108" class="mono idx">01 / 05</text>
+  <text x="1008" y="108" text-anchor="end" class="text brand">AI-rule safety</text>
+  <text x="72" y="220" class="text head">AI can draft rules.</text>
+  <text x="72" y="296" class="text body">But a plausible JSON rule can still encode the</text>
+  <text x="72" y="338" class="text body">wrong assumption, wrong field, or wrong action.</text>
+
+  <!-- LLM draft card -->
+  <g transform="translate(150 440)">
+    <rect width="780" height="520" rx="22" fill="#0f172a"/>
+    <rect width="780" height="520" rx="22" fill="rgba(251,191,36,.07)" stroke="#fbbf24" stroke-width="2"/>
+    <text x="40" y="64" class="mono label" fill="#fbbf24">LLM draft</text>
+    <text x="740" y="64" text-anchor="end" class="mono label" fill="#94a3b8">Looks valid? Maybe.</text>
+    <rect x="40" y="96" width="700" height="296" rx="14" fill="#111827" stroke="#1e293b"/>
+    <text x="68" y="148" class="mono code" fill="#94a3b8">{</text>
+    <text x="100" y="196" class="mono code"><tspan fill="#22d3ee">"id"</tspan>: <tspan fill="#fbbf24">"auto-approve"</tspan>,</text>
+    <text x="100" y="244" class="mono code"><tspan fill="#22d3ee">"when"</tspan>: <tspan fill="#fbbf24">"customer.segment == 'enterprise'"</tspan>,</text>
+    <text x="100" y="292" class="mono code"><tspan fill="#22d3ee">"then"</tspan>: <tspan fill="#fb7185">"auto_approve_discount"</tspan></text>
+    <text x="68" y="356" class="mono code" fill="#94a3b8">}</text>
+    <circle cx="690" cy="270" r="16" fill="rgba(251,113,133,.18)" stroke="#fb7185" stroke-width="2"/>
+    <text x="690" y="278" text-anchor="middle" class="mono label" fill="#fb7185">!</text>
+    <rect x="40" y="430" width="320" height="54" rx="12" fill="rgba(251,113,133,.12)" stroke="#fb7185"/>
+    <text x="200" y="465" text-anchor="middle" class="mono label" fill="#fb7185">Not production-ready</text>
+    <path d="M540 458h190" fill="none" stroke="#fb7185" stroke-width="2.5" stroke-dasharray="9 7" marker-end="url(#rose)"/>
+  </g>
+
+  <text x="540" y="1296" text-anchor="middle" class="mono foot">@sebasoft/neuron-js — TypeScript-first JSON business rules</text>
+</svg>

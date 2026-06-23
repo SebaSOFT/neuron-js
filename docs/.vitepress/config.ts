@@ -12,7 +12,7 @@ export default defineConfig({
       { text: 'Concepts', link: '/overview' },
       { text: 'Examples', link: '/use-cases/runnable-examples' },
       { text: 'Schemas', link: '/schemas-validation-explainability' },
-      { text: 'Proof Assets', link: '/benchmarks/methodology' },
+      { text: 'Benchmarks', link: '/benchmarks/results' },
       { text: 'Comparisons', link: '/comparisons/' },
       { text: 'Integrations', link: '/integrations/' },
       { text: 'AI Docs', link: '/ai-coding-assistants' },
@@ -47,7 +47,8 @@ export default defineConfig({
         text: 'Proof Assets',
         items: [
           { text: 'Benchmarks & Visual Proof', link: '/benchmarks/' },
-          { text: 'Benchmarks', link: '/benchmarks/methodology' },
+          { text: 'Benchmark Results', link: '/benchmarks/results' },
+          { text: 'Benchmark Methodology', link: '/benchmarks/methodology' },
           { text: 'Visual Proof System', link: '/benchmarks/visual-proof-system' },
           { text: 'Benchmark Visual Pack', link: '/benchmarks/benchmark-visual-pack' },
           { text: 'Playground Capture Spec', link: '/playground/readme-demo-capture' },

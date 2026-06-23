@@ -43,11 +43,21 @@ Do not use `neuron-js` when a simple hardcoded condition is clearer and rarely c
 
 ## Public proof assets
 
-Neuron-JS proof material is published as methodology and inspectability artifacts first. Benchmark result claims remain blocked until the benchmark harness emits real measured output with `claims_allowed: true`.
+Neuron-JS proof material is published as methodology, measured benchmarks, and inspectability artifacts. Benchmark numbers come from a real `actual_benchmark` harness run only — reproduce them with `yarn benchmark`.
 
 <p align="center">
   <img src="docs/benchmarks/assets/generated/explainability-trace-diagram.svg" alt="Neuron-JS diagram showing rule JSON and business input flowing through schema validation, developer registry, deterministic Synapse evaluation, result output, explanation trace, and audit-ready decision." width="760">
 </p>
+
+### Benchmark results
+
+Measured throughput, cold-start, bundle-size, validation, and explanation overhead across the pricing, eligibility, and workflow-routing scenarios, compared against `json-rules-engine`, `json-logic-js`, a hand-coded TypeScript baseline, and `rule-engine-js`. See the full charts, results table, and provenance:
+
+- Benchmark results (charts + data + provenance): [`docs/benchmarks/results.md`](docs/benchmarks/results.md)
+- Reproduce locally: `yarn benchmark` then `yarn benchmark:charts`
+- Raw measured output: [`benchmarks/results/latest.actual.json`](benchmarks/results/latest.actual.json)
+
+### Methodology and inspectability
 
 - Benchmark methodology and result contract: [`docs/benchmarks/methodology.md`](docs/benchmarks/methodology.md)
 - Explainability proof metadata and alt text: [`docs/benchmarks/assets/generated/explainability-trace-diagram.md`](docs/benchmarks/assets/generated/explainability-trace-diagram.md)
