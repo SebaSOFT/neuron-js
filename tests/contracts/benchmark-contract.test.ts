@@ -66,7 +66,8 @@ describe('benchmark result-data contract', () => {
   it('links benchmark methodology from VitePress navigation and sidebar', () => {
     const config = readFileSync('docs/.vitepress/config.ts', 'utf8');
 
-    expect(config).toContain("{ text: 'Benchmarks', link: '/benchmarks/methodology' }");
+    expect(config).toContain("'/benchmarks/methodology'");
+    expect(config).toContain("'/benchmarks/results'");
   });
 
   it('documents the complete competitor, scenario, and input-size matrix', () => {

@@ -1,6 +1,6 @@
 # Benchmark visual asset manifest
 
-Status: structure-only draft prompts. Final performance charts are blocked until measured benchmark output exists.
+Status: the five benchmark charts are generated from measured `actual_benchmark` output (`benchmarks/results/latest.actual.json`) by `benchmarks/charts/generate.ts`. See [benchmark results](../results.md). The prompts below remain as the design spec and regeneration reference.
 
 ## Draft prompt assets
 
@@ -13,15 +13,24 @@ Status: structure-only draft prompts. Final performance charts are blocked until
 | Explanation-overhead chart prompt | `prompts/benchmark-chart-prompts.md#explanation-overhead-chart` | No numeric claim | actual benchmark output required |
 | Methodology card prompt | `prompts/methodology-infographic.md` | Methodology only, no performance claim | `docs/benchmarks/methodology.md` |
 
-## Intended generated output paths
+## Generated output paths
+
+Charts generated from measured benchmark output:
 
 - `generated/benchmark-chart-throughput.svg`
 - `generated/benchmark-chart-cold-start.svg`
 - `generated/benchmark-chart-bundle-size.svg`
 - `generated/benchmark-chart-validation-overhead.svg`
 - `generated/benchmark-chart-explanation-overhead.svg`
+
+Methodology-only (no performance numbers):
+
 - `generated/methodology-card.svg`
+
+AI-rule-safety carousel (qualitative, no performance numbers):
+
+- `generated/ai-rule-safety-carousel-1.svg` … `-5.svg`
 
 ## Publication blocker
 
-Do not publish generated benchmark charts until the source file satisfies `result_kind: "actual_benchmark"`, `is_placeholder: false`, and `claims_allowed: true`.
+Benchmark charts publish only from a source file that satisfies `result_kind: "actual_benchmark"`, `is_placeholder: false`, and `claims_allowed: true`. The committed charts were generated from such a file; regenerate with `yarn benchmark && yarn benchmark:charts` after any data change.

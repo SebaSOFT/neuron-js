@@ -4,9 +4,9 @@ Status: design foundation for downstream benchmark, playground, README, and soci
 
 Source of record:
 
-- `chaos-vault/50-research/neuron-js-growth-plan.md`, `NJS-GROWTH-07` lines 294-318: proof assets must cover benchmarks, playground, and visual explanation.
-- `chaos-vault/50-research/neuron-js-marketing-assets-benchmark.md`, lines 87-100 and 160-174: publish honest benchmarks, shareable playground proof, trace panel, README GIF.
-- `chaos-vault/50-research/neuron-js-social-demand-gap.md`, lines 184-210: trust wedge is TypeScript-first, explainable, schema-validatable JSON business rules for AI-assisted software and workflow automation.
+- the Neuron-JS growth plan (internal research), `NJS-GROWTH-07` lines 294-318: proof assets must cover benchmarks, playground, and visual explanation.
+- internal marketing/benchmark research, lines 87-100 and 160-174: publish honest benchmarks, shareable playground proof, trace panel, README GIF.
+- internal social-demand research, lines 184-210: trust wedge is TypeScript-first, explainable, schema-validatable JSON business rules for AI-assisted software and workflow automation.
 
 Do not use this system to invent performance numbers. Benchmark visuals must use measured data from the benchmark harness only.
 

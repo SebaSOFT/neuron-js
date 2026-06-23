@@ -1,26 +1,18 @@
 # NJS-GROWTH-07 benchmark visual pack plan
 
-Status: draft asset pack and prompt set. Final benchmark charts are blocked until measured benchmark output exists.
+Status: the benchmark charts are generated from measured output — see [benchmark results](./results.md). This page remains the design spec for the chart pack (asset matrix, aspect ratios, channel guardrails, copy rules).
 
 Source of record:
 
-- `chaos-vault/50-research/neuron-js-growth-plan.md`, `NJS-GROWTH-07` lines 294-318: proof assets must cover benchmarks, playground, and visual explanation.
-- `chaos-vault/50-research/neuron-js-marketing-assets-benchmark.md`, lines 87-100 and 160-174: publish honest benchmarks, compare the required competitor set, expose methodology, support playground proof, trace panel, and README GIF.
-- `chaos-vault/50-research/neuron-js-social-demand-gap.md`, lines 160-169 and 184-210: clean charts, visual proof, and the TypeScript-first explainability/validation wedge are the strongest trust signals.
-
-Hindsight recall was queried for this task and returned no relevant stored memories. The vault files above are the governing source.
+- the Neuron-JS growth plan (internal research), `NJS-GROWTH-07` lines 294-318: proof assets must cover benchmarks, playground, and visual explanation.
+- internal marketing/benchmark research, lines 87-100 and 160-174: publish honest benchmarks, compare the required competitor set, expose methodology, support playground proof, trace panel, and README GIF.
+- internal social-demand research, lines 160-169 and 184-210: clean charts, visual proof, and the TypeScript-first explainability/validation wedge are the strongest trust signals.
 
 ## Current data status
 
-No publishable benchmark data exists yet.
+Publishable measured data exists: `benchmarks/results/latest.actual.json` (`result_kind: "actual_benchmark"`, `is_placeholder: false`, `claims_allowed: true`). The five charts in [benchmark results](./results.md) are generated from it.
 
-The only available benchmark fixture is `benchmarks/sample-results.placeholder.json`. It is explicitly marked:
-
-- `result_kind: "placeholder_sample"`
-- `is_placeholder: true`
-- `claims_allowed: false`
-
-Therefore this pack contains non-numeric chart prompts and draft asset paths only. They must not be used as performance claims, README proof, social claims, npm copy, or comparison claims until replaced with measured harness output matching `docs/benchmarks/results.schema.json`.
+The placeholder fixture `benchmarks/sample-results.placeholder.json` remains marked `placeholder_sample` / `is_placeholder: true` / `claims_allowed: false` and must never be used for public claims. Regenerate charts only from an `actual_benchmark` source matching `docs/public/benchmarks/results.schema.json`.
 
 ## Source data contract for final charts
 
@@ -109,4 +101,4 @@ Do not use:
 
 ## Publication blocker
 
-Final publication is blocked until real measured benchmark output exists. The draft prompts and paths in this pack are structure-only assets for review, layout alignment, and downstream generation.
+Benchmark charts publish only from measured `actual_benchmark` output (now present). Any future chart that would show a number absent from the source artifact, or that reuses placeholder values, stays blocked. Regenerate with `yarn benchmark && yarn benchmark:charts` after data changes.

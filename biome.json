@@ -4,6 +4,7 @@
     "ignoreUnknown": true,
     "includes": [
       "src/**/*.ts",
+      "benchmarks/**/*.ts",
       "package.json",
       "biome.json",
       "tsconfig.json",
