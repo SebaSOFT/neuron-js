@@ -32,8 +32,17 @@ const relocatedInternalPages = [
 
 const customerChartSvgs = [
   'docs/benchmarks/assets/generated/benchmark-chart-throughput.svg',
+  'docs/benchmarks/assets/generated/benchmark-chart-cold-start.svg',
+  'docs/benchmarks/assets/generated/benchmark-chart-bundle-size.svg',
+  'docs/benchmarks/assets/generated/benchmark-chart-validation-overhead.svg',
+  'docs/benchmarks/assets/generated/benchmark-chart-explanation-overhead.svg',
   'docs/benchmarks/assets/generated/explainability-trace-diagram.svg',
+  'docs/benchmarks/assets/generated/methodology-card.svg',
   'docs/benchmarks/assets/generated/ai-rule-safety-carousel-1.svg',
+  'docs/benchmarks/assets/generated/ai-rule-safety-carousel-2.svg',
+  'docs/benchmarks/assets/generated/ai-rule-safety-carousel-3.svg',
+  'docs/benchmarks/assets/generated/ai-rule-safety-carousel-4.svg',
+  'docs/benchmarks/assets/generated/ai-rule-safety-carousel-5.svg',
 ];
 
 describe('customer docs surface', () => {
