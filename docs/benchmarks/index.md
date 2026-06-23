@@ -7,7 +7,7 @@ This section is a design and generation foundation. It does not publish benchmar
 ## Files
 
 - [Benchmark methodology and result contract](./methodology.md): competitor set, scenario matrix, input-size matrix, metric definitions, and placeholder-data policy.
-- [Result JSON schema](./results.schema.json): machine-readable contract for benchmark output and downstream chart data.
+- [Result JSON schema](/benchmarks/results.schema.json): machine-readable contract for benchmark output and downstream chart data.
 - [Visual proof system](./visual-proof-system.md): palette, typography, composition, diagram style, chart rules, social-card constraints, and README proof strip guidance.
 - [Visual proof prompt kit](./prompt-kit.md): reusable prompts for benchmark infographics, explainability trace diagrams, playground README GIF storyboards, AI-rule safety carousels, and README proof strips.
 - [Asset folder recommendation](./assets/): recommended `docs/benchmarks/assets/` structure and data-integrity rules.
