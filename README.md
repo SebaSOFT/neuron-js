@@ -25,6 +25,7 @@ Use it when hardcoded `if/else` logic is too rigid, but a heavyweight workflow o
 - AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), and the official [`neuron-js` AI skill](docs/public/skills/neuron-js/SKILL.md)
 - Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for json-rules-engine, JsonLogic, node-rules, and if/else migrations
 - Workflow automation recipes: [`docs/integrations/`](docs/integrations/) for n8n deterministic routing and LangGraph decision nodes
+- Proof assets: [`docs/benchmarks/methodology.md`](docs/benchmarks/methodology.md) for the benchmark contract and [`docs/benchmarks/assets/generated/explainability-trace-diagram.md`](docs/benchmarks/assets/generated/explainability-trace-diagram.md) for the inspectable trace diagram
 
 ---
 
@@ -39,6 +40,19 @@ Use `neuron-js` when:
 - A full workflow platform is too heavy, but hardcoded conditional logic is too brittle.
 
 Do not use `neuron-js` when a simple hardcoded condition is clearer and rarely changes, when arbitrary user code execution is required, or when you need a full BPMN/process orchestration platform.
+
+## Public proof assets
+
+Neuron-JS proof material is published as methodology and inspectability artifacts first. Benchmark result claims remain blocked until the benchmark harness emits real measured output with `claims_allowed: true`.
+
+<p align="center">
+  <img src="docs/benchmarks/assets/generated/explainability-trace-diagram.svg" alt="Neuron-JS diagram showing rule JSON and business input flowing through schema validation, developer registry, deterministic Synapse evaluation, result output, explanation trace, and audit-ready decision." width="760">
+</p>
+
+- Benchmark methodology and result contract: [`docs/benchmarks/methodology.md`](docs/benchmarks/methodology.md)
+- Explainability proof metadata and alt text: [`docs/benchmarks/assets/generated/explainability-trace-diagram.md`](docs/benchmarks/assets/generated/explainability-trace-diagram.md)
+- Visual proof system and publication guardrails: [`docs/benchmarks/visual-proof-system.md`](docs/benchmarks/visual-proof-system.md)
+- Playground README demo capture spec: [`docs/playground/readme-demo-capture.md`](docs/playground/readme-demo-capture.md)
 
 ---
 
@@ -160,6 +174,7 @@ Available adoption assets:
 
 - Runnable examples: [`examples/`](examples/) including n8n and LangGraph workflow automation recipes
 - JSON Schemas, validation, and explain output: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
+- Benchmark methodology, visual proof, and playground capture specifications: [`docs/benchmarks/`](docs/benchmarks/) and [`docs/playground/readme-demo-capture.md`](docs/playground/readme-demo-capture.md)
 - Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for choosing and migrating from json-rules-engine, JsonLogic, node-rules, and hand-written if/else
 - AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), [`docs/public/llms-full.txt`](docs/public/llms-full.txt), and [`docs/public/skills/neuron-js/SKILL.md`](docs/public/skills/neuron-js/SKILL.md)
 

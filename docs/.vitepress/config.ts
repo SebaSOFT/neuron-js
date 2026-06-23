@@ -49,6 +49,8 @@ export default defineConfig({
           { text: 'Benchmarks & Visual Proof', link: '/benchmarks/' },
           { text: 'Benchmarks', link: '/benchmarks/methodology' },
           { text: 'Visual Proof System', link: '/benchmarks/visual-proof-system' },
+          { text: 'Benchmark Visual Pack', link: '/benchmarks/benchmark-visual-pack' },
+          { text: 'Playground Capture Spec', link: '/playground/readme-demo-capture' },
           { text: 'Prompt Kit', link: '/benchmarks/prompt-kit' },
           { text: 'Asset Folder', link: '/benchmarks/assets/' }
         ]
