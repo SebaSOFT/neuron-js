@@ -12,6 +12,7 @@ import {
   AddTwoNumbersAction,
   ComparatorParameter,
   CompareTwoNumbersCondition,
+  evaluateDecision,
   ExecutionResult,
   HookEvents,
   Neuron,
@@ -38,6 +39,7 @@ import {
 const rootDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const require = createRequire(import.meta.url);
 const decisionValidatorNames = [
+  "evaluateDecision",
   "validateDecisionDefinition",
   "validateDecisionContext",
   "validateDecisionOutcome",
@@ -52,6 +54,7 @@ test("package root exports the supported public API", () => {
   expect(ExecutionResult).toBeDefined();
   expect(HookEvents).toBeDefined();
   expect(validateScript).toBeDefined();
+  expect(evaluateDecision).toBeDefined();
   expect(validateDecisionDefinition).toBeDefined();
   expect(validateDecisionContext).toBeDefined();
   expect(validateDecisionOutcome).toBeDefined();

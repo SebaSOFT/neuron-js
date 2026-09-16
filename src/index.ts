@@ -218,6 +218,8 @@ export type {
   JsonSchemaTypeName,
   JsonValue,
 } from "./decision/contracts.js";
+export type { EvaluateDecisionOptions } from "./decision/evaluateDecision.js";
+export { evaluateDecision } from "./decision/evaluateDecision.js";
 export {
   validateDecisionContext,
   validateDecisionDefinition,
