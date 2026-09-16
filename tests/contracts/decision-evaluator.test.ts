@@ -202,6 +202,28 @@ describe("pure decision evaluator", () => {
     expect(evaluation.receipt.trace).toEqual([]);
   });
 
+  test("returns an invalid_context receipt for non-canonical numeric context", () => {
+    const evaluation = evaluateDecision({
+      definition: outcomeDefinition,
+      context: { input: Number.NaN },
+      neuron: createDecisionNeuron(),
+    });
+
+    expect(evaluation.status).toBe("invalid_context");
+    expect(evaluation.outcome).toBeUndefined();
+    expect(evaluation.diagnostics).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ path: "$.input", code: "schema_type" }),
+      ]),
+    );
+    expect(evaluation.receipt).toMatchObject({
+      decisionId: outcomeDefinition.id,
+      status: "invalid_context",
+    });
+    expect(evaluation.receipt.contextHash).toBeUndefined();
+    expect(evaluation.receipt.trace).toEqual([]);
+  });
+
   test("returns no_decision when execution completes without an outcome", () => {
     const noDecisionDefinition = withScript(
       outcomeDefinition,

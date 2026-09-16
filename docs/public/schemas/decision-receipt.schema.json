@@ -8,7 +8,11 @@
     "decisionId": { "type": "string", "minLength": 1 },
     "decisionVersion": { "type": "string", "minLength": 1 },
     "definitionHash": { "type": "string", "minLength": 1 },
-    "contextHash": { "type": "string", "minLength": 1 },
+    "contextHash": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Canonical hash of the evaluated context when the context can be serialized as canonical JSON. Omitted for invalid, non-canonical contexts such as non-finite numbers."
+    },
     "registryManifestHash": { "type": "string", "minLength": 1 },
     "runtimeVersion": { "type": "string", "minLength": 1 },
     "status": {

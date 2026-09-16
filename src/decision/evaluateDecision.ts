@@ -42,6 +42,18 @@ function cloneJson<T extends JsonValue>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T;
 }
 
+function hashCanonicalContext(context: JsonValue): string | undefined {
+  try {
+    return canonicalDecisionHash(context);
+  } catch (error) {
+    if (error instanceof TypeError) {
+      return undefined;
+    }
+
+    throw error;
+  }
+}
+
 function createReceipt(
   definition: DecisionDefinition,
   context: JsonValue,
@@ -50,11 +62,13 @@ function createReceipt(
   trace: DecisionReceipt["trace"],
   diagnostics: ValidationError[],
 ): DecisionReceipt {
+  const contextHash = hashCanonicalContext(context);
+
   return {
     decisionId: definition.id,
     decisionVersion: definition.version,
     definitionHash: canonicalDecisionHash(definition as unknown as JsonValue),
-    contextHash: canonicalDecisionHash(context),
+    ...(contextHash ? { contextHash } : {}),
     registryManifestHash: canonicalDecisionHash(
       definition.components as unknown as JsonValue,
     ),

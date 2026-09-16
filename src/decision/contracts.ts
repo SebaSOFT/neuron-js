@@ -70,6 +70,11 @@ export interface DecisionReceipt {
   decisionId: string;
   decisionVersion: string;
   definitionHash: string;
+  /**
+   * Canonical hash of the evaluated context when the context can be serialized
+   * as canonical JSON. Omitted for invalid, non-canonical contexts such as
+   * non-finite numbers so invalid_context evaluations still return receipts.
+   */
   contextHash?: string;
   registryManifestHash: string;
   runtimeVersion: string;
