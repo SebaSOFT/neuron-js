@@ -179,6 +179,14 @@ function toExecutionDiagnostics(messages: string[]): ValidationError[] {
   }));
 }
 
+function toThrownExecutionDiagnostic(error: unknown): ValidationError {
+  return {
+    path: "$.execution.exception",
+    code: "execution_failed",
+    message: error instanceof Error ? error.message : String(error),
+  };
+}
+
 export function evaluateDecision({
   definition,
   context,
@@ -219,8 +227,18 @@ export function evaluateDecision({
     messages: [],
     state: cloneJson(context) as Record<string, unknown>,
   };
-  const synapse = new Synapse(neuron);
-  const result = synapse.execute(definition.script, executionContext);
+  let result: ReturnType<Synapse["execute"]>;
+  try {
+    const synapse = new Synapse(neuron);
+    result = synapse.execute(definition.script, executionContext);
+  } catch (error) {
+    return createEvaluation(
+      definition,
+      "execution_failed",
+      [toThrownExecutionDiagnostic(error)],
+      correlation,
+    );
+  }
   const explanation = explainExecution({ script: definition.script, result });
   const output = summarizeExecutionOutput(result);
 

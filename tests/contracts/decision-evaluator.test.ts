@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import {
   AbstractAction,
   AbstractCondition,
+  AbstractRule,
   evaluateDecision,
   ExecutionResult,
   MessageType,
@@ -81,6 +82,32 @@ class FixtureFailingAction extends AbstractAction {
   }
 }
 
+class FixtureThrowingAction extends AbstractAction {
+  static readonly TYPE = "fixture_throwing_action";
+
+  execute(): ExecutionResult<void> {
+    throw new Error("fixture thrown execution failure");
+  }
+}
+
+class FixtureRegisteredRule extends AbstractRule {
+  static readonly TYPE = "fixture_registered_rule";
+
+  execute(context: ExecutionContext): ExecutionResult<void> {
+    return new ExecutionResult(true, context);
+  }
+
+  toJSON(): object {
+    return {
+      id: this.id,
+      type: this.type,
+      conditions: this.conditions,
+      actions: this.actions,
+      options: this.options,
+    };
+  }
+}
+
 class FixtureFalseCondition extends AbstractCondition {
   static readonly TYPE = "fixture_false_condition";
 
@@ -106,11 +133,13 @@ function createDecisionNeuron() {
   const neuron = new Neuron();
   neuron.registerAction(FixtureOutcomeAction.TYPE, FixtureOutcomeAction);
   neuron.registerAction(FixtureFailingAction.TYPE, FixtureFailingAction);
+  neuron.registerAction(FixtureThrowingAction.TYPE, FixtureThrowingAction);
   neuron.registerAction(
     FixtureMutatingOutcomeAction.TYPE,
     FixtureMutatingOutcomeAction,
   );
   neuron.registerCondition(FixtureFalseCondition.TYPE, FixtureFalseCondition);
+  neuron.registerRule(FixtureRegisteredRule.TYPE, FixtureRegisteredRule);
   return neuron;
 }
 
@@ -244,6 +273,61 @@ describe("pure decision evaluator", () => {
         expect.objectContaining({ code: "execution_failed" }),
       ]),
     );
+  });
+
+  test("normalizes thrown runtime execution failures into execution_failed evaluations", () => {
+    const throwingDefinition = withScript(
+      outcomeDefinition,
+      {
+        id: "throwing-script",
+        rules: [
+          {
+            id: "throwing-rule",
+            type: "fixture_registered_rule",
+            options: {},
+            conditions: [],
+            actions: [
+              {
+                id: "throwing-action",
+                type: "fixture_throwing_action",
+                options: {},
+                params: [],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        rules: ["fixture_registered_rule"],
+        actions: ["fixture_throwing_action"],
+      },
+    );
+    const callerContext = { input: 7, nested: { stable: true } };
+
+    const evaluation = evaluateDecision({
+      definition: throwingDefinition,
+      context: callerContext,
+      neuron: createDecisionNeuron(),
+      correlation: { correlationId: "throwing-case" },
+    });
+
+    expect(evaluation.status).toBe("execution_failed");
+    expect(evaluation.outcome).toBeUndefined();
+    expect(evaluation.diagnostics).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: "execution_failed",
+          message: "fixture thrown execution failure",
+        }),
+      ]),
+    );
+    expect(evaluation.receipt).toMatchObject({
+      decisionId: throwingDefinition.id,
+      status: "execution_failed",
+      correlation: { correlationId: "throwing-case" },
+    });
+    expect(evaluation.receipt.trace).toEqual([]);
+    expect(callerContext).toEqual({ input: 7, nested: { stable: true } });
   });
 
   test("rejects undeclared or unregistered component references before execution", () => {
