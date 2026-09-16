@@ -420,12 +420,8 @@ export function validateDecisionTestVector(vector: unknown): ValidationResult {
     });
   }
 
-  if ("definitionRef" in vector && typeof vector.definitionRef !== "string") {
-    errors.push({
-      path: "$.definitionRef",
-      code: "required_string",
-      message: "Expected string at $.definitionRef.",
-    });
+  if ("definitionRef" in vector) {
+    requireString(vector, "definitionRef", "$", errors);
   }
 
   if ("definition" in vector) {

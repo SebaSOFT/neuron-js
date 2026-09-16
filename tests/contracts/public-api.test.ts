@@ -91,6 +91,21 @@ test("built package root exposes all decision validators to ESM and CommonJS con
   }
 });
 
+test("public decision test vector validator rejects empty definition references", () => {
+  const result = validateDecisionTestVector({
+    name: "empty-definition-reference",
+    definitionRef: "",
+    context: {},
+    expectedStatus: "succeeded",
+    expectedOutcome: {},
+  });
+
+  expect(result.ok).toBe(false);
+  expect(result.errors).toContainEqual(
+    expect.objectContaining({ path: "$.definitionRef" }),
+  );
+});
+
 test("package root export contract keeps ESM and CommonJS surfaces on the root import", () => {
   const packageJson = JSON.parse(
     readFileSync(join(rootDir, "package.json"), "utf8"),
