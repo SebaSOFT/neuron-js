@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { expect, test } from "vitest";
@@ -35,6 +36,15 @@ import {
 } from "../../src/index.js";
 
 const rootDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
+const require = createRequire(import.meta.url);
+const decisionValidatorNames = [
+  "validateDecisionDefinition",
+  "validateDecisionContext",
+  "validateDecisionOutcome",
+  "validateDecisionEvaluation",
+  "validateDecisionReceipt",
+  "validateDecisionTestVector",
+] as const;
 
 test("package root exports the supported public API", () => {
   expect(Neuron).toBeDefined();
@@ -68,11 +78,17 @@ test("package root exports the supported public API", () => {
   expect(SimpleRule.TYPE).toBe("simple_rule");
 });
 
-test("built package root can be consumed using documented imports", async () => {
-  const publicApi = await import("../../src/index.js");
-  expect(publicApi.Neuron).toBeDefined();
-  expect(publicApi.Synapse).toBeDefined();
-  expect(publicApi.validateDecisionDefinition).toBeDefined();
+test("built package root exposes all decision validators to ESM and CommonJS consumers", async () => {
+  const esmPublicApi = await import(join(rootDir, "dist/esm/index.js"));
+  const commonjsPublicApi = require(join(rootDir, "dist/commonjs/index.js")) as Record<
+    string,
+    unknown
+  >;
+
+  for (const validatorName of decisionValidatorNames) {
+    expect(esmPublicApi[validatorName]).toBeTypeOf("function");
+    expect(commonjsPublicApi[validatorName]).toBeTypeOf("function");
+  }
 });
 
 test("package root export contract keeps ESM and CommonJS surfaces on the root import", () => {

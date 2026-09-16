@@ -4,6 +4,14 @@
   "title": "Neuron-JS Decision Test Vector",
   "type": "object",
   "required": ["name", "context", "expectedStatus"],
+  "anyOf": [{ "required": ["definition"] }, { "required": ["definitionRef"] }],
+  "if": {
+    "properties": {
+      "expectedStatus": { "const": "succeeded" }
+    },
+    "required": ["expectedStatus"]
+  },
+  "then": { "required": ["expectedOutcome"] },
   "properties": {
     "name": { "type": "string", "minLength": 1 },
     "definition": { "$ref": "./decision-definition.schema.json" },
