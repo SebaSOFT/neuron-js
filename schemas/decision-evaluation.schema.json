@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/schemas/decision-evaluation.schema.json",
+  "title": "Neuron-JS Decision Evaluation",
+  "type": "object",
+  "required": ["status", "diagnostics", "receipt"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["succeeded", "invalid_context", "no_decision", "execution_failed"]
+    },
+    "outcome": true,
+    "diagnostics": {
+      "type": "array",
+      "items": { "$ref": "./validation-error.schema.json" }
+    },
+    "receipt": { "$ref": "./decision-receipt.schema.json" }
+  },
+  "additionalProperties": false
+}

@@ -202,6 +202,30 @@ export {
   validateScript,
   validateValidationErrors,
 } from "./contracts/validation.js";
+export type {
+  DecisionComponentManifest,
+  DecisionContext,
+  DecisionCorrelationMetadata,
+  DecisionDefinition,
+  DecisionEvaluation,
+  DecisionOutcome,
+  DecisionReceipt,
+  DecisionReplayRequest,
+  DecisionStatus,
+  DecisionTestVector,
+  JsonPrimitive,
+  JsonSchema,
+  JsonSchemaTypeName,
+  JsonValue,
+} from "./decision/contracts.js";
+export {
+  validateDecisionContext,
+  validateDecisionDefinition,
+  validateDecisionEvaluation,
+  validateDecisionOutcome,
+  validateDecisionReceipt,
+  validateDecisionTestVector,
+} from "./decision/validation.js";
 export type { ActionInterface, ActionOptions } from "./interfaces/Action.js";
 export type {
   ConditionInterface,
