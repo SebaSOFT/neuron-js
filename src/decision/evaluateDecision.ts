@@ -4,6 +4,7 @@ import { summarizeExecutionOutput } from "../contracts/validation.js";
 import type { Neuron } from "../index.js";
 import { Synapse } from "../Synapse.js";
 import type { ExecutionContext } from "../types/ExecutionContext.js";
+import { canonicalDecisionHash } from "./canonical.js";
 import type {
   DecisionComponentManifest,
   DecisionCorrelationMetadata,
@@ -19,7 +20,7 @@ import {
   validateDecisionOutcome,
 } from "./validation.js";
 
-const RUNTIME_VERSION = "0.5.2";
+export const DECISION_RUNTIME_VERSION = "0.5.2";
 const OUTCOME_STATE_KEY = "outcome";
 
 export interface EvaluateDecisionOptions {
@@ -41,12 +42,9 @@ function cloneJson<T extends JsonValue>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T;
 }
 
-function placeholderReceiptHash(label: string) {
-  return `phase3:${label}-hash-pending`;
-}
-
 function createReceipt(
   definition: DecisionDefinition,
+  context: JsonValue,
   status: DecisionStatus,
   correlation: DecisionCorrelationMetadata | undefined,
   trace: DecisionReceipt["trace"],
@@ -55,10 +53,12 @@ function createReceipt(
   return {
     decisionId: definition.id,
     decisionVersion: definition.version,
-    definitionHash: placeholderReceiptHash("definition"),
-    contextHash: placeholderReceiptHash("context"),
-    registryManifestHash: placeholderReceiptHash("registry-manifest"),
-    runtimeVersion: RUNTIME_VERSION,
+    definitionHash: canonicalDecisionHash(definition as unknown as JsonValue),
+    contextHash: canonicalDecisionHash(context),
+    registryManifestHash: canonicalDecisionHash(
+      definition.components as unknown as JsonValue,
+    ),
+    runtimeVersion: DECISION_RUNTIME_VERSION,
     status,
     ...(correlation ? { correlation } : {}),
     ...(diagnostics.length > 0 ? { diagnostics } : {}),
@@ -68,6 +68,7 @@ function createReceipt(
 
 function createEvaluation(
   definition: DecisionDefinition,
+  context: JsonValue,
   status: DecisionStatus,
   diagnostics: ValidationError[],
   correlation: DecisionCorrelationMetadata | undefined,
@@ -78,7 +79,14 @@ function createEvaluation(
     status,
     ...(outcome !== undefined ? { outcome } : {}),
     diagnostics,
-    receipt: createReceipt(definition, status, correlation, trace, diagnostics),
+    receipt: createReceipt(
+      definition,
+      context,
+      status,
+      correlation,
+      trace,
+      diagnostics,
+    ),
   };
 }
 
@@ -197,6 +205,7 @@ export function evaluateDecision({
   if (!definitionValidation.ok) {
     return createEvaluation(
       definition,
+      context,
       "execution_failed",
       definitionValidation.errors,
       correlation,
@@ -207,6 +216,7 @@ export function evaluateDecision({
   if (!contextValidation.ok) {
     return createEvaluation(
       definition,
+      context,
       "invalid_context",
       contextValidation.errors,
       correlation,
@@ -217,6 +227,7 @@ export function evaluateDecision({
   if (manifestDiagnostics.length > 0) {
     return createEvaluation(
       definition,
+      context,
       "execution_failed",
       manifestDiagnostics,
       correlation,
@@ -234,6 +245,7 @@ export function evaluateDecision({
   } catch (error) {
     return createEvaluation(
       definition,
+      context,
       "execution_failed",
       [toThrownExecutionDiagnostic(error)],
       correlation,
@@ -245,6 +257,7 @@ export function evaluateDecision({
   if (!result.isSuccessful()) {
     return createEvaluation(
       definition,
+      context,
       "execution_failed",
       toExecutionDiagnostics(output.messages),
       correlation,
@@ -255,6 +268,7 @@ export function evaluateDecision({
   if (!(OUTCOME_STATE_KEY in result.context.state)) {
     return createEvaluation(
       definition,
+      context,
       "no_decision",
       [],
       correlation,
@@ -267,6 +281,7 @@ export function evaluateDecision({
   if (!outcomeValidation.ok) {
     return createEvaluation(
       definition,
+      context,
       "execution_failed",
       outcomeValidation.errors.map((error) => ({
         ...error,
@@ -279,6 +294,7 @@ export function evaluateDecision({
 
   return createEvaluation(
     definition,
+    context,
     "succeeded",
     [],
     correlation,

@@ -3,10 +3,12 @@ import {
   AbstractAction,
   AbstractCondition,
   AbstractRule,
+  canonicalDecisionHash,
   evaluateDecision,
   ExecutionResult,
   MessageType,
   Neuron,
+  replayDecision,
 } from "../../src/index.js";
 import type {
   ActionOptions,
@@ -446,5 +448,144 @@ describe("pure decision evaluator", () => {
         expect.objectContaining({ path: "$.outcome.decision", code: "schema_enum" }),
       ]),
     );
+  });
+
+  test("derives identical canonical hashes for equivalent object key ordering", () => {
+    const left = {
+      beta: [2, { zeta: false, alpha: true }],
+      alpha: { second: "b", first: "a" },
+    };
+    const right = {
+      alpha: { first: "a", second: "b" },
+      beta: [2, { alpha: true, zeta: false }],
+    };
+
+    expect(canonicalDecisionHash(left)).toBe(canonicalDecisionHash(right));
+    expect(canonicalDecisionHash(left)).toMatch(/^sha256:[a-f0-9]{64}$/);
+    expect(canonicalDecisionHash("abc")).toBe(
+      "sha256:6cc43f858fbb763301637b5af970e2a46b46f461f27e5a0f41e009c59b827b25",
+    );
+  });
+
+  test("generates canonical receipt hashes and diagnostics for every engine status", () => {
+    const cases = [
+      evaluateDecision({
+        definition: outcomeDefinition,
+        context: { input: 7 },
+        neuron: createDecisionNeuron(),
+      }),
+      evaluateDecision({
+        definition: outcomeDefinition,
+        context: { input: "not-a-number" },
+        neuron: createDecisionNeuron(),
+      }),
+      evaluateDecision({
+        definition: withScript(outcomeDefinition, {
+          id: "receipt-no-decision-script",
+          rules: [
+            {
+              id: "disabled-rule",
+              type: "simple_rule",
+              options: { disabled: true },
+              conditions: [],
+              actions: [],
+            },
+          ],
+        }),
+        context: { input: 7 },
+        neuron: createDecisionNeuron(),
+      }),
+      evaluateDecision({
+        definition: withScript(
+          outcomeDefinition,
+          {
+            id: "receipt-failing-script",
+            rules: [
+              {
+                id: "failing-rule",
+                type: "simple_rule",
+                options: {},
+                conditions: [],
+                actions: [
+                  {
+                    id: "failing-action",
+                    type: "fixture_failing_action",
+                    options: {},
+                    params: [],
+                  },
+                ],
+              },
+            ],
+          },
+          { actions: ["fixture_failing_action"] },
+        ),
+        context: { input: 7 },
+        neuron: createDecisionNeuron(),
+      }),
+    ];
+
+    expect(cases.map((evaluation) => evaluation.status)).toEqual([
+      "succeeded",
+      "invalid_context",
+      "no_decision",
+      "execution_failed",
+    ]);
+
+    for (const evaluation of cases) {
+      expect(evaluation.receipt).toMatchObject({ status: evaluation.status });
+      expect(evaluation.receipt.definitionHash).toMatch(/^sha256:[a-f0-9]{64}$/);
+      expect(evaluation.receipt.contextHash).toMatch(/^sha256:[a-f0-9]{64}$/);
+      expect(evaluation.receipt.registryManifestHash).toMatch(
+        /^sha256:[a-f0-9]{64}$/,
+      );
+    }
+
+    const invalidContext = cases[1];
+    expect(invalidContext.receipt.diagnostics).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ path: "$.input", code: "schema_type" }),
+      ]),
+    );
+    expect(invalidContext.receipt.trace).toEqual([]);
+  });
+
+  test("replays unchanged retained artifacts with the same status, outcome, and hashes", () => {
+    const context = { input: 7 };
+    const original = evaluateDecision({
+      definition: outcomeDefinition,
+      context,
+      neuron: createDecisionNeuron(),
+    });
+
+    const replay = replayDecision({
+      definition: outcomeDefinition,
+      context,
+      registryManifest: outcomeDefinition.components,
+      expectedReceipt: original.receipt,
+      neuron: createDecisionNeuron(),
+    });
+
+    expect(replay.status).toBe(original.status);
+    expect(replay.outcome).toEqual(original.outcome);
+    expect(replay.receipt).toMatchObject({
+      definitionHash: original.receipt.definitionHash,
+      contextHash: original.receipt.contextHash,
+      registryManifestHash: original.receipt.registryManifestHash,
+    });
+  });
+
+  test("returns receipts as data without embedding raw inputs or outcomes for persistence", () => {
+    const context = { input: 7, sensitive: "do-not-store" };
+    const evaluation = evaluateDecision({
+      definition: outcomeDefinition,
+      context,
+      neuron: createDecisionNeuron(),
+    });
+
+    expect(evaluation.receipt).toBeDefined();
+    expect(evaluation.receipt).not.toHaveProperty("context");
+    expect(evaluation.receipt).not.toHaveProperty("outcome");
+    expect(JSON.stringify(evaluation.receipt)).not.toContain("do-not-store");
+    expect(evaluation.outcome).toEqual({ decision: "accepted" });
   });
 });

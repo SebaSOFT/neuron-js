@@ -202,6 +202,10 @@ export {
   validateScript,
   validateValidationErrors,
 } from "./contracts/validation.js";
+export {
+  canonicalDecisionHash,
+  canonicalDecisionSerialize,
+} from "./decision/canonical.js";
 export type {
   DecisionComponentManifest,
   DecisionContext,
@@ -219,7 +223,12 @@ export type {
   JsonValue,
 } from "./decision/contracts.js";
 export type { EvaluateDecisionOptions } from "./decision/evaluateDecision.js";
-export { evaluateDecision } from "./decision/evaluateDecision.js";
+export {
+  DECISION_RUNTIME_VERSION,
+  evaluateDecision,
+} from "./decision/evaluateDecision.js";
+export type { ReplayDecisionOptions } from "./decision/replayDecision.js";
+export { replayDecision } from "./decision/replayDecision.js";
 export {
   validateDecisionContext,
   validateDecisionDefinition,
