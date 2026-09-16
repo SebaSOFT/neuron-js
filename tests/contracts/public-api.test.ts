@@ -16,6 +16,7 @@ import {
   ExecutionResult,
   HookEvents,
   Neuron,
+  runDecisionTestVectors,
   validateDecisionContext,
   validateDecisionDefinition,
   validateDecisionEvaluation,
@@ -40,6 +41,7 @@ const rootDir = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const require = createRequire(import.meta.url);
 const decisionValidatorNames = [
   "evaluateDecision",
+  "runDecisionTestVectors",
   "validateDecisionDefinition",
   "validateDecisionContext",
   "validateDecisionOutcome",
@@ -55,6 +57,7 @@ test("package root exports the supported public API", () => {
   expect(HookEvents).toBeDefined();
   expect(validateScript).toBeDefined();
   expect(evaluateDecision).toBeDefined();
+  expect(runDecisionTestVectors).toBeDefined();
   expect(validateDecisionDefinition).toBeDefined();
   expect(validateDecisionContext).toBeDefined();
   expect(validateDecisionOutcome).toBeDefined();

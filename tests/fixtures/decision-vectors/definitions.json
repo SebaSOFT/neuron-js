@@ -1,0 +1,130 @@
+{
+  "approved-definition": {
+    "id": "portable-vector-decision",
+    "version": "1.0.0",
+    "contextSchema": {
+      "type": "object",
+      "required": ["input"],
+      "properties": {
+        "input": { "type": "number" }
+      },
+      "additionalProperties": true
+    },
+    "outcomeSchema": {
+      "type": "object",
+      "required": ["decision"],
+      "properties": {
+        "decision": { "type": "string", "enum": ["accepted", "rejected"] }
+      },
+      "additionalProperties": false
+    },
+    "components": {
+      "rules": ["simple_rule"],
+      "conditions": [],
+      "actions": ["vector_emit_outcome"],
+      "parameters": []
+    },
+    "script": {
+      "id": "portable-vector-script",
+      "rules": [
+        {
+          "id": "emit-outcome-rule",
+          "type": "simple_rule",
+          "options": {},
+          "conditions": [],
+          "actions": [
+            {
+              "id": "emit-accepted-outcome",
+              "type": "vector_emit_outcome",
+              "options": { "outcome": { "decision": "accepted" } },
+              "params": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "no-decision-definition": {
+    "id": "portable-vector-no-decision",
+    "version": "1.0.0",
+    "contextSchema": {
+      "type": "object",
+      "required": ["input"],
+      "properties": {
+        "input": { "type": "number" }
+      },
+      "additionalProperties": true
+    },
+    "outcomeSchema": {
+      "type": "object",
+      "required": ["decision"],
+      "properties": {
+        "decision": { "type": "string", "enum": ["accepted", "rejected"] }
+      },
+      "additionalProperties": false
+    },
+    "components": {
+      "rules": ["simple_rule"],
+      "conditions": [],
+      "actions": [],
+      "parameters": []
+    },
+    "script": {
+      "id": "portable-vector-no-decision-script",
+      "rules": [
+        {
+          "id": "disabled-rule",
+          "type": "simple_rule",
+          "options": { "disabled": true },
+          "conditions": [],
+          "actions": []
+        }
+      ]
+    }
+  },
+  "execution-failure-definition": {
+    "id": "portable-vector-execution-failure",
+    "version": "1.0.0",
+    "contextSchema": {
+      "type": "object",
+      "required": ["input"],
+      "properties": {
+        "input": { "type": "number" }
+      },
+      "additionalProperties": true
+    },
+    "outcomeSchema": {
+      "type": "object",
+      "required": ["decision"],
+      "properties": {
+        "decision": { "type": "string", "enum": ["accepted", "rejected"] }
+      },
+      "additionalProperties": false
+    },
+    "components": {
+      "rules": ["simple_rule"],
+      "conditions": [],
+      "actions": ["vector_fail_action"],
+      "parameters": []
+    },
+    "script": {
+      "id": "portable-vector-execution-failure-script",
+      "rules": [
+        {
+          "id": "failure-rule",
+          "type": "simple_rule",
+          "options": {},
+          "conditions": [],
+          "actions": [
+            {
+              "id": "fail-action",
+              "type": "vector_fail_action",
+              "options": {},
+              "params": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

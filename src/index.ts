@@ -229,6 +229,15 @@ export {
 } from "./decision/evaluateDecision.js";
 export type { ReplayDecisionOptions } from "./decision/replayDecision.js";
 export { replayDecision } from "./decision/replayDecision.js";
+export type {
+  DecisionTestVectorActualValue,
+  DecisionTestVectorExpectedValue,
+  DecisionTestVectorReceiptIdentity,
+  DecisionTestVectorReport,
+  DecisionTestVectorResult,
+  RunDecisionTestVectorsOptions,
+} from "./decision/testVectorRunner.js";
+export { runDecisionTestVectors } from "./decision/testVectorRunner.js";
 export {
   validateDecisionContext,
   validateDecisionDefinition,
