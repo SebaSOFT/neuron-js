@@ -5,6 +5,24 @@ export default defineConfig({
   description: "AI-friendly TypeScript rules engine for serializable JSON business rules and deterministic workflow decisions.",
   base: '/neuron-js/',
   ignoreDeadLinks: true,
+  markdown: {
+    config(md) {
+      const defaultFence = md.renderer.rules.fence;
+
+      md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+        const token = tokens[idx];
+        const language = token.info.trim().split(/\s+/)[0];
+
+        if (language === "mermaid") {
+          const source = encodeURIComponent(token.content);
+
+          return `<div class="mermaid" data-mermaid-source="${source}">${md.utils.escapeHtml(token.content)}</div>`;
+        }
+
+        return defaultFence?.(tokens, idx, options, env, self) ?? self.renderToken(tokens, idx, options);
+      };
+    }
+  },
   themeConfig: {
     logo: '/img/neuron-cover640.png',
     nav: [

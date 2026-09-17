@@ -52,6 +52,20 @@ describe("decision-runtime documentation and release surfaces", () => {
     expect(guide).not.toContain("refund");
   });
 
+  test("renders agentic guide Mermaid fences as diagrams in the built docs site", () => {
+    const builtGuide = textFile(
+      "docs/.vitepress/dist/concepts/agentic-decision-architecture.html",
+    );
+    const theme = textFile("docs/.vitepress/theme/index.ts");
+
+    expect(builtGuide.match(/class=\"mermaid\"/g)).toHaveLength(3);
+    expect(builtGuide).not.toContain("language-mermaid");
+    expect(builtGuide).not.toContain("<code><span class=\"line\">");
+    expect(theme).toContain("theme: isDarkMode() ? \"dark\" : \"default\"");
+    expect(theme).toContain("onAfterRouteChanged");
+    expect(theme).toContain("MutationObserver");
+  });
+
   test("publishes the domain-neutral concept page with boundary and non-goals", () => {
     const page = textFile("docs/concepts/decision-runtime.md");
 
