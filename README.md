@@ -22,6 +22,7 @@ Use it when hardcoded `if/else` logic is too rigid, but a heavyweight workflow o
 - GitHub: <https://github.com/SebaSOFT/neuron-js>
 - Examples: [`examples/`](examples/) with pricing, eligibility, workflow-routing, a generic decision-runtime example, n8n, and LangGraph scenarios
 - Decision runtime concept: [`docs/concepts/decision-runtime.md`](docs/concepts/decision-runtime.md)
+- Agentic decision architecture: [`docs/concepts/agentic-decision-architecture.md`](docs/concepts/agentic-decision-architecture.md)
 - Schemas and validation docs: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
 - AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), and the official [`neuron-js` AI skill](docs/public/skills/neuron-js/SKILL.md)
 - Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for json-rules-engine, JsonLogic, node-rules, and if/else migrations
@@ -143,7 +144,7 @@ For pure decisions, use the opt-in `evaluateDecision` API instead of treating mu
 
 The decision runtime is domain-neutral: application-specific meanings belong inside the successful outcome object, while engine status remains one of `succeeded`, `invalid_context`, `no_decision`, or `execution_failed`. Neuron-JS does not fetch context, persist receipts, call external services, run LLMs, trigger workflow side effects, or provide a CLI/MCP/UI for this profile.
 
-Runnable example: [`examples/generic-decision-runtime/`](examples/generic-decision-runtime/).
+Runnable example: [`examples/generic-decision-runtime/`](examples/generic-decision-runtime/). For agentic systems, see [`docs/concepts/agentic-decision-architecture.md`](docs/concepts/agentic-decision-architecture.md): LLM extraction is advisory, the host resolves canonical Decision Context, Neuron-JS evaluates an approved `DecisionDefinition`, and host-only side-effect routing consumes receipt-backed results.
 
 ---
 
@@ -193,6 +194,7 @@ Available adoption assets:
 
 - Runnable examples: [`examples/`](examples/) including the generic decision runtime plus n8n and LangGraph workflow automation recipes
 - Decision runtime concept: [`docs/concepts/decision-runtime.md`](docs/concepts/decision-runtime.md)
+- Agentic decision architecture: [`docs/concepts/agentic-decision-architecture.md`](docs/concepts/agentic-decision-architecture.md)
 - JSON Schemas, validation, and explain output: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
 - Measured benchmarks, methodology, and AI-rule-safety proof: [`docs/benchmarks/`](docs/benchmarks/)
 - Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for choosing and migrating from json-rules-engine, JsonLogic, node-rules, and hand-written if/else

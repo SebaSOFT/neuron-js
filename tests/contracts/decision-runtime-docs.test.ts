@@ -7,6 +7,7 @@ const jsonFile = <T>(path: string): T => JSON.parse(textFile(path)) as T;
 const discoverySurfaces = [
   "README.md",
   "docs/concepts/decision-runtime.md",
+  "docs/concepts/agentic-decision-architecture.md",
   "docs/use-cases/runnable-examples.md",
   "docs/ai-coding-assistants.md",
   "docs/public/llms.txt",
@@ -33,6 +34,38 @@ const genericExampleFiles = [
 ];
 
 describe("decision-runtime documentation and release surfaces", () => {
+  test("publishes a domain-neutral agentic decision architecture guide", () => {
+    const guide = textFile("docs/concepts/agentic-decision-architecture.md");
+
+    expect(guide).toContain("structured LLM extraction is advisory only");
+    expect(guide).toContain("Host resolves canonical Decision Context");
+    expect(guide).toContain("approved DecisionDefinition");
+    expect(guide).toContain("receipt/replay evidence");
+    expect(guide).toContain("host-only side-effect routing");
+    expect(guide).toContain("Decision model vs LLM boundary");
+    expect(guide).toContain("Tool/skill contract");
+    expect(guide).toContain("Missing data");
+    expect(guide).toContain("Invalid context");
+    expect(guide).toContain("Out-of-policy request");
+    expect(guide).toContain("```mermaid");
+    expect(guide).not.toContain("mortgage");
+    expect(guide).not.toContain("refund");
+  });
+
+  test("renders agentic guide Mermaid fences as diagrams in the built docs site", () => {
+    const builtGuide = textFile(
+      "docs/.vitepress/dist/concepts/agentic-decision-architecture.html",
+    );
+    const theme = textFile("docs/.vitepress/theme/index.ts");
+
+    expect(builtGuide.match(/class=\"mermaid\"/g)).toHaveLength(3);
+    expect(builtGuide).not.toContain("language-mermaid");
+    expect(builtGuide).not.toContain("<code><span class=\"line\">");
+    expect(theme).toContain("theme: isDarkMode() ? \"dark\" : \"default\"");
+    expect(theme).toContain("onAfterRouteChanged");
+    expect(theme).toContain("MutationObserver");
+  });
+
   test("publishes the domain-neutral concept page with boundary and non-goals", () => {
     const page = textFile("docs/concepts/decision-runtime.md");
 
@@ -84,7 +117,27 @@ describe("decision-runtime documentation and release surfaces", () => {
 
     const vitepressConfig = textFile("docs/.vitepress/config.ts");
     expect(vitepressConfig).toContain("/concepts/decision-runtime");
+    expect(vitepressConfig).toContain("/concepts/agentic-decision-architecture");
     expect(vitepressConfig).toContain("generic-decision-runtime");
+  });
+
+  test("links the agentic decision guide from example and AI-readable docs", () => {
+    for (const surface of [
+      "docs/use-cases/runnable-examples.md",
+      "docs/ai-coding-assistants.md",
+      "docs/public/llms.txt",
+      "docs/public/llms-full.txt",
+      "docs/public/skills/neuron-js/SKILL.md",
+      "ai/skills/neuron-js/SKILL.md",
+    ]) {
+      const text = textFile(surface);
+      expect(text, `${surface} missing architecture guide`).toContain(
+        "agentic-decision-architecture",
+      );
+      expect(text, `${surface} missing host/LLM boundary`).toMatch(
+        /LLM extraction|host.*canonical Decision Context|host-only side-effect/i,
+      );
+    }
   });
 
   test("publishes decision schemas from AI-readable documentation", () => {

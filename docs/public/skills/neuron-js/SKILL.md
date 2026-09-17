@@ -154,6 +154,8 @@ The caller owns context acquisition, receipt persistence, outcome interpretation
 
 Reference: https://sebasoft.github.io/neuron-js/concepts/decision-runtime.html
 
+Agentic architecture guide: https://sebasoft.github.io/neuron-js/concepts/agentic-decision-architecture.html. For agentic systems, LLM extraction is advisory only; the host resolves canonical Decision Context, selects an approved `DecisionDefinition`, preserves receipt/replay evidence, and performs host-only side-effect routing. The guide also defines the decision-model-vs-LLM boundary, tool/skill contract, and intentional failure paths for missing data, invalid context, and out-of-policy requests.
+
 ## Prompt recipes
 
 ### Generate pricing rules
