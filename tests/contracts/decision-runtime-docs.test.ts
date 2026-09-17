@@ -48,6 +48,10 @@ describe("decision-runtime documentation and release surfaces", () => {
     expect(guide).toContain("Invalid context");
     expect(guide).toContain("Out-of-policy request");
     expect(guide).toContain("```mermaid");
+    expect(guide).toContain(
+      "https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime",
+    );
+    expect(guide).not.toContain("../../examples/generic-decision-runtime/");
     expect(guide).not.toContain("mortgage");
     expect(guide).not.toContain("refund");
   });
