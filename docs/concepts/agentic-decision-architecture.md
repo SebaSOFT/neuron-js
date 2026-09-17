@@ -160,4 +160,4 @@ Expected handling:
 - Store receipts and retained artifacts needed for replay.
 - Keep all side effects in host-owned routing code or explicitly approved workflow tools.
 
-See also: [Decision runtime](./decision-runtime.md) and the [generic decision-runtime example](../../examples/generic-decision-runtime/).
+See also: [Decision runtime](./decision-runtime.md) and the [generic decision-runtime example](https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime).
