@@ -1,0 +1,16 @@
+{
+  "status": "succeeded",
+  "outcome": {
+    "result": "passed",
+    "observed": 7,
+    "minimum": 5,
+    "label": "sample-a"
+  },
+  "receiptIdentity": {
+    "decisionId": "generic-threshold-decision",
+    "decisionVersion": "1.0.0",
+    "status": "succeeded",
+    "runtimeVersion": "0.5.2"
+  },
+  "diagnostics": []
+}

@@ -9,8 +9,13 @@ Neuron-JS is intentionally documented for AI coding assistants and workflow agen
 - [`/skills/neuron-js/SKILL.md`](/skills/neuron-js/SKILL.md): official reusable skill for agent runtimes.
 - [`/comparisons/`](/comparisons/): comparison and migration guides for tool selection and safe migration.
 - [`/integrations/`](/integrations/): workflow automation recipes for n8n and LangGraph.
+- [`/concepts/decision-runtime`](/concepts/decision-runtime): pure decision-runtime boundary, non-goals, and side-effect rules.
 - [`/schemas/script.schema.json`](/schemas/script.schema.json): JSON Schema for scripts and rule definitions.
 - [`/schemas/execution-context.schema.json`](/schemas/execution-context.schema.json): JSON Schema for runtime context.
+- [`/schemas/decision-definition.schema.json`](/schemas/decision-definition.schema.json): JSON Schema for decision definitions.
+- [`/schemas/decision-evaluation.schema.json`](/schemas/decision-evaluation.schema.json): JSON Schema for decision evaluations.
+- [`/schemas/decision-receipt.schema.json`](/schemas/decision-receipt.schema.json): JSON Schema for decision receipts.
+- [`/schemas/decision-test-vector.schema.json`](/schemas/decision-test-vector.schema.json): JSON Schema for portable decision test vectors.
 - [`/schemas/execution-output.schema.json`](/schemas/execution-output.schema.json): JSON Schema for normalized execution output.
 - [`/schemas/validation-error.schema.json`](/schemas/validation-error.schema.json): JSON Schema for validation errors.
 - [`/schemas/explanation-trace.schema.json`](/schemas/explanation-trace.schema.json): JSON Schema for explainability output.
@@ -25,7 +30,24 @@ Neuron-JS is intentionally documented for AI coding assistants and workflow agen
 6. Execute with `Synapse` and an approved `Neuron` registry.
 7. Summarize with `summarizeExecutionOutput`.
 8. Explain with `explainExecution` when decisions are generated, persisted, reviewed, or audited.
-9. Do not invent a CLI. Use the documented programmatic APIs unless a future package release documents CLI commands.
+9. For the decision runtime, use `evaluateDecision` with a declared `DecisionDefinition`; validate the caller context before component execution and validate the caller-defined outcome before returning `succeeded`.
+10. Keep decision-runtime side effects outside Neuron-JS. The runtime returns evaluation data and receipts; it does not persist, fetch context, call services, run workflows, or invoke LLMs.
+11. Do not invent a CLI. Use the documented programmatic APIs unless a future package release documents CLI commands.
+
+## Decision runtime
+
+Use the opt-in decision runtime when a system needs a domain-neutral, replayable decision boundary instead of mutable workflow execution. `evaluateDecision` accepts a `DecisionDefinition`, caller-supplied JSON context snapshot, and approved `Neuron` registry. It returns one engine status (`succeeded`, `invalid_context`, `no_decision`, or `execution_failed`), optional schema-valid outcome, diagnostics, and a receipt.
+
+The caller owns context acquisition, receipt persistence, outcome interpretation, and downstream side effects. Neuron-JS owns validation-before-execution, declared component checks, immutable caller-context semantics, outcome validation, and reproducible receipt identity.
+
+Runnable template: [`examples/generic-decision-runtime/`](https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime).
+
+Decision-runtime schema URLs:
+
+- https://sebasoft.github.io/neuron-js/schemas/decision-definition.schema.json
+- https://sebasoft.github.io/neuron-js/schemas/decision-evaluation.schema.json
+- https://sebasoft.github.io/neuron-js/schemas/decision-receipt.schema.json
+- https://sebasoft.github.io/neuron-js/schemas/decision-test-vector.schema.json
 
 
 ## Tool-selection and migration guides

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/schemas/decision-receipt.schema.json",
+  "title": "Neuron-JS Decision Receipt",
+  "type": "object",
+  "required": ["decisionId", "decisionVersion", "definitionHash", "registryManifestHash", "runtimeVersion", "status", "trace"],
+  "properties": {
+    "decisionId": { "type": "string", "minLength": 1 },
+    "decisionVersion": { "type": "string", "minLength": 1 },
+    "definitionHash": { "type": "string", "minLength": 1 },
+    "contextHash": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Canonical hash of the evaluated context when the context can be serialized as canonical JSON. Omitted for invalid, non-canonical contexts such as non-finite numbers."
+    },
+    "registryManifestHash": { "type": "string", "minLength": 1 },
+    "runtimeVersion": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["succeeded", "invalid_context", "no_decision", "execution_failed"]
+    },
+    "correlation": { "type": "object" },
+    "diagnostics": {
+      "type": "array",
+      "items": { "$ref": "./validation-error.schema.json" }
+    },
+    "trace": { "type": "array" }
+  },
+  "additionalProperties": false
+}

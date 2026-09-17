@@ -1,0 +1,27 @@
+[
+  {
+    "name": "successful outcome vector",
+    "definitionRef": "approved-definition",
+    "context": { "input": 7 },
+    "expectedStatus": "succeeded",
+    "expectedOutcome": { "decision": "accepted" }
+  },
+  {
+    "name": "invalid context vector",
+    "definitionRef": "approved-definition",
+    "context": { "input": "not-a-number" },
+    "expectedStatus": "invalid_context"
+  },
+  {
+    "name": "no decision vector",
+    "definitionRef": "no-decision-definition",
+    "context": { "input": 7 },
+    "expectedStatus": "no_decision"
+  },
+  {
+    "name": "execution failure vector",
+    "definitionRef": "execution-failure-definition",
+    "context": { "input": 7 },
+    "expectedStatus": "execution_failed"
+  }
+]

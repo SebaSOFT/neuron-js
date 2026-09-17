@@ -20,7 +20,8 @@ Use it when hardcoded `if/else` logic is too rigid, but a heavyweight workflow o
 - Documentation: <https://sebasoft.github.io/neuron-js/>
 - npm: <https://www.npmjs.com/package/@sebasoft/neuron-js>
 - GitHub: <https://github.com/SebaSOFT/neuron-js>
-- Examples: [`examples/`](examples/) with pricing, eligibility, workflow-routing, n8n, and LangGraph scenarios
+- Examples: [`examples/`](examples/) with pricing, eligibility, workflow-routing, a generic decision-runtime example, n8n, and LangGraph scenarios
+- Decision runtime concept: [`docs/concepts/decision-runtime.md`](docs/concepts/decision-runtime.md)
 - Schemas and validation docs: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
 - AI-readable docs: [`docs/ai-coding-assistants.md`](docs/ai-coding-assistants.md), [`docs/public/llms.txt`](docs/public/llms.txt), and the official [`neuron-js` AI skill](docs/public/skills/neuron-js/SKILL.md)
 - Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for json-rules-engine, JsonLogic, node-rules, and if/else migrations
@@ -70,6 +71,7 @@ Measured throughput, cold-start, bundle-size, validation, and explanation overhe
 - 🛠 **Pluggable TypeScript registry**: Register custom Actions, Conditions, Parameters, and Rules.
 - 📦 **JSON business rules**: Store, transmit, version, and audit logic as serializable JSON.
 - ⚡ **Deterministic execution**: Run predictable workflow and business decisions in Node.js or the browser.
+- 🧾 **Pure decision runtime**: Evaluate a caller-defined context snapshot against a declared `DecisionDefinition`, validate before execution, return a schema-valid outcome, and keep side effects outside the runtime.
 - 🪝 **Lifecycle hooks**: Monitor script, rule, action, and error events around execution.
 - 🌓 **Dual-module support**: Native ESM and CommonJS bundles via `tshy`.
 
@@ -135,6 +137,14 @@ console.log(result.value); // 1 rule executed
 console.log(result.context.messages.map((message) => message.text)); // includes "Sum result: 15"
 ```
 
+### Decision-runtime boundary
+
+For pure decisions, use the opt-in `evaluateDecision` API instead of treating mutable workflow execution as a decision contract. A `DecisionDefinition` declares the context schema, outcome schema, approved component manifest, and executable script. The runtime validates the caller context before any component executes, evaluates against a cloned immutable snapshot, validates the produced `outcome`, and returns a receipt for review or replay.
+
+The decision runtime is domain-neutral: application-specific meanings belong inside the successful outcome object, while engine status remains one of `succeeded`, `invalid_context`, `no_decision`, or `execution_failed`. Neuron-JS does not fetch context, persist receipts, call external services, run LLMs, trigger workflow side effects, or provide a CLI/MCP/UI for this profile.
+
+Runnable example: [`examples/generic-decision-runtime/`](examples/generic-decision-runtime/).
+
 ---
 
 ## 🧬 Core Concepts
@@ -181,7 +191,8 @@ The current public surface includes installation, positioning, core concepts, ru
 
 Available adoption assets:
 
-- Runnable examples: [`examples/`](examples/) including n8n and LangGraph workflow automation recipes
+- Runnable examples: [`examples/`](examples/) including the generic decision runtime plus n8n and LangGraph workflow automation recipes
+- Decision runtime concept: [`docs/concepts/decision-runtime.md`](docs/concepts/decision-runtime.md)
 - JSON Schemas, validation, and explain output: [`docs/schemas-validation-explainability.md`](docs/schemas-validation-explainability.md)
 - Measured benchmarks, methodology, and AI-rule-safety proof: [`docs/benchmarks/`](docs/benchmarks/)
 - Comparison and migration guides: [`docs/comparisons/`](docs/comparisons/) for choosing and migrating from json-rules-engine, JsonLogic, node-rules, and hand-written if/else
