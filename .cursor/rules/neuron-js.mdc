@@ -16,6 +16,7 @@ Follow these rules:
 - Use package-root public APIs only.
 - Validate generated scripts with `validateScript` before execution.
 - Validate execution contexts with `validateExecutionContext` before execution.
+- For decision-runtime work, use `evaluateDecision`, validate the caller context before component execution, preserve the caller context as an immutable snapshot, and keep side effects outside Neuron-JS.
 - Stop and return structured errors if validation fails.
 - Execute with `Synapse` plus an approved `Neuron` registry.
 - Normalize with `summarizeExecutionOutput`.

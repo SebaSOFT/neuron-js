@@ -9,6 +9,7 @@ When generating or editing code in this repository:
 - Preserve the serializable JSON script contract.
 - Validate generated rules with `validateScript` before execution.
 - Validate contexts with `validateExecutionContext` before execution.
+- For the decision runtime, use `evaluateDecision`, validate the caller context before component execution, treat the caller context as immutable, and keep side effects outside the runtime.
 - Use `summarizeExecutionOutput` for stable machine-readable execution output.
 - Use `explainExecution` for audit traces.
 - Keep official examples runnable with `yarn examples`.
@@ -25,4 +26,7 @@ Useful files:
 - `examples/pricing-rules/`
 - `examples/eligibility-check/`
 - `examples/workflow-routing/`
+- `examples/generic-decision-runtime/`
+- `docs/concepts/decision-runtime.md`
+- `schemas/decision-*.schema.json`
 - `schemas/*.schema.json`

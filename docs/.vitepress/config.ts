@@ -32,6 +32,7 @@ export default defineConfig({
         items: [
           { text: 'Core Engine', link: '/concepts/core-engine' },
           { text: 'Context & State', link: '/concepts/context-and-state' },
+          { text: 'Decision Runtime', link: '/concepts/decision-runtime' },
           { text: 'Implementation Examples', link: '/concepts/implementation-examples' }
         ]
       },
@@ -39,6 +40,7 @@ export default defineConfig({
         text: 'Use Cases',
         items: [
           { text: 'Runnable Examples', link: '/use-cases/runnable-examples' },
+          { text: 'Generic decision runtime', link: 'https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime' },
           { text: 'Business Rules Engine', link: '/use-cases/business-rules-engine' },
           { text: 'Dynamic Routing', link: '/use-cases/dynamic-routing' }
         ]
