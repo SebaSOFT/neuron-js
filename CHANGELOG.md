@@ -1,5 +1,11 @@
 # @sebasoft/neuron-js
 
+## 0.7.0
+
+### Minor Changes
+
+- 11f7a6f: Add an opt-in deterministic decision runtime with validated decision definitions, immutable context evaluation, canonical receipts and replay, portable test vectors, and runnable documentation. Update direct and transitive development dependencies to remediate known vulnerabilities.
+
 ## 0.5.2
 
 ### Patch Changes

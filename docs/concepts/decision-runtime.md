@@ -67,3 +67,5 @@ Applications still own component registration, purity review, artifact storage, 
 ## Runnable example
 
 See the domain-neutral example in [`examples/generic-decision-runtime/`](../../examples/generic-decision-runtime/). It defines a context schema, outcome schema, local effect-free components, and an expected evaluation result without depending on an external service or vertical workflow.
+
+For agentic systems, pair this runtime boundary with the [agentic decision architecture guide](./agentic-decision-architecture.md). That guide shows how structured LLM extraction remains advisory while the host resolves the canonical Decision Context, chooses an approved `DecisionDefinition`, preserves receipt/replay evidence, and performs host-only side-effect routing.
