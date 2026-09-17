@@ -68,6 +68,8 @@ Path: [`examples/generic-decision-runtime/`](https://github.com/SebaSOFT/neuron-
 
 Demonstrates the pure decision runtime with a caller-defined context schema, outcome schema, local effect-free components, receipt identity, and no vertical application dependency.
 
+Architecture guide: [`docs/concepts/agentic-decision-architecture.md`](../concepts/agentic-decision-architecture.md) shows the host/LLM boundary: LLM extraction is advisory, the host resolves the canonical Decision Context, Neuron-JS evaluates an approved `DecisionDefinition`, and host-only side-effect routing consumes receipt-backed results.
+
 Files:
 
 - `definition.json` — decision definition with schemas, manifest, and script.

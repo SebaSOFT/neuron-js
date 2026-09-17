@@ -106,6 +106,7 @@ The side-effect boundary is explicit: Neuron-JS returns evaluation data and rece
 Decision-runtime docs and examples:
 
 - Concept page: https://sebasoft.github.io/neuron-js/concepts/decision-runtime.html
+- Agentic decision architecture guide: https://sebasoft.github.io/neuron-js/concepts/agentic-decision-architecture.html
 - Generic runnable example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime
 - Decision definition schema: https://sebasoft.github.io/neuron-js/schemas/decision-definition.schema.json
 - Decision evaluation schema: https://sebasoft.github.io/neuron-js/schemas/decision-evaluation.schema.json
@@ -302,6 +303,8 @@ Files:
 - `expected-output.json`: verified status, outcome, diagnostics, and receipt identity.
 - `run.ts`: executable TypeScript runner.
 
+Architecture guide: https://sebasoft.github.io/neuron-js/concepts/agentic-decision-architecture.html documents the host/LLM boundary for agentic systems. LLM extraction is advisory only; the host resolves canonical Decision Context, evaluates an approved `DecisionDefinition`, preserves receipt/replay evidence, and performs host-only side-effect routing. It also names intentional failure paths for missing data, invalid context, and out-of-policy requests.
+
 ## AI coding assistants
 
 Canonical machine-readable files:
@@ -310,6 +313,7 @@ Canonical machine-readable files:
 - `/llms-full.txt`: expanded full AI context without navigation chrome.
 - `/skills/neuron-js/SKILL.md`: official reusable skill for agent runtimes.
 - `/concepts/decision-runtime`: pure decision-runtime boundary, non-goals, and side-effect rules.
+- `/concepts/agentic-decision-architecture`: decision-model-vs-LLM boundary, tool/skill contract, receipt/replay evidence, host-only side-effect routing, and intentional failure paths.
 - `/schemas/script.schema.json`: JSON Schema for scripts and rule definitions.
 - `/schemas/execution-context.schema.json`: JSON Schema for runtime context.
 - `/schemas/decision-definition.schema.json`: JSON Schema for decision definitions.

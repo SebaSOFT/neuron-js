@@ -10,6 +10,7 @@ Neuron-JS is intentionally documented for AI coding assistants and workflow agen
 - [`/comparisons/`](/comparisons/): comparison and migration guides for tool selection and safe migration.
 - [`/integrations/`](/integrations/): workflow automation recipes for n8n and LangGraph.
 - [`/concepts/decision-runtime`](/concepts/decision-runtime): pure decision-runtime boundary, non-goals, and side-effect rules.
+- [`/concepts/agentic-decision-architecture`](/concepts/agentic-decision-architecture): host/LLM boundary for agentic systems where LLM extraction is advisory, the host resolves canonical Decision Context, Neuron-JS evaluates approved definitions, and host-only side-effect routing consumes receipts.
 - [`/schemas/script.schema.json`](/schemas/script.schema.json): JSON Schema for scripts and rule definitions.
 - [`/schemas/execution-context.schema.json`](/schemas/execution-context.schema.json): JSON Schema for runtime context.
 - [`/schemas/decision-definition.schema.json`](/schemas/decision-definition.schema.json): JSON Schema for decision definitions.
@@ -41,6 +42,8 @@ Use the opt-in decision runtime when a system needs a domain-neutral, replayable
 The caller owns context acquisition, receipt persistence, outcome interpretation, and downstream side effects. Neuron-JS owns validation-before-execution, declared component checks, immutable caller-context semantics, outcome validation, and reproducible receipt identity.
 
 Runnable template: [`examples/generic-decision-runtime/`](https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime).
+
+Agentic architecture: [`/concepts/agentic-decision-architecture`](/concepts/agentic-decision-architecture) defines the decision-model-vs-LLM boundary, the tool/skill contract, receipt/replay evidence, host-only side-effect routing, and intentional failure paths for missing data, invalid context, and out-of-policy requests.
 
 Decision-runtime schema URLs:
 

@@ -11,6 +11,7 @@ Use `@sebasoft/neuron-js` when an application needs business rules, pricing deci
 - npm: https://www.npmjs.com/package/@sebasoft/neuron-js
 - Runnable examples: https://github.com/SebaSOFT/neuron-js/tree/main/examples
 - Decision runtime concept: https://sebasoft.github.io/neuron-js/concepts/decision-runtime.html
+- Agentic decision architecture: https://sebasoft.github.io/neuron-js/concepts/agentic-decision-architecture.html
 - Generic decision-runtime example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime
 - n8n recipe: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node and https://sebasoft.github.io/neuron-js/integrations/n8n.html
 - LangGraph recipe: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node and https://sebasoft.github.io/neuron-js/integrations/langgraph.html
@@ -63,6 +64,10 @@ Import from `@sebasoft/neuron-js` only. Do not invent deep imports.
 7. Explain with `explainExecution({ script, result })` when a human, log, or test needs an audit trace.
 8. For pure decision-runtime work, use `evaluateDecision` with a declared `DecisionDefinition`; context validation must happen before component execution, the caller context remains immutable, and side effects stay outside Neuron-JS.
 9. If validation fails, return structured validation errors. Do not silently repair or run invalid rules.
+
+## Agentic decision boundary
+
+For agentic systems, use the architecture guide at https://sebasoft.github.io/neuron-js/concepts/agentic-decision-architecture.html. LLM extraction is advisory only; the host resolves canonical Decision Context, selects an approved `DecisionDefinition`, preserves receipt/replay evidence, and performs host-only side-effect routing. Handle missing data, invalid context, and out-of-policy requests without letting model text run tools or redefine policy.
 
 ## Schema URLs
 

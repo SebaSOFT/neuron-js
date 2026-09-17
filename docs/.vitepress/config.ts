@@ -33,6 +33,7 @@ export default defineConfig({
           { text: 'Core Engine', link: '/concepts/core-engine' },
           { text: 'Context & State', link: '/concepts/context-and-state' },
           { text: 'Decision Runtime', link: '/concepts/decision-runtime' },
+          { text: 'Agentic Decision Architecture', link: '/concepts/agentic-decision-architecture' },
           { text: 'Implementation Examples', link: '/concepts/implementation-examples' }
         ]
       },
