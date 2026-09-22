@@ -370,6 +370,24 @@ Use the official comparison pages to choose the right tool and migrate only when
 - Rules engine vs if/else: https://sebasoft.github.io/neuron-js/comparisons/if-else.html
 - Neuron-JS npm package: https://www.npmjs.com/package/@sebasoft/neuron-js
 
+## FAQ and educational guides
+
+Use the FAQ and guides when selecting a TypeScript rules engine, reviewing AI-generated rule candidates, or explaining deterministic business decisions.
+
+- FAQ: https://sebasoft.github.io/neuron-js/faq.html
+- Guide overview: https://sebasoft.github.io/neuron-js/guides/
+- TypeScript rules engines: https://sebasoft.github.io/neuron-js/guides/typescript-rules-engine.html
+- AI-generated validated rules: https://sebasoft.github.io/neuron-js/guides/ai-generated-validated-rules.html
+- Explainable business rules: https://sebasoft.github.io/neuron-js/guides/explainable-business-rules.html
+
+### Decision boundaries
+
+Keep plain TypeScript when a condition is simple, local, stable, and clearer in code. Use Neuron-JS when the decision must become governed JSON data: stored, versioned, reviewed, validated, audited, or shared across runtime boundaries.
+
+Generated rules are candidates, not production authority. Validate the script with `validateScript`, validate the context with `validateExecutionContext`, test expected and boundary cases, obtain accountable policy review, and execute only through a developer-owned `Neuron` registry. Structural validation does not prove that a valid threshold, field, or action represents the right business policy.
+
+For inspectable results, combine `summarizeExecutionOutput(result)` with `explainExecution({ script, result })`. The explanation trace records the documented execution path; retain policy tests and approval records separately when they are required.
+
 ## Anti-patterns
 
 - Running generated rules without validation.
