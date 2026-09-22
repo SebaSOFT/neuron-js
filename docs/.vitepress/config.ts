@@ -33,6 +33,8 @@ export default defineConfig({
       { text: 'Benchmarks', link: '/benchmarks/results' },
       { text: 'Comparisons', link: '/comparisons/' },
       { text: 'Integrations', link: '/integrations/' },
+      { text: 'Guides', link: '/guides/' },
+      { text: 'FAQ', link: '/faq' },
       { text: 'AI Docs', link: '/ai-coding-assistants' },
       { text: 'API', link: '/api/README' }
     ],
@@ -42,7 +44,8 @@ export default defineConfig({
         items: [
           { text: 'Overview', link: '/overview' },
           { text: 'Schemas, Validation & Explainability', link: '/schemas-validation-explainability' },
-          { text: 'AI Coding Assistants', link: '/ai-coding-assistants' }
+          { text: 'AI Coding Assistants', link: '/ai-coding-assistants' },
+          { text: 'FAQ', link: '/faq' }
         ]
       },
       {
@@ -89,6 +92,15 @@ export default defineConfig({
           { text: 'Integration Guide', link: '/integrations/' },
           { text: 'n8n deterministic routing', link: '/integrations/n8n' },
           { text: 'LangGraph decision node', link: '/integrations/langgraph' }
+        ]
+      },
+      {
+        text: 'Educational guides',
+        items: [
+          { text: 'Guide overview', link: '/guides/' },
+          { text: 'TypeScript rules engines', link: '/guides/typescript-rules-engine' },
+          { text: 'AI-generated validated rules', link: '/guides/ai-generated-validated-rules' },
+          { text: 'Explainable business rules', link: '/guides/explainable-business-rules' }
         ]
       },
       {

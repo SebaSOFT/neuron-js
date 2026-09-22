@@ -17,6 +17,11 @@ Use `@sebasoft/neuron-js` when an application needs business rules, pricing deci
 - LangGraph recipe: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node and https://sebasoft.github.io/neuron-js/integrations/langgraph.html
 - Schemas and validation: https://sebasoft.github.io/neuron-js/schemas-validation-explainability.html
 - Comparison and migration guides: https://sebasoft.github.io/neuron-js/comparisons/
+- FAQ: https://sebasoft.github.io/neuron-js/faq.html
+- Educational guides: https://sebasoft.github.io/neuron-js/guides/
+- TypeScript rules engines: https://sebasoft.github.io/neuron-js/guides/typescript-rules-engine.html
+- AI-generated validated rules: https://sebasoft.github.io/neuron-js/guides/ai-generated-validated-rules.html
+- Explainable business rules: https://sebasoft.github.io/neuron-js/guides/explainable-business-rules.html
 - Official AI skill: https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md
 
 ## Install
@@ -100,6 +105,15 @@ Use these pages to choose the right tool and migrate only when Neuron-JS's JSON-
 - Neuron-JS vs node-rules: https://sebasoft.github.io/neuron-js/comparisons/node-rules.html
 - Rules engine vs if/else: https://sebasoft.github.io/neuron-js/comparisons/if-else.html
 - Neuron-JS npm package: https://www.npmjs.com/package/@sebasoft/neuron-js
+
+## Educational guidance
+
+Use the FAQ and educational guides when a user asks what a TypeScript rules engine is, whether generated JSON rules are safe, or how to audit a business decision.
+
+- Keep plain TypeScript when a condition is simple, local, stable, and clearer in code.
+- Treat AI-generated rules as candidates: validate the script and context, test boundary cases, obtain accountable policy review, and execute only with an approved registry.
+- `validateScript` and `validateExecutionContext` check documented structure; they do not prove that a threshold, field, or action expresses the intended policy.
+- Use `summarizeExecutionOutput` for a stable automation result and `explainExecution` for an audit-friendly execution trace.
 
 ## Minimal TypeScript pattern
 
