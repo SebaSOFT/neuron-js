@@ -7,9 +7,9 @@ No adoption totals, customer counts, testimonials, or review scores are asserted
 ## Package and project metadata
 
 - Package: [`@sebasoft/neuron-js`](https://www.npmjs.com/package/@sebasoft/neuron-js)
-- Source manifest: [`package.json`](../package.json) — version `0.7.0`, MIT license, Node.js `>=24`, and canonical `llms` / `llmsFull` URLs.
+- Source manifest: [`package.json`](https://github.com/SebaSOFT/neuron-js/blob/main/package.json) — version `0.7.0`, MIT license, Node.js `>=24`, and canonical `llms` / `llmsFull` URLs.
 - Repository: [SebaSOFT/neuron-js](https://github.com/SebaSOFT/neuron-js)
-- License text: [MIT](../LICENSE)
+- License text: [MIT](https://github.com/SebaSOFT/neuron-js/blob/main/LICENSE)
 - CI definition: [GitHub Actions CI workflow](https://github.com/SebaSOFT/neuron-js/actions/workflows/ci.yml) runs linting, tests, and a package build on pushes and pull requests to `main`.
 
 The CI workflow source describes configured checks; it is not a claim that any future commit has passed them. Inspect the [public Actions history](https://github.com/SebaSOFT/neuron-js/actions) for a particular run.
@@ -47,7 +47,7 @@ These assets point agents to package-root imports, schemas, executable examples,
 - [Comparison and migration guide](./comparisons/index.md), including json-rules-engine, JsonLogic, node-rules, and if/else boundaries.
 - [Benchmark results](./benchmarks/results.md)
 - [Benchmark methodology](./benchmarks/methodology.md)
-- [Raw measured benchmark output](../benchmarks/results/latest.actual.json)
+- [Raw measured benchmark output](https://raw.githubusercontent.com/SebaSOFT/neuron-js/main/benchmarks/results/latest.actual.json)
 - [Benchmark result schema](https://sebasoft.github.io/neuron-js/benchmarks/results.schema.json)
 
 Benchmark claims are limited to the recorded `actual_benchmark` data and its stated methodology, scenarios, runtime, and commit provenance. Reproduce the harness with `yarn benchmark`, then regenerate charts with `yarn benchmark:charts`.
@@ -56,8 +56,8 @@ Benchmark claims are limited to the recorded `actual_benchmark` data and its sta
 
 Verification snapshot: **2026-09-22**.
 
-- Source package metadata: [`package.json`](../package.json) records version `0.7.0`.
-- Source release notes: [`CHANGELOG.md`](../CHANGELOG.md) records `0.7.0` as a minor release with the opt-in deterministic decision runtime, validated decision definitions, immutable context evaluation, receipts and replay, portable test vectors, and runnable documentation.
+- Source package metadata: [`package.json`](https://github.com/SebaSOFT/neuron-js/blob/main/package.json) records version `0.7.0`.
+- Source release notes: [`CHANGELOG.md`](https://github.com/SebaSOFT/neuron-js/blob/main/CHANGELOG.md) records `0.7.0` as a minor release with the opt-in deterministic decision runtime, validated decision definitions, immutable context evaluation, receipts and replay, portable test vectors, and runnable documentation.
 - Git tag and release: [GitHub Release `v0.7.0`](https://github.com/SebaSOFT/neuron-js/releases/tag/v0.7.0), published 2026-09-17.
 - npm registry: [`@sebasoft/neuron-js@0.7.0`](https://www.npmjs.com/package/@sebasoft/neuron-js/v/0.7.0) was the `latest` dist-tag at verification.
 - Earlier public releases: [v0.6.1](https://github.com/SebaSOFT/neuron-js/releases/tag/v0.6.1), [v0.6.0](https://github.com/SebaSOFT/neuron-js/releases/tag/v0.6.0), and [v0.5.2](https://github.com/SebaSOFT/neuron-js/releases/tag/v0.5.2).

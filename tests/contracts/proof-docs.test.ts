@@ -6,8 +6,9 @@ const textFile = (path: string) => readFileSync(path, "utf8");
 
 const requiredProofLinks = [
   "https://www.npmjs.com/package/@sebasoft/neuron-js",
+  "https://github.com/SebaSOFT/neuron-js/blob/main/package.json",
   "https://github.com/SebaSOFT/neuron-js",
-  "../LICENSE",
+  "https://github.com/SebaSOFT/neuron-js/blob/main/LICENSE",
   "https://github.com/SebaSOFT/neuron-js/actions/workflows/ci.yml",
   "./use-cases/runnable-examples.md",
   "./schemas-validation-explainability.md",
@@ -18,6 +19,7 @@ const requiredProofLinks = [
   "./comparisons/index.md",
   "./benchmarks/results.md",
   "./benchmarks/methodology.md",
+  "https://raw.githubusercontent.com/SebaSOFT/neuron-js/main/benchmarks/results/latest.actual.json",
   "https://github.com/SebaSOFT/neuron-js/releases/tag/v0.7.0",
 ];
 
@@ -32,6 +34,9 @@ describe("proof and milestones documentation", () => {
 
     expect(proof).toContain("No adoption totals, customer counts, testimonials, or review scores are asserted here.");
     expect(proof).not.toContain("./public/");
+    expect(proof).not.toContain("](../package.json)");
+    expect(proof).not.toContain("](../LICENSE)");
+    expect(proof).not.toContain("](../benchmarks/results/latest.actual.json)");
   });
 
   test("records the verified v0.7.0 package, release, and registry status with an auditable date", () => {
