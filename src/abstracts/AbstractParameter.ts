@@ -1,5 +1,6 @@
 import type { ParameterInterface } from "../interfaces/Parameter.js";
 import type { ExecutionContext } from "../types/ExecutionContext.js";
+import { ExecutionResult } from "../types/ExecutionResult.js";
 import { AbstractElement } from "./AbstractElement.js";
 
 export abstract class AbstractParameter<TValue = any, TOptions = any>
@@ -18,6 +19,17 @@ export abstract class AbstractParameter<TValue = any, TOptions = any>
   }
 
   abstract getValue(context: ExecutionContext): TValue | null;
+
+  execute(context: ExecutionContext): ExecutionResult<TValue | null> {
+    try {
+      const value = this.getValue(context);
+      return new ExecutionResult(true, context, value);
+    } catch (error: any) {
+      return new ExecutionResult(false, context, null, [
+        error.message || String(error),
+      ]);
+    }
+  }
 
   toJSON(): object {
     return {

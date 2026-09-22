@@ -54,6 +54,7 @@ import {
   validateExecutionExplanation,
   validateExecutionOutput,
   validateScript,
+  evaluateDecision,
 } from '@sebasoft/neuron-js';
 ```
 
@@ -70,6 +71,7 @@ Do not invent deep imports from `src/`, `dist/`, or undocumented paths.
 7. Normalize with `summarizeExecutionOutput(result)`.
 8. Explain with `explainExecution({ script, result })`.
 9. Validate outputs with `validateExecutionOutput(output)` and `validateExecutionExplanation(explanation)` when persisting, testing, or returning machine-readable artifacts.
+10. For pure decision-runtime work, use `evaluateDecision` with a declared `DecisionDefinition`; validate the caller context before any component executes, preserve the caller context as an immutable snapshot, validate the produced outcome, and keep side effects outside Neuron-JS.
 
 ## Minimal execution pattern
 
@@ -113,6 +115,10 @@ Use the official schemas when checking generated artifacts or giving another sys
 
 - Script: https://sebasoft.github.io/neuron-js/schemas/script.schema.json
 - Execution context: https://sebasoft.github.io/neuron-js/schemas/execution-context.schema.json
+- Decision definition: https://sebasoft.github.io/neuron-js/schemas/decision-definition.schema.json
+- Decision evaluation: https://sebasoft.github.io/neuron-js/schemas/decision-evaluation.schema.json
+- Decision receipt: https://sebasoft.github.io/neuron-js/schemas/decision-receipt.schema.json
+- Decision test vector: https://sebasoft.github.io/neuron-js/schemas/decision-test-vector.schema.json
 - Execution output: https://sebasoft.github.io/neuron-js/schemas/execution-output.schema.json
 - Validation error: https://sebasoft.github.io/neuron-js/schemas/validation-error.schema.json
 - Explanation trace: https://sebasoft.github.io/neuron-js/schemas/explanation-trace.schema.json
@@ -122,6 +128,7 @@ Use the official schemas when checking generated artifacts or giving another sys
 - Pricing rules: https://github.com/SebaSOFT/neuron-js/tree/main/examples/pricing-rules
 - Eligibility check: https://github.com/SebaSOFT/neuron-js/tree/main/examples/eligibility-check
 - Workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/workflow-routing
+- Generic decision runtime: https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime
 - n8n deterministic workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node
 - LangGraph deterministic decision node: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
 
@@ -138,6 +145,16 @@ Use Neuron-JS when workflow automation needs a deterministic decision node inste
 
 - n8n recipe: load workflow data, run `validateScript(script)`, run `validateExecutionContext(context)`, execute Neuron-JS in a Code node, return `summarizeExecutionOutput(result)` and `explainExecution({ script, result })`, then route side effects in n8n. Example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node
 - LangGraph recipe: let the LLM perform extraction/classification, validate the generated context, run Neuron-JS as the deterministic Neuron-JS decision node, store the explanation trace, and route graph edges from the normalized output. Example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
+
+## Decision runtime
+
+Use the opt-in decision runtime when the host application needs a domain-neutral, replayable decision boundary. `evaluateDecision` accepts a `DecisionDefinition`, caller-supplied JSON context snapshot, and approved `Neuron` registry. It returns `succeeded`, `invalid_context`, `no_decision`, or `execution_failed`, plus diagnostics and a receipt.
+
+The caller owns context acquisition, receipt persistence, outcome interpretation, and downstream side effects. Neuron-JS validates before execution, checks declared components, preserves the caller context, validates the outcome, and returns evidence data.
+
+Reference: https://sebasoft.github.io/neuron-js/concepts/decision-runtime.html
+
+Agentic architecture guide: https://sebasoft.github.io/neuron-js/concepts/agentic-decision-architecture.html. For agentic systems, LLM extraction is advisory only; the host resolves canonical Decision Context, selects an approved `DecisionDefinition`, preserves receipt/replay evidence, and performs host-only side-effect routing. The guide also defines the decision-model-vs-LLM boundary, tool/skill contract, and intentional failure paths for missing data, invalid context, and out-of-policy requests.
 
 ## Prompt recipes
 

@@ -5,6 +5,24 @@ export default defineConfig({
   description: "AI-friendly TypeScript rules engine for serializable JSON business rules and deterministic workflow decisions.",
   base: '/neuron-js/',
   ignoreDeadLinks: true,
+  markdown: {
+    config(md) {
+      const defaultFence = md.renderer.rules.fence;
+
+      md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+        const token = tokens[idx];
+        const language = token.info.trim().split(/\s+/)[0];
+
+        if (language === "mermaid") {
+          const source = encodeURIComponent(token.content);
+
+          return `<div class="mermaid" data-mermaid-source="${source}">${md.utils.escapeHtml(token.content)}</div>`;
+        }
+
+        return defaultFence?.(tokens, idx, options, env, self) ?? self.renderToken(tokens, idx, options);
+      };
+    }
+  },
   themeConfig: {
     logo: '/img/neuron-cover640.png',
     nav: [
@@ -35,6 +53,8 @@ export default defineConfig({
         items: [
           { text: 'Core Engine', link: '/concepts/core-engine' },
           { text: 'Context & State', link: '/concepts/context-and-state' },
+          { text: 'Decision Runtime', link: '/concepts/decision-runtime' },
+          { text: 'Agentic Decision Architecture', link: '/concepts/agentic-decision-architecture' },
           { text: 'Implementation Examples', link: '/concepts/implementation-examples' }
         ]
       },
@@ -42,6 +62,7 @@ export default defineConfig({
         text: 'Use Cases',
         items: [
           { text: 'Runnable Examples', link: '/use-cases/runnable-examples' },
+          { text: 'Generic decision runtime', link: 'https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime' },
           { text: 'Business Rules Engine', link: '/use-cases/business-rules-engine' },
           { text: 'Dynamic Routing', link: '/use-cases/dynamic-routing' }
         ]

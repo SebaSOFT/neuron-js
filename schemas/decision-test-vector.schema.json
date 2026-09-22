@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/schemas/decision-test-vector.schema.json",
+  "title": "Neuron-JS Decision Test Vector",
+  "type": "object",
+  "required": ["name", "context", "expectedStatus"],
+  "anyOf": [{ "required": ["definition"] }, { "required": ["definitionRef"] }],
+  "if": {
+    "properties": {
+      "expectedStatus": { "const": "succeeded" }
+    },
+    "required": ["expectedStatus"]
+  },
+  "then": { "required": ["expectedOutcome"] },
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "definition": { "$ref": "./decision-definition.schema.json" },
+    "definitionRef": { "type": "string", "minLength": 1 },
+    "context": true,
+    "expectedStatus": {
+      "type": "string",
+      "enum": ["succeeded", "invalid_context", "no_decision", "execution_failed"]
+    },
+    "expectedOutcome": true
+  },
+  "additionalProperties": false
+}

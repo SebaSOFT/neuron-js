@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sebasoft.github.io/neuron-js/schemas/decision-definition.schema.json",
+  "title": "Neuron-JS Decision Definition",
+  "type": "object",
+  "required": ["id", "version", "contextSchema", "outcomeSchema", "components", "script"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "contextSchema": { "type": "object" },
+    "outcomeSchema": { "type": "object" },
+    "components": {
+      "type": "object",
+      "required": ["rules", "conditions", "actions", "parameters"],
+      "properties": {
+        "rules": { "type": "array", "items": { "type": "string" } },
+        "conditions": { "type": "array", "items": { "type": "string" } },
+        "actions": { "type": "array", "items": { "type": "string" } },
+        "parameters": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "script": { "$ref": "./script.schema.json" }
+  },
+  "additionalProperties": false
+}

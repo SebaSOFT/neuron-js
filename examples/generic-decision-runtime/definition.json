@@ -1,0 +1,94 @@
+{
+  "id": "generic-threshold-decision",
+  "version": "1.0.0",
+  "contextSchema": {
+    "type": "object",
+    "required": ["value", "minimum", "label"],
+    "properties": {
+      "value": { "type": "number" },
+      "minimum": { "type": "number" },
+      "label": { "type": "string" }
+    },
+    "additionalProperties": false
+  },
+  "outcomeSchema": {
+    "type": "object",
+    "required": ["result", "observed", "minimum", "label"],
+    "properties": {
+      "result": { "type": "string", "enum": ["passed"] },
+      "observed": { "type": "number" },
+      "minimum": { "type": "number" },
+      "label": { "type": "string" }
+    },
+    "additionalProperties": false
+  },
+  "components": {
+    "rules": ["simple_rule"],
+    "conditions": ["state_number_at_least"],
+    "actions": ["emit_generic_outcome"],
+    "parameters": ["state_number", "state_string"]
+  },
+  "script": {
+    "id": "generic-threshold-script",
+    "rules": [
+      {
+        "id": "value-meets-minimum",
+        "type": "simple_rule",
+        "options": {},
+        "conditions": [
+          {
+            "id": "value-at-least-minimum",
+            "type": "state_number_at_least",
+            "options": {},
+            "params": [
+              {
+                "id": "value-param",
+                "name": "value",
+                "type": "state_number",
+                "value": "value",
+                "options": {}
+              },
+              {
+                "id": "minimum-param",
+                "name": "minimum",
+                "type": "state_number",
+                "value": "minimum",
+                "options": {}
+              }
+            ]
+          }
+        ],
+        "actions": [
+          {
+            "id": "emit-outcome",
+            "type": "emit_generic_outcome",
+            "options": {},
+            "params": [
+              {
+                "id": "outcome-value",
+                "name": "observed",
+                "type": "state_number",
+                "value": "value",
+                "options": {}
+              },
+              {
+                "id": "outcome-minimum",
+                "name": "minimum",
+                "type": "state_number",
+                "value": "minimum",
+                "options": {}
+              },
+              {
+                "id": "outcome-label",
+                "name": "label",
+                "type": "state_string",
+                "value": "label",
+                "options": {}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

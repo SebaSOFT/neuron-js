@@ -15,6 +15,7 @@ The command builds the package, then runs:
 - `examples/pricing-rules/run.ts`
 - `examples/eligibility-check/run.ts`
 - `examples/workflow-routing/run.ts`
+- `examples/generic-decision-runtime/run.ts`
 - `examples/n8n-code-node/run.ts`
 - `examples/langgraph-decision-node/run.ts`
 
@@ -60,6 +61,21 @@ Files:
 - `input.json` — execution context.
 - `expected-output.json` — verified output summary.
 - `run.ts` — executable TypeScript runner.
+
+### Generic decision runtime
+
+Path: [`examples/generic-decision-runtime/`](https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime)
+
+Demonstrates the pure decision runtime with a caller-defined context schema, outcome schema, local effect-free components, receipt identity, and no vertical application dependency.
+
+Architecture guide: [`docs/concepts/agentic-decision-architecture.md`](../concepts/agentic-decision-architecture.md) shows the host/LLM boundary: LLM extraction is advisory, the host resolves the canonical Decision Context, Neuron-JS evaluates an approved `DecisionDefinition`, and host-only side-effect routing consumes receipt-backed results.
+
+Files:
+
+- `definition.json` — decision definition with schemas, manifest, and script.
+- `context.json` — caller-supplied JSON context snapshot.
+- `expected-output.json` — verified status, outcome, diagnostics, and receipt identity.
+- `run.ts` — executable TypeScript runner using `evaluateDecision`.
 
 ### n8n Code node
 
