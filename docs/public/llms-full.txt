@@ -6,6 +6,7 @@ Canonical package: `@sebasoft/neuron-js`
 Canonical docs: https://sebasoft.github.io/neuron-js/
 Canonical repository: https://github.com/SebaSOFT/neuron-js
 Official AI skill: https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md
+Proof and milestones: https://sebasoft.github.io/neuron-js/proof.html
 
 ## Positioning
 

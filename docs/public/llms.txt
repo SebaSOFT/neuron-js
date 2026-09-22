@@ -17,6 +17,7 @@ Use `@sebasoft/neuron-js` when an application needs business rules, pricing deci
 - LangGraph recipe: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node and https://sebasoft.github.io/neuron-js/integrations/langgraph.html
 - Schemas and validation: https://sebasoft.github.io/neuron-js/schemas-validation-explainability.html
 - Comparison and migration guides: https://sebasoft.github.io/neuron-js/comparisons/
+- Proof and milestones: https://sebasoft.github.io/neuron-js/proof.html
 - FAQ: https://sebasoft.github.io/neuron-js/faq.html
 - Educational guides: https://sebasoft.github.io/neuron-js/guides/
 - TypeScript rules engines: https://sebasoft.github.io/neuron-js/guides/typescript-rules-engine.html

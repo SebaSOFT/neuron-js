@@ -31,6 +31,7 @@ export default defineConfig({
       { text: 'Examples', link: '/use-cases/runnable-examples' },
       { text: 'Schemas', link: '/schemas-validation-explainability' },
       { text: 'Benchmarks', link: '/benchmarks/results' },
+      { text: 'Proof', link: '/proof' },
       { text: 'Comparisons', link: '/comparisons/' },
       { text: 'Integrations', link: '/integrations/' },
       { text: 'Guides', link: '/guides/' },
@@ -73,7 +74,8 @@ export default defineConfig({
           { text: 'Overview', link: '/benchmarks/' },
           { text: 'Benchmark Results', link: '/benchmarks/results' },
           { text: 'Methodology', link: '/benchmarks/methodology' },
-          { text: 'AI-Rule Safety', link: '/benchmarks/ai-rule-safety' }
+          { text: 'AI-Rule Safety', link: '/benchmarks/ai-rule-safety' },
+          { text: 'Proof & Milestones', link: '/proof' }
         ]
       },
       {
