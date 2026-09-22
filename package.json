@@ -48,10 +48,13 @@
   },
   "resolutions": {
     "brace-expansion": "5.0.12",
+    "chevrotain@npm:~11.1.2": "13.2.0",
+    "esbuild@npm:^0.21.3": "0.25.0",
     "nanoid": "3.3.19",
     "postcss": "8.5.28",
     "tar": "7.5.22",
     "undici": "6.28.0",
+    "vite@npm:^5.4.14": "6.4.3",
     "vite@npm:^6.0.0 || ^7.0.0 || ^8.0.0": "8.0.16"
   },
   "tshy": {
