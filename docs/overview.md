@@ -65,9 +65,11 @@ Lifecycle hooks let applications monitor execution without embedding observabili
 
 ## Release classification
 
-The `0.4.0` release is a minor capability release, not a major breaking change.
+The `0.7.0` source release is a minor capability release, not a major breaking change.
 
-It expands the documented public API, adds extension base classes, makes missing `options` objects safe at runtime, and cleans package output. Existing JSON script behavior remains compatible; the release gives consumers more stable imports and clearer plugin ergonomics.
+It adds an opt-in deterministic decision runtime with validated decision definitions, immutable context evaluation, canonical receipts and replay, portable test vectors, and runnable documentation. Existing JSON script behavior remains compatible.
+
+The release version stated here describes the repository source and its Git tag. Published package availability is a separate npm-registry fact; verify the registry before representing a source release as installable from npm.
 
 ## Current and planned adoption assets
 
