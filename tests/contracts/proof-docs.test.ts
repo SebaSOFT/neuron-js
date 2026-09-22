@@ -11,9 +11,10 @@ const requiredProofLinks = [
   "https://github.com/SebaSOFT/neuron-js/actions/workflows/ci.yml",
   "./use-cases/runnable-examples.md",
   "./schemas-validation-explainability.md",
-  "./public/llms.txt",
-  "./public/llms-full.txt",
-  "./public/skills/neuron-js/SKILL.md",
+  "https://sebasoft.github.io/neuron-js/llms.txt",
+  "https://sebasoft.github.io/neuron-js/llms-full.txt",
+  "https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md",
+  "https://sebasoft.github.io/neuron-js/benchmarks/results.schema.json",
   "./comparisons/index.md",
   "./benchmarks/results.md",
   "./benchmarks/methodology.md",
@@ -30,6 +31,7 @@ describe("proof and milestones documentation", () => {
     }
 
     expect(proof).toContain("No adoption totals, customer counts, testimonials, or review scores are asserted here.");
+    expect(proof).not.toContain("./public/");
   });
 
   test("records the verified v0.7.0 package, release, and registry status with an auditable date", () => {

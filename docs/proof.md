@@ -36,9 +36,9 @@ The documented validation helpers (`validateScript`, `validateExecutionContext`,
 ## AI-readable assets
 
 - [AI coding-assistant guide](./ai-coding-assistants.md)
-- [Compact `llms.txt`](./public/llms.txt)
-- [Full `llms-full.txt`](./public/llms-full.txt)
-- [Official Neuron-JS AI skill](./public/skills/neuron-js/SKILL.md)
+- [Compact `llms.txt`](https://sebasoft.github.io/neuron-js/llms.txt)
+- [Full `llms-full.txt`](https://sebasoft.github.io/neuron-js/llms-full.txt)
+- [Official Neuron-JS AI skill](https://sebasoft.github.io/neuron-js/skills/neuron-js/SKILL.md)
 
 These assets point agents to package-root imports, schemas, executable examples, validation-before-execution, and explainability guidance. They are documentation interfaces, not a claim that generated rules are automatically safe.
 
@@ -48,7 +48,7 @@ These assets point agents to package-root imports, schemas, executable examples,
 - [Benchmark results](./benchmarks/results.md)
 - [Benchmark methodology](./benchmarks/methodology.md)
 - [Raw measured benchmark output](../benchmarks/results/latest.actual.json)
-- [Benchmark result schema](./public/benchmarks/results.schema.json)
+- [Benchmark result schema](https://sebasoft.github.io/neuron-js/benchmarks/results.schema.json)
 
 Benchmark claims are limited to the recorded `actual_benchmark` data and its stated methodology, scenarios, runtime, and commit provenance. Reproduce the harness with `yarn benchmark`, then regenerate charts with `yarn benchmark:charts`.
 
