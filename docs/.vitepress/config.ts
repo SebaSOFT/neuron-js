@@ -93,7 +93,8 @@ export default defineConfig({
         items: [
           { text: 'Integration Guide', link: '/integrations/' },
           { text: 'n8n deterministic routing', link: '/integrations/n8n' },
-          { text: 'LangGraph decision node', link: '/integrations/langgraph' }
+          { text: 'LangGraph decision node', link: '/integrations/langgraph' },
+          { text: 'Jev / Laya governed decisions', link: '/integrations/system-one-models' }
         ]
       },
       {

@@ -13,6 +13,7 @@ Heavy workflow engines solve configurability, but they can add operational weigh
 ## The solution
 
 `neuron-js` keeps business logic as JSON and executes it through a TypeScript registry.
+It is the ideal complement for creating programmable execution flows and incorporating AI into rule engines: AI-generated decisions are validated, normalized, and fed into a deterministic Neuron-JS boundary before any side effect occurs.
 
 - **Neuron** defines what is allowed: parameters, conditions, actions, and rules.
 - **Synapse** executes a serializable script against an execution context.
