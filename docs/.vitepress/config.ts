@@ -13,6 +13,7 @@ export default defineConfig({
     hostname: SITE_URL,
   },
   head: [
+    ['meta', { name: 'google-site-verification', content: '0H_0qOZVNDMTnOAHH8oitfbbeDyUGgkzzI2rLOM1YHM' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'neuron-js' }],
     ['meta', { property: 'og:image', content: OG_IMAGE }],
