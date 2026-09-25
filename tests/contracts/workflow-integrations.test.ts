@@ -64,4 +64,15 @@ describe("NJS-GROWTH-06 workflow automation recipes", () => {
       expect(content).toContain("langgraph-decision-node");
     }
   });
+
+  it("links the Jev/Laya governed-decision guide from AI-readable surfaces", () => {
+    const llms = readFileSync("docs/public/llms.txt", "utf8");
+    const llmsFull = readFileSync("docs/public/llms-full.txt", "utf8");
+    const skill = readFileSync("docs/public/skills/neuron-js/SKILL.md", "utf8");
+
+    for (const content of [llms, llmsFull, skill]) {
+      expect(content).toContain("system-one-models");
+      expect(content).toContain("https://sebasoft.github.io/neuron-js/integrations/system-one-models.html");
+    }
+  });
 });

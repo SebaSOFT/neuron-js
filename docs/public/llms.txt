@@ -15,6 +15,7 @@ Use `@sebasoft/neuron-js` when an application needs business rules, pricing deci
 - Generic decision-runtime example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/generic-decision-runtime
 - n8n recipe: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node and https://sebasoft.github.io/neuron-js/integrations/n8n.html
 - LangGraph recipe: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node and https://sebasoft.github.io/neuron-js/integrations/langgraph.html
+- Jev/Laya governed decisions: https://sebasoft.github.io/neuron-js/integrations/system-one-models.html
 - Schemas and validation: https://sebasoft.github.io/neuron-js/schemas-validation-explainability.html
 - Comparison and migration guides: https://sebasoft.github.io/neuron-js/comparisons/
 - Proof and milestones: https://sebasoft.github.io/neuron-js/proof.html
