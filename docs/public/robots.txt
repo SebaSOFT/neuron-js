@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sebasoft.github.io/neuron-js/sitemap.xml

@@ -1,9 +1,25 @@
 import { defineConfig } from 'vitepress'
 
+const SITE_ORIGIN = 'https://sebasoft.github.io'
+const SITE_BASE = '/neuron-js/'
+const SITE_URL = `${SITE_ORIGIN}${SITE_BASE}`
+const OG_IMAGE = `${SITE_ORIGIN}${SITE_BASE}img/neuron-cover640.png`
+
 export default defineConfig({
   title: "neuron-js",
   description: "AI-friendly TypeScript rules engine for serializable JSON business rules and deterministic workflow decisions.",
   base: '/neuron-js/',
+  sitemap: {
+    hostname: SITE_URL,
+  },
+  head: [
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: 'neuron-js' }],
+    ['meta', { property: 'og:image', content: OG_IMAGE }],
+    ['meta', { property: 'og:url', content: SITE_URL }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['link', { rel: 'canonical', href: SITE_URL }],
+  ],
   ignoreDeadLinks: true,
   markdown: {
     config(md) {
