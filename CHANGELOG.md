@@ -1,5 +1,11 @@
 # @sebasoft/neuron-js
 
+## 0.7.5
+
+### Patch Changes
+
+- Standardize the CI toolchain on Node 24: upgrade `actions/checkout` and `actions/setup-node` to v7, migrate `changesets/action` to v2 (explicit `github-token`, `publish-script`, `push-git-tags`), emit ndjson git-tag events from the OIDC publish script, and pin Node 24 via `.nvmrc`.
+
 ## 0.7.0
 
 ### Minor Changes

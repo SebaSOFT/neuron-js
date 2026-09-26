@@ -66,9 +66,9 @@ Lifecycle hooks let applications monitor execution without embedding observabili
 
 ## Release classification
 
-The `0.7.0` source release is a minor capability release, not a major breaking change.
+The `0.7.5` source release is a patch release, not a breaking change.
 
-It adds an opt-in deterministic decision runtime with validated decision definitions, immutable context evaluation, canonical receipts and replay, portable test vectors, and runnable documentation. Existing JSON script behavior remains compatible.
+It standardizes the CI toolchain on Node 24: GitHub Actions upgraded to `actions/checkout` v7 and `actions/setup-node` v7, `changesets/action` migrated to v2 with explicit `github-token` and `push-git-tags`, and the OIDC publish script emits ndjson git-tag events. Rule-engine behavior is unchanged; existing JSON scripts and the public API remain compatible.
 
 The release version stated here describes the repository source and its Git tag. Published package availability is a separate npm-registry fact; verify the registry before representing a source release as installable from npm.
 
