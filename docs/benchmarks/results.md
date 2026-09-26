@@ -15,10 +15,10 @@ from the same source file.
 
 | Field | Value |
 | --- | --- |
-| Generated | `2026-06-23T13:23:56.971Z` |
-| Node | `v24.14.1` |
-| Commit | `2f5894a2c23f0ecd5656e1625299510fe670a622` |
-| Neuron-JS version | `0.5.2` |
+| Generated | `2026-09-26T00:22:19.273Z` |
+| Node | `v24.15.0` |
+| Commit | `470bee60e69375dd2c3738a393ac3670b6132c53` |
+| Neuron-JS version | `0.7.5` |
 | Command | `yarn benchmark` |
 | Raw source | `benchmarks/results/latest.actual.json` |
 
@@ -63,21 +63,21 @@ columns are milliseconds (lower is better); bundle size is minified bytes.
 
 | Engine | Scenario | Throughput | p50 ms | p95 ms | Cold start ms | Bundle B | Validation ms | Explanation ms |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `@sebasoft/neuron-js` | pricing-discount | 1,262,699 | 0.000757 | 0.000961 | 7.54 | 13,040 | 0.000243 | 0 |
-| `@sebasoft/neuron-js` | eligibility-approval | 1,362,127 | 0.000692 | 0.000859 | 7.54 | 13,040 | 0.000425 | 0.000058 |
-| `@sebasoft/neuron-js` | workflow-routing | 1,221,362 | 0.000784 | 0.000959 | 7.54 | 13,040 | 0.000472 | 0.000042 |
-| `json-rules-engine` | pricing-discount | 199,100 | 0.004799 | 0.006327 | 9.167 | 81,550 | 0 | 0 |
-| `json-rules-engine` | eligibility-approval | 217,491 | 0.004434 | 0.005789 | 9.167 | 81,550 | 0 | 0 |
-| `json-rules-engine` | workflow-routing | 217,969 | 0.004448 | 0.005439 | 9.167 | 81,550 | 0 | 0 |
-| `json-logic-js` | pricing-discount | 3,764,115 | 0.000243 | 0.000376 | 1.652 | 5,544 | 0 | 0 |
-| `json-logic-js` | eligibility-approval | 4,875,373 | 0.000188 | 0.000203 | 1.652 | 5,544 | 0 | 0 |
-| `json-logic-js` | workflow-routing | 5,047,319 | 0.000187 | 0.000197 | 1.652 | 5,544 | 0 | 0 |
-| `hand-coded-typescript` | pricing-discount | 11,695,332 | 0.000088 | 0.000092 | 0.981 | 0 | 0 | 0 |
-| `hand-coded-typescript` | eligibility-approval | 10,362,694 | 0.000082 | 0.000118 | 0.981 | 0 | 0 | 0 |
-| `hand-coded-typescript` | workflow-routing | 12,090,685 | 0.00008 | 0.000083 | 0.981 | 0 | 0 | 0 |
-| `rule-engine-js` | pricing-discount | 844,734 | 0.00109 | 0.001835 | 2.725 | 46,165 | 0 | 0 |
-| `rule-engine-js` | eligibility-approval | 902,843 | 0.001062 | 0.001385 | 2.725 | 46,165 | 0 | 0 |
-| `rule-engine-js` | workflow-routing | 852,630 | 0.001126 | 0.001448 | 2.725 | 46,165 | 0 | 0 |
+| `@sebasoft/neuron-js` | pricing-discount | 464,909 | 0.001969 | 0.003387 | 22.986 | 27,286 | 0.000188 | 0 |
+| `@sebasoft/neuron-js` | eligibility-approval | 394,174 | 0.001749 | 0.004835 | 22.986 | 27,286 | 0.001081 | 0.000393 |
+| `@sebasoft/neuron-js` | workflow-routing | 298,923 | 0.001967 | 0.009111 | 22.986 | 27,286 | 0.001381 | 0.000276 |
+| `json-rules-engine` | pricing-discount | 89,624 | 0.009577 | 0.022511 | 22.438 | 81,550 | 0 | 0 |
+| `json-rules-engine` | eligibility-approval | 79,717 | 0.010422 | 0.0303 | 22.438 | 81,550 | 0 | 0 |
+| `json-rules-engine` | workflow-routing | 108,205 | 0.007748 | 0.015985 | 22.438 | 81,550 | 0 | 0 |
+| `json-logic-js` | pricing-discount | 2,713,016 | 0.000268 | 0.000629 | 3.2 | 5,544 | 0 | 0 |
+| `json-logic-js` | eligibility-approval | 3,403,083 | 0.000206 | 0.000476 | 3.2 | 5,544 | 0 | 0 |
+| `json-logic-js` | workflow-routing | 3,154,011 | 0.000211 | 0.000439 | 3.2 | 5,544 | 0 | 0 |
+| `hand-coded-typescript` | pricing-discount | 7,284,398 | 0.00009 | 0.00017 | 2.603 | 0 | 0 | 0 |
+| `hand-coded-typescript` | eligibility-approval | 8,851,790 | 0.000085 | 0.000227 | 2.603 | 0 | 0 | 0 |
+| `hand-coded-typescript` | workflow-routing | 9,071,990 | 0.000085 | 0.000159 | 2.603 | 0 | 0 | 0 |
+| `rule-engine-js` | pricing-discount | 404,301 | 0.002541 | 0.003793 | 4.68 | 46,165 | 0 | 0 |
+| `rule-engine-js` | eligibility-approval | 469,306 | 0.00193 | 0.003207 | 4.68 | 46,165 | 0 | 0 |
+| `rule-engine-js` | workflow-routing | 434,523 | 0.002177 | 0.003482 | 4.68 | 46,165 | 0 | 0 |
 
 Validation and explanation overhead are Neuron-JS capabilities (`validateScript`,
 `explainExecution`); the other engines provide no equivalent step, so their measured

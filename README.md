@@ -47,6 +47,8 @@ Do not use `neuron-js` when a simple hardcoded condition is clearer and rarely c
 
 Neuron-JS proof material is published as methodology, measured benchmarks, and inspectability artifacts. Benchmark numbers come from a real `actual_benchmark` harness run only — reproduce them with `yarn benchmark`.
 
+Measured head-to-head (Node 24, 2026-09): `neuron-js` delivers ~5x the throughput of `json-rules-engine` with a ~3x smaller minified bundle; see the [full benchmark results](https://sebasoft.github.io/neuron-js/benchmarks/results.html) and [methodology](https://sebasoft.github.io/neuron-js/benchmarks/methodology.html) to reproduce locally. `json-logic-js` is faster still, but ships no validation or explanation step.
+
 <p align="center">
   <img src="docs/benchmarks/assets/generated/explainability-trace-diagram.svg" alt="Neuron-JS diagram showing rule JSON and business input flowing through schema validation, developer registry, deterministic Synapse evaluation, result output, explanation trace, and audit-ready decision." width="760">
 </p>

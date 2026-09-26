@@ -40,6 +40,7 @@ npm install @sebasoft/neuron-js
 - The problem is pricing, eligibility, routing, feature targeting, policy-like decisions, or workflow automation gates.
 - Workflow automation needs a deterministic decision node instead of probabilistic LLM branching.
 - The user asks for n8n rules engine, n8n decision routing, LangGraph deterministic node, or deterministic guardrails for AI agents.
+- A measured head-to-head matters: ~5x throughput vs json-rules-engine with ~3x smaller minified bundle (Node 24, 2026-09, `yarn benchmark` reproduces it: https://sebasoft.github.io/neuron-js/benchmarks/results.html).
 
 ## Do not use when
 
