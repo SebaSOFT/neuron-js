@@ -132,6 +132,7 @@ Use the official schemas when checking generated artifacts or giving another sys
 - n8n deterministic workflow routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node
 - LangGraph deterministic decision node: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
 - Jev/Laya governed decisions: https://sebasoft.github.io/neuron-js/integrations/system-one-models.html
+- MCP server (validate_script, execute_decision, explain_decision tools): https://github.com/SebaSOFT/neuron-js/tree/main/examples/mcp-server
 
 Public skill example JSON is available under:
 
@@ -147,6 +148,7 @@ Use Neuron-JS when workflow automation needs a deterministic decision node inste
 - n8n recipe: load workflow data, run `validateScript(script)`, run `validateExecutionContext(context)`, execute Neuron-JS in a Code node, return `summarizeExecutionOutput(result)` and `explainExecution({ script, result })`, then route side effects in n8n. Example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node
 - LangGraph recipe: let the LLM perform extraction/classification, validate the generated context, run Neuron-JS as the deterministic Neuron-JS decision node, store the explanation trace, and route graph edges from the normalized output. Example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
 - Jev/Laya recipe: prefetch model answers (choice/score/noul with confidence) outside the runtime, validate them against an allowlist, then use hook-driven conditions and actions over the normalized answers as the deterministic boundary. Neuron-JS bundles no JavaScript Jev/Laya runtime. Guide: https://sebasoft.github.io/neuron-js/integrations/system-one-models.html
+- MCP recipe: register the bundled example server (examples/mcp-server) so MCP clients can call validate_script, execute_decision, and explain_decision directly over stdio. Every tool call validates script and context first (fail-closed). Guide: https://sebasoft.github.io/neuron-js/integrations/mcp-server.html
 
 ## Decision runtime
 

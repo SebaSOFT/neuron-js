@@ -363,6 +363,7 @@ First-party recipes:
 - n8n Code node deterministic routing: https://github.com/SebaSOFT/neuron-js/tree/main/examples/n8n-code-node
 - LangGraph deterministic decision node: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
 - Jev/Laya governed decisions (System One Models): https://sebasoft.github.io/neuron-js/integrations/system-one-models.html
+- MCP server (validate_script, execute_decision, explain_decision): https://github.com/SebaSOFT/neuron-js/tree/main/examples/mcp-server
 - Integration docs: https://sebasoft.github.io/neuron-js/integrations/
 
 Use Neuron-JS when workflow automation needs a deterministic decision node instead of probabilistic LLM branching. Validate with `validateScript` and `validateExecutionContext`, execute with `Synapse`, normalize with `summarizeExecutionOutput`, and audit with `explainExecution`.

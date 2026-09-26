@@ -15,6 +15,7 @@ The pattern is simple:
 - [n8n deterministic workflow routing](./n8n.md)
 - [LangGraph deterministic decision node](./langgraph.md)
 - [Jev / Laya governed decisions](./system-one-models.md)
+- [MCP server](./mcp-server.md)
 
 ## Use Neuron-JS when
 
