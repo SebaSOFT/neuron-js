@@ -5,6 +5,11 @@
 ### Patch Changes
 
 - Standardize the CI toolchain on Node 24: upgrade `actions/checkout` and `actions/setup-node` to v7, migrate `changesets/action` to v2 (explicit `github-token`, `publish-script`, `push-git-tags`), emit ndjson git-tag events from the OIDC publish script, and pin Node 24 via `.nvmrc`.
+- Expand SEO and agent-discovery surfaces: add `sitemap.xml`, `robots.txt`, Open Graph and canonical meta tags, and the `google-site-verification` site tag to the documentation site.
+- Surface the Jev/Laya governed-decision guide across all AI-readable assets: documentation integrations index, `llms.txt`, `llms-full.txt`, and the official AI skill (packaged `ai/skills` mirror kept byte-identical to the public skill).
+- Refresh the published head-to-head benchmark data with a real harness run against 0.7.5 on Node 24 (2026-09), regenerate charts and the results page from the same measured data, and add the citable throughput and bundle-size claims to the README and `llms.txt`.
+- Add an example MCP server exposing `validate_script`, `execute_decision`, and `explain_decision` over stdio for AI agents, with contract tests that spawn the real server, an integration guide, and entries across all AI-readable surfaces. The published package keeps zero runtime dependencies; the MCP SDK stays a devDependency.
+- Clarify the release classification of this patch in the documentation overview.
 
 ## 0.7.0
 
