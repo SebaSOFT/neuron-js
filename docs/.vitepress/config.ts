@@ -16,6 +16,17 @@ export default defineConfig({
   sitemap: {
     hostname: SITE_URL,
   },
+  // llms.txt v2 link relations: each page declares its Markdown mirror via
+  // rel="alternate" type="text/markdown", and the covering llms.txt via
+  // rel="describedby". Mirrors are copied into dist by scripts/copy-md-mirrors.mjs.
+  transformHead: ({ pageData }) => {
+    const rel = pageData.relativePath || '';
+    const mirror = rel ? `${SITE_BASE}${rel.replace(/\.md$/, '')}.md` : `${SITE_BASE}index.md`;
+    return [
+      ['link', { rel: 'describedby', type: 'text/plain', href: `${SITE_BASE}llms.txt` }],
+      ['link', { rel: 'alternate', type: 'text/markdown', href: mirror }],
+    ];
+  },
   head: [
     ['meta', { name: 'google-site-verification', content: '0H_0qOZVNDMTnOAHH8oitfbbeDyUGgkzzI2rLOM1YHM' }],
     ['meta', { property: 'og:type', content: 'website' }],
