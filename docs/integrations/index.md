@@ -16,6 +16,7 @@ The pattern is simple:
 - [LangGraph deterministic decision node](./langgraph.md)
 - [Jev / Laya governed decisions](./system-one-models.md)
 - [MCP server](./mcp-server.md)
+- [WebMCP](./webmcp.md)
 
 ## Use Neuron-JS when
 

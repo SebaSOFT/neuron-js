@@ -20,6 +20,8 @@ export default defineConfig({
     ['meta', { property: 'og:url', content: SITE_URL }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
     ['link', { rel: 'canonical', href: SITE_URL }],
+    ['script', { src: '/neuron-js/webmcp/webmcp.js' }],
+    ['script', { src: '/neuron-js/webmcp/neuron-webmcp.js', defer: 'true' }],
   ],
   ignoreDeadLinks: true,
   markdown: {
@@ -112,7 +114,8 @@ export default defineConfig({
           { text: 'n8n deterministic routing', link: '/integrations/n8n' },
           { text: 'LangGraph decision node', link: '/integrations/langgraph' },
           { text: 'Jev / Laya governed decisions', link: '/integrations/system-one-models' },
-          { text: 'MCP server', link: '/integrations/mcp-server' }
+          { text: 'MCP server', link: '/integrations/mcp-server' },
+          { text: 'WebMCP', link: '/integrations/webmcp' }
         ]
       },
       {

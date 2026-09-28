@@ -149,6 +149,7 @@ Use Neuron-JS when workflow automation needs a deterministic decision node inste
 - LangGraph recipe: let the LLM perform extraction/classification, validate the generated context, run Neuron-JS as the deterministic Neuron-JS decision node, store the explanation trace, and route graph edges from the normalized output. Example: https://github.com/SebaSOFT/neuron-js/tree/main/examples/langgraph-decision-node
 - Jev/Laya recipe: prefetch model answers (choice/score/noul with confidence) outside the runtime, validate them against an allowlist, then use hook-driven conditions and actions over the normalized answers as the deterministic boundary. Neuron-JS bundles no JavaScript Jev/Laya runtime. Guide: https://sebasoft.github.io/neuron-js/integrations/system-one-models.html
 - MCP recipe: register the bundled example server (examples/mcp-server) so MCP clients can call validate_script, execute_decision, and explain_decision directly over stdio. Every tool call validates script and context first (fail-closed). Guide: https://sebasoft.github.io/neuron-js/integrations/mcp-server.html
+- WebMCP recipe: the documentation site runs an in-browser MCP server (WebMCP widget) exposing the same three tools; agents connect through the user's MCP client with a session token. Guide: https://sebasoft.github.io/neuron-js/integrations/webmcp.html
 
 ## Decision runtime
 
