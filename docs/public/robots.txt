@@ -1,3 +1,41 @@
+# neuron-js docs — agentic access policy (docs/public/robots.txt)
+# Served at https://sebasoft.github.io/neuron-js/robots.txt
+#
+# Decision (SebaSOFT, 2026-09): training crawlers are ALLOWED. All AI bots
+# listed below are explicitly welcomed so policy scanners read a clear
+# allow instead of inferring from a wildcard.
+
+# --- Citation-eligible search & answer bots ---
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# --- User-triggered fetchers (agent browsing on a user's behalf) ---
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# --- Training crawlers (decision: ALLOWED) ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# --- Everything else (browsers, classic SEO crawlers, unlisted bots) ---
 User-agent: *
 Allow: /
 
