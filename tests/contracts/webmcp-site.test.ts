@@ -30,6 +30,16 @@ describe("WebMCP documentation-site integration", () => {
     expect(executeIdx).toBeGreaterThan(validateIdx);
   });
 
+  it("enables the native W3C API through the Chrome origin trial", () => {
+    const config = read("docs/.vitepress/config.ts");
+    expect(config).toContain("ORIGIN_TRIAL_WEBMCP");
+    expect(config).toContain("Origin-Trial");
+    // dual registration: native navigator.modelContext + widget fallback
+    const integration = read("docs/public/webmcp/neuron-webmcp.js");
+    expect(integration).toContain("modelContext");
+    expect(integration).toContain("registerNativeTools");
+  });
+
   it("loads both scripts on every page via the VitePress head", () => {
     const config = read("docs/.vitepress/config.ts");
     expect(config).toContain("/neuron-js/webmcp/webmcp.js");

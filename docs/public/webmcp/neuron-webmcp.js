@@ -162,7 +162,92 @@ const registerNeuronTools = (mcp) => {
   );
 };
 
+const registerNativeTools = (modelContext) => {
+  modelContext.registerTool({
+    name: "validate_script",
+    description:
+      "Validate a neuron-js ExecutionScript (pure JSON rules) without executing it. Returns ok plus validation errors.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        script: {
+          type: "object",
+          description:
+            "ExecutionScript JSON: { id, rules: [{ id, type: 'simple_rule', options, conditions: [...], actions: [...] }] }",
+        },
+      },
+      required: ["script"],
+    },
+    async execute({ script }) {
+      const { validateScript } = await loadNeuron();
+      return { content: [{ type: "text", text: JSON.stringify(validateScript(asRecord(script)), null, 2) }] };
+    },
+  });
+
+  modelContext.registerTool({
+    name: "execute_decision",
+    description:
+      "Validate and execute an ExecutionScript against an ExecutionContext. Returns the summarized output.",
+    inputSchema: scriptContextSchema,
+    async execute({ script, context }) {
+      const scriptValue = asRecord(script);
+      const contextValue = asRecord(context);
+      const failure = await validateOrError(scriptValue, contextValue);
+      if (failure.error) return { content: [{ type: "text", text: JSON.stringify(failure.error, null, 2) }] };
+
+      const { Neuron, Synapse, summarizeExecutionOutput } = await loadNeuron();
+      const result = new Synapse(new Neuron()).execute(scriptValue, contextValue);
+      return { content: [{ type: "text", text: JSON.stringify(summarizeExecutionOutput(result), null, 2) }] };
+    },
+  });
+
+  modelContext.registerTool({
+    name: "explain_decision",
+    description:
+      "Validate, execute, and explain an ExecutionScript. Returns the summarized output plus the explanation trace.",
+    inputSchema: scriptContextSchema,
+    async execute({ script, context }) {
+      const scriptValue = asRecord(script);
+      const contextValue = asRecord(context);
+      const failure = await validateOrError(scriptValue, contextValue);
+      if (failure.error) return { content: [{ type: "text", text: JSON.stringify(failure.error, null, 2) }] };
+
+      const { Neuron, Synapse, summarizeExecutionOutput, explainExecution } = await loadNeuron();
+      const result = new Synapse(new Neuron()).execute(scriptValue, contextValue);
+      return {
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify(
+              {
+                summary: summarizeExecutionOutput(result),
+                explanation: explainExecution({ script: scriptValue, result }),
+              },
+              null,
+              2,
+            ),
+          },
+        ],
+      };
+    },
+  });
+};
+
 const initWebMcp = () => {
+  // Prefer the native W3C WebMCP API when the origin trial enables it
+  // (navigator.modelContext); the WebMCP widget remains the universal path.
+  const nav = typeof navigator !== "undefined" ? navigator : undefined;
+  const modelContext = nav?.modelContext;
+
+  if (modelContext?.registerTool) {
+    try {
+      registerNativeTools(modelContext);
+      console.info("[neuron-js webmcp] native navigator.modelContext tools registered");
+    } catch (error) {
+      console.warn("[neuron-js webmcp] native registration failed, widget-only", error);
+    }
+  }
+
   if (typeof WebMCP === "undefined") {
     console.warn("[neuron-js webmcp] WebMCP global not found; widget disabled");
     return;

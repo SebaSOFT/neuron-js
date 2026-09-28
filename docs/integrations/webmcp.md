@@ -43,12 +43,12 @@ skill, both served by this site.
 
 ## Provenance and status
 
-The widget uses the open-source
-[`@jason.today/webmcp`](https://github.com/jasonjmcghee/WebMCP) library — the original WebMCP
-proposal that demonstrated this pattern. It is **not** the W3C WebMCP specification draft
-(`navigator.modelContext`, [webmachinelearning/webmcp](https://github.com/webmachinelearning/webmcp));
-the spec is still a Community Group draft with no stable browser support. When browsers ship
-the native API, this page will prefer it; until then, the library works today.
+Two complementary surfaces ship on this site:
+
+- **Native W3C WebMCP API** (`navigator.modelContext`): enabled on `sebasoft.github.io` through an active **Chrome origin trial** (expires 2026-11-17). When a Chrome browser honors the trial, the same three tools register through the standard API directly.
+- **WebMCP widget** ([`@jason.today/webmcp`](https://github.com/jasonjmcghee/WebMCP)): the original open-source proposal — not the W3C spec — that works in any browser today via a localhost websocket bridge and a connection token.
+
+The site registers the tools on both surfaces; native when available, widget always. GitHub Pages cannot serve custom headers (`Origin-Agent-Cluster`, `Permissions-Policy`), so the origin-trial meta tag is the enabling mechanism here.
 
 ## Scope
 
