@@ -27,6 +27,7 @@ export default defineConfig({
     ['meta', { httpEquiv: 'Origin-Trial', content: ORIGIN_TRIAL_WEBMCP }],
     ['script', { src: '/neuron-js/webmcp/webmcp.js' }],
     ['script', { src: '/neuron-js/webmcp/neuron-webmcp.js', defer: 'true' }],
+    ['script', { async: 'true', src: 'https://news.google.com/swg/js/v1/publisher.js' }],
   ],
   ignoreDeadLinks: true,
   markdown: {

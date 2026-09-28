@@ -1,7 +1,9 @@
 import DefaultTheme from "vitepress/theme";
 import { inBrowser } from "vitepress";
 import type { EnhanceAppContext } from "vitepress";
+import { h } from "vue";
 import mermaid from "mermaid";
+import PreferredSourceFooter from "./PreferredSourceFooter.vue";
 import "./custom.css";
 
 const isDarkMode = () => document.documentElement.classList.contains("dark");
@@ -56,6 +58,11 @@ const scheduleRender = () => {
 
 export default {
   extends: DefaultTheme,
+  Layout() {
+    return h(DefaultTheme.Layout, null, {
+      "layout-bottom": () => h(PreferredSourceFooter),
+    });
+  },
   enhanceApp({ router }: EnhanceAppContext) {
     if (!inBrowser) {
       return;
@@ -68,6 +75,9 @@ export default {
     router.onAfterRouteChanged = async (to) => {
       await afterRouteChange?.(to);
       scheduleRender();
+      // The Google preferred-source button lives in the layout-bottom slot,
+      // which VitePress keeps mounted across SPA route changes; publisher.js
+      // initializes it once on load — verified in the browser E2E.
     };
   },
   setup() {
