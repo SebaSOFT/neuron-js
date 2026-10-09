@@ -161,3 +161,6 @@ docs/.vitepress/dist
 docs/.vitepress/cache
 /.idea/
 .worktrees/
+
+# CodeGraph index: derived from the source, rebuilt by `codegraph init`.
+.codegraph/
