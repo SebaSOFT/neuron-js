@@ -151,6 +151,7 @@ vite.config.ts.timestamp-*
 .vite/
 
 # Superpowers
+.superpowers/
 docs/superpowers/
 
 docs/legacy/
@@ -162,8 +163,18 @@ docs/.vitepress/cache
 /.idea/
 .worktrees/
 
-# CodeGraph index: derived from the source, rebuilt by `codegraph init`.
+# CodeGraph & Search
 .codegraph/
+.tavily/
+
+# Agent Harnesses
+/.claude/
+/.gemini/
+/.codex/
+/.opencode/
+/.agent/
+/.agents/
+
 
 # OpenSpec
 .openspec-target
