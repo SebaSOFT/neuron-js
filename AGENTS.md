@@ -76,8 +76,8 @@ land via GitHub's "Merge pull request" (see `git log --merges`); branch naming i
 ### feature-delivery skill
 - **Protocol**: SebaSOFT's end-to-end SDLC protocol (`~/.agents/skills/feature-delivery/SKILL.md`, mirrored into `.claude/skills/`, `.codex/skills/`, and `.gemini/config/skills/`).
 - **Prerequisites & Tooling**: Verifies presence of a token saver (`rtk` or `ponytail`), CodeGraph MCP, and OpenSpec CLI (`openspec`), suggesting them if missing.
-- **Cycle**: Investigate architecture with CodeGraph → plan with OpenSpec (or user-decided agile fallback if `openspec/` is missing) → one branch and one PR per change → run full local gate suite green (`yarn lint`, `yarn test`, `yarn examples`, `yarn build`, `yarn docs:build`) → open PR against `main` → wait for explicit human merge approval (never self-merge).
-- **Fallback**: **This repo currently has no `openspec/` directory** — the skill prompts interactively to either run `openspec init` or proceed with the agile fallback flow (branch-per-change, PR against `main`, full gate suite, human merge approval).
+- **Cycle**: Investigate architecture with CodeGraph → plan with OpenSpec → one branch and one PR per change → run full local gate suite green (`yarn lint`, `yarn test`, `yarn examples`, `yarn build`, `yarn docs:build`) → open PR against `main` → wait for explicit human merge approval (never self-merge).
+- **Deferred Spec Promotion**: Archive with `openspec archive <id> --yes`; keep promoted specs (`openspec/specs/`) uncommitted on base branch until making the initial commit on the next branch (`docs(openspec): promote NNNN specs into accepted baseline`).
 
 ### git and GitHub CLI (`git`, `gh`)
 - Standard git; `gh` for PRs/issues/CI (`gh pr create`, `gh pr checks`, `gh pr view --json ...`,
@@ -104,12 +104,6 @@ land via GitHub's "Merge pull request" (see `git log --merges`); branch naming i
   part of the current library/test workflow otherwise.
 
 ### OpenSpec CLI (`openspec`)
-- AI-native spec-driven development tool: `openspec new change <name>` to propose, `openspec validate
-  <name> --strict` to check, `openspec archive <name> --yes` to close out and promote specs into the
-  accepted baseline.
-- Key commands: `change` (show/list/validate proposals), `list`/`view` (dashboard), `spec` (manage
-  specs), `context` (print resolved working root), `status`/`instructions` (per-change task state).
-- **Not currently set up in this repo** (`openspec context` resolves to the parent
-  `/Users/sebasoft/dev/git-repo/sebasoft` root, and there is no local `openspec/` directory) — if
-  adopting it here, run `openspec init` first; until then, treat feature-delivery's OpenSpec steps as
-  optional for `neuron-js`.
+- AI-native spec-driven development tool: `openspec new change <name>` to propose, `openspec validate <name> --strict` to check, `openspec archive <name> --yes` to close out and promote specs into the accepted baseline.
+- Key commands: `change` (show/list/validate proposals), `list`/`view` (dashboard), `spec` (manage specs), `context` (print resolved working root), `status`/`instructions` (per-change task state).
+- **Initialized in this repo** (`openspec/config.yaml`, `openspec/specs/`, `openspec/changes/`).
