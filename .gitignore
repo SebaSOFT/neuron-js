@@ -164,3 +164,14 @@ docs/.vitepress/cache
 
 # CodeGraph index: derived from the source, rebuilt by `codegraph init`.
 .codegraph/
+
+# OpenSpec
+.openspec-target
+openspec/changes/*
+!openspec/changes/.gitkeep
+openspec/changes/archive/*
+!openspec/changes/archive/.gitkeep
+openspec/archive/
+!openspec/specs/
+!openspec/config.yaml
+
