@@ -74,16 +74,10 @@ land via GitHub's "Merge pull request" (see `git log --merges`); branch naming i
   on a large site) → `tvly crawl` (bulk section) → `tvly research` (multi-source synthesis+citations).
 
 ### feature-delivery skill
-- SebaSOFT's standing end-to-end protocol for shipping a feature/fix: investigate with CodeGraph → plan
-  with OpenSpec → one branch + one PR per change → run the full local gate suite → open PR → wait for
-  explicit human merge approval → archive/promote specs alongside the *next* change's branch.
-- **This repo has no `openspec/` directory** — OpenSpec is the skill's *default* planning tool, not a
-  hard requirement; without an `openspec/` folder here, skip the propose/archive steps and follow this
-  file's own conventions (branch-per-change, PR against `main`, full gate suite, wait for merge
-  approval) instead.
-- Gate suite for this repo before opening a PR: `yarn lint`, `yarn test`, `yarn examples`, `yarn build`,
-  `yarn docs:build` (see top of this file).
-- Never merge autonomously — stop once CI is green and wait for the user to approve/merge.
+- **Protocol**: SebaSOFT's end-to-end SDLC protocol (`~/.agents/skills/feature-delivery/SKILL.md`, mirrored into `.claude/skills/`, `.codex/skills/`, and `.gemini/config/skills/`).
+- **Prerequisites & Tooling**: Verifies presence of a token saver (`rtk` or `ponytail`), CodeGraph MCP, and OpenSpec CLI (`openspec`), suggesting them if missing.
+- **Cycle**: Investigate architecture with CodeGraph → plan with OpenSpec (or user-decided agile fallback if `openspec/` is missing) → one branch and one PR per change → run full local gate suite green (`yarn lint`, `yarn test`, `yarn examples`, `yarn build`, `yarn docs:build`) → open PR against `main` → wait for explicit human merge approval (never self-merge).
+- **Fallback**: **This repo currently has no `openspec/` directory** — the skill prompts interactively to either run `openspec init` or proceed with the agile fallback flow (branch-per-change, PR against `main`, full gate suite, human merge approval).
 
 ### git and GitHub CLI (`git`, `gh`)
 - Standard git; `gh` for PRs/issues/CI (`gh pr create`, `gh pr checks`, `gh pr view --json ...`,
